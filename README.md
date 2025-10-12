@@ -1,5 +1,5 @@
 <div align="center">
-<h1>Tracker aggregator Subscriber</h1>
+<h1>Tracker aggregator  Subscriber</h1>
   <p>
     tracker规则订阅器，整合不同来源的规则，帮助你快速构建属于自己的规则集~
   </p>
@@ -19,29 +19,34 @@
   <span> · </span>
     <a href="#d">问题反馈</a>
   </h4>
+</div>
+
 [English](README_en.md) | 中文
 
-## <a id="a">📔 项目说明</a>
+<h2 id="a">📔 项目说明</h2>
 Tracker aggregator Subscriber 是一个用于聚合和管理 BitTorrent Tracker 列表的工具。该项目受 fordes123的广告过滤规则订阅器 https://github.com/fordes123/ad-filters-subscribe 项目启发经过优化和重构。
 
-### 功能
+#### **功能**
+
 - 自动抓取多个 Tracker 源
 - 去重与排序
 - 生成可用 Tracker 列表
 - 记录无法访问的源到 `TrackerServer/bad_tracker.txt`
 - 支持 GitHub Actions 自动更新
 
-### Github Action
-1. fork 本项目
-2. 自定义规则订阅 (可选)
-   - 修改tracker源文件: `sources.list`
-   - 修改修改配置文件: `config/sync.yml`
-3. 打开 `Github Action` 页面，选中左侧 `Update Filters` 授权 `Workflow` 定时执行(⚠ 重要步骤)
-4. 点击 `Run workflow` 或等待自动执行。执行完成后规则将生成在 `release` 分支
+#### **Github Action**
 
-### Codespaces
-1. 登录 `Github`，点击本仓库右上角 `Code` 按钮，选择并创建新的 `Codespaces`
-2. 等待 `Codespaces` 启动，即可直接对本项目进行调试
+- fork 本项目
+- 自定义规则订阅 (可选)
+  - 修改tracker源文件: `sources.list`
+  - 修改修改配置文件: `config/sync.yml`
+- 打开 `Github Action` 页面，选中左侧 `Update Filters` 授权 `Workflow` 定时执行(⚠ 重要步骤)
+- 点击 `Run workflow` 或等待自动执行。执行完成后规则将生成在 `release` 分支
+
+#### **Codespaces**
+
+- 登录 `Github`，点击本仓库右上角 `Code` 按钮，选择并创建新的 `Codespaces`
+- 等待 `Codespaces` 启动，即可直接对本项目进行调试
 
 
 <details>
@@ -63,7 +68,8 @@ Tracker aggregator Subscriber 是一个用于聚合和管理 BitTorrent Tracker 
 </details>
 
 
-## <a id="c">🎯 规则订阅</a>
+
+<h2 id="c">🎯 规则订阅</h2>
 
 | 文件              | 说明           |                                                               github                                                               |                                                                                 gitwarp                                                                                 |
 | ----------------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
@@ -71,6 +77,18 @@ Tracker aggregator Subscriber 是一个用于聚合和管理 BitTorrent Tracker 
 | `bad_tracker.txt` | 无法拉取的规则 | [link](https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/bad_tracker.txt)                       | [link](http://hk-yd-proxy.gitwarp.com:6699/https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/bad_tracker.txt)                       |
 
 
-## <a id="d">💬 问题反馈</a>
+
+<!-- **⚠ 本仓库不再提供规则订阅，我们更推荐 fork 本项目自行构建规则集.** -->
+
+<!-- 下面是使用了本项目进行构建的规则仓库，可在其中寻找合适的规则订阅: -->
+<!-- <details> -->
+<!-- <summary>点击查看</summary> -->
+<!-- <ul> -->
+<!--     <br/> -->
+<!--     <li><a href="https://github.com/xndeye/adblock_list/">xndeye/adblock_list</a></li> -->
+<!-- </ul> -->
+<!-- </details> -->
+
+<h2 id="d">💬 问题反馈</h2>
 
 - 👉 [issues](https://github.com/fengyanfengyusuisuinian/tracker-aggregator/issues)
