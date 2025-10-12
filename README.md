@@ -1,5 +1,3 @@
-# Tracker Aggregator Subscriber
-
 <div align="center">
 <h1>Tracker aggregator Subscriber</h1>
   <p>
