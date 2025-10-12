@@ -57,3 +57,25 @@
     <li><a href="https://github.com/xndeye/adblock_list/">xndeye/adblock_list</a></li>
 </ul>
 </details>
+
+
+
+# Tracker Aggregator
+
+Tracker Aggregator 是一个用于聚合和管理 BitTorrent Tracker 列表的工具。  
+该文件**基于 [www.baidu.com](https://www.baidu.com) 的原始项目修改**，经过优化和重构，现已成为独立工具。
+
+## 功能
+
+- 自动抓取多个 Tracker 源
+- 去重与排序
+- 生成可用 Tracker 列表
+- 记录无法访问的源到 `TrackerServer/bad_tracker.txt`
+- 支持 GitHub Actions 自动更新
+
+## 使用方法
+
+1. 克隆仓库：
+   ```bash
+   git clone https://github.com/your-username/tracker-aggregator.git
+   cd tracker-aggregator
