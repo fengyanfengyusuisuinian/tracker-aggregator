@@ -2,12 +2,12 @@
 """
 Tracker 域名聚合脚本
 下载 sources.list 里的所有 URL → 提取 host → 去重排序
-输出到  Tracker Server/tracker.txt
+输出到  TrackerServer/tracker.txt
 """
 import re, os, hashlib, requests
 
 SOURCES = 'sources.list'          # 源 URL 列表
-OUTPUT  = 'Tracker Server/tracker.txt'  # 输出文件（含空格目录）
+OUTPUT  = 'TrackerServer/tracker.txt'  # 输出文件（含空格目录）
 HEADERS = {'User-Agent': 'Mozilla/5.0'}
 
 def domain_set(url: str) -> set[str]:
