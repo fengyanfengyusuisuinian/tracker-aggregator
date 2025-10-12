@@ -51,11 +51,11 @@ Tracker Aggregator 是一个用于聚合和管理 BitTorrent Tracker 列表的�
 
 **⚠ 本仓库不再提供规则订阅，我们更推荐 fork 本项目自行构建规则集.**
 
-下面是使用了本项目进行构建的规则仓库，可在其中寻找合适的规则订阅:
-<details>
-<summary>点击查看</summary>
-<ul>
-    <br/>
-    <li><a href="https://github.com/xndeye/adblock_list/">xndeye/adblock_list</a></li>
-</ul>
-</details>
+<!-- 下面是使用了本项目进行构建的规则仓库，可在其中寻找合适的规则订阅: -->
+<!-- <details> -->
+<!-- <summary>点击查看</summary> -->
+<!-- <ul> -->
+<!--     <br/> -->
+<!--     <li><a href="https://github.com/xndeye/adblock_list/">xndeye/adblock_list</a></li> -->
+<!-- </ul> -->
+<!-- </details> -->
