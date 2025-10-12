@@ -1,42 +1,38 @@
-#!/usr/bin/env python3
-"""
-Tracker 域名聚合脚本
-下载 sources.list 里的所有 URL → 提取 host → 去重排序
-输出到 TrackerServer/tracker.txt
-"""
-import re, os, requests
+name: Sync Tracker
 
-SOURCES = 'sources.list'              # 源 URL 列表
-OUTPUT  = 'TrackerServer/tracker.txt'  # 输出文件（无空格目录）
-HEADERS = {'User-Agent': 'Mozilla/5.0'}
+on:
+  # 每天 13:00（北京时间）自动运行 → UTC 05:00
+  schedule: 
+    - cron: '0 5 * * *'
+  # 允许在 Actions 页面手动点击运行
+  workflow_dispatch:
 
-def domain_set(url: str) -> set[str]:
-    """从单个 URL 提取域名集合"""
-    try:
-        text = requests.get(url, headers=HEADERS, timeout=30).text
-    except Exception as e:
-        print(f'WARN: {url} 下载失败 {e}')
-        return set()
-    # 匹配 host:port 或纯 host
-    hosts = re.findall(r'(?i)([a-z0-9\-\.]+\.[a-z]{2,})(?=:\d+|$)', text)
-    return {h.lower() for h in hosts}
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions: 
+      contents: write  # 提交需要写权限
 
-def main():
-    # 读取源地址
-    with open(SOURCES, encoding='utf-8') as f:
-        urls = [line.strip() for line in f if line.strip() and not line.startswith('#')]
+    steps:
+      # 检出仓库代码
+      - uses: actions/checkout@v4
 
-    # 聚合去重
-    total = set().union(*map(domain_set, urls))
+      # 设置 Python 3.12 环境
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
 
-    # 确保输出目录存在
-    os.makedirs(os.path.dirname(OUTPUT), exist_ok=True)
+      # 安装依赖
+      - run: pip install requests
 
-    # 写入排序结果
-    with open(OUTPUT, 'w', encoding='utf-8') as f:
-        f.write('\n'.join(sorted(total)) + '\n')
+      # 执行 Python 聚合脚本
+      - run: python main.py
 
-    print(f'✅ 已写入 {len(total)} 条域名到 {OUTPUT}')
+      # 调试：查看 TrackerServer 文件夹内容（可选）
+      - run: ls -l TrackerServer
 
-if __name__ == '__main__':
-    main()
+      # 强制提交 tracker.txt（即使之前存在）
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: update tracker.txt'
+          commit_options: '--all'
