@@ -48,6 +48,27 @@ Tracker aggregator Subscriber 是一个用于聚合和管理 BitTorrent Tracker 
 - 登录 `Github`，点击本仓库右上角 `Code` 按钮，选择并创建新的 `Codespaces`
 - 等待 `Codespaces` 启动，即可直接对本项目进行调试
 
+
+<details>
+<summary>点击查看上游规则</summary>
+<ul>
+   <!--  <li><a href="https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_2_Base/filter.txt">AdGuard 基础过滤器</a></li> -->
+  <li><a href="https://newtrackon.com/api/all">newtrackon.com/api/all</a></li>
+  <li><a href="https://trackerslist.com/all.txt">trackerslist.com/all.txt</a></li>
+  <li><a href="https://newtrackon.com/api/stable">newtrackon.com/api/stable</a></li>
+  <li><a href="https://at.raxianch.moe/AT_all.txt">at.raxianch.moe/AT_all.txt</a></li>
+  <li><a href="https://gcore.jsdelivr.net/gh/XIU2/TrackersListCollection/all.txt">gcore.jsdelivr.net/gh/XIU2/TrackersListCollection/all.txt</a></li>
+  <li><a href="https://cdn.jsdelivr.net/gh/ngosang/trackerslist/trackers_best.txt">cdn.jsdelivr.net/gh/ngosang/trackerslist/trackers_best.txt</a></li>
+  <li><a href="https://cf.trackerslist.com/all.txt">cf.trackerslist.com/all.txt</a></li>
+  <li><a href="https://cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_all.txt">cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_all.txt</a></li>
+  <li><a href="https://raw.githubusercontent.com/1265578519/OpenTracker/master/tracker.txt">raw.githubusercontent.com/1265578519/OpenTracker/master/tracker.txt</a></li>
+  <li><a href="https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt">raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt</a></li>
+  <li><a href="https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all.txt">raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all.txt</a></li>
+</ul>
+</details>
+
+
+
 <h2 id="c">🎯 规则订阅</h2>
 
 | 文件              | 说明           |                                                               github                                                               |                                                                                 gitwarp                                                                                 |
@@ -56,27 +77,7 @@ Tracker aggregator Subscriber 是一个用于聚合和管理 BitTorrent Tracker 
 | `bad_tracker.txt` | 无法拉取的规则 | [link][bad_tracker-github](https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/bad_tracker.txt)] | [link][bad_tracker-gitwarp](http://hk-yd-proxy.gitwarp.com:6699/https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/bad_tracker.txt)] |
 
 
-<details>
-<summary>点击查看上游规则</summary>
-<ul>
-   <!--  <li><a href="https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_2_Base/filter.txt">AdGuard 基础过滤器</a></li> -->
-   <li>
-  <a href="https://newtrackon.com/api/all">https://newtrackon.com/api/all</a><br>
-  <a href="https://trackerslist.com/all.txt">https://trackerslist.com/all.txt</a><br>
-  <a href="https://newtrackon.com/api/stable">https://newtrackon.com/api/stable</a><br>
-  <a href="https://at.raxianch.moe/AT_all.txt">https://at.raxianch.moe/AT_all.txt</a><br>
-  <a href="https://gcore.jsdelivr.net/gh/XIU2/TrackersListCollection/all.txt">https://gcore.jsdelivr.net/gh/XIU2/TrackersListCollection/all.txt</a><br>
-  <a href="https://cdn.jsdelivr.net/gh/ngosang/trackerslist/trackers_best.txt">https://cdn.jsdelivr.net/gh/ngosang/trackerslist/trackers_best.txt</a><br>
-  <a href="https://cf.trackerslist.com/all.txt">https://cf.trackerslist.com/all.txt</a><br>
-  <a href="https://cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_all.txt">https://cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_all.txt</a><br>
-  <a href="https://raw.githubusercontent.com/1265578519/OpenTracker/master/tracker.txt">https://raw.githubusercontent.com/1265578519/OpenTracker/master/tracker.txt</a><br>
-  <a href="https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt">https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt</a><br>
-  <a href="https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all.txt">https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all.txt</a>
-</li>
-   
 
-</ul>
-</details>
 <!-- **⚠ 本仓库不再提供规则订阅，我们更推荐 fork 本项目自行构建规则集.** -->
 
 <!-- 下面是使用了本项目进行构建的规则仓库，可在其中寻找合适的规则订阅: -->
