@@ -1,3 +1,7 @@
+# ⚠ 以下源无法访问
+# https://gitea.com/XIU2/TrackersListCollection/raw/branch/master/all.txt
+
+
 http://00.mercax.com:443/announce
 http://00.xxtor.com:443/announce
 http://0123456789nonexistent.com/announce
@@ -489,7 +493,6 @@ http://tracker.aibt.xyz:900/announce
 http://tracker.ali213.net:8000/announce
 http://tracker.ali213.net:8080/announce
 http://tracker.anirena.com/announce
-http://tracker.anirena.com/announcehttp://tracker1.itzmx.com:8080/announce
 http://tracker.anirena.com/b16a15d9a238d1f59178d3614b857290/announce
 http://tracker.anirena.com:80/announce
 http://tracker.anirena.com:80/b16a15d9a238d1f59178d3614b857290/announce
@@ -966,6 +969,7 @@ https://xtremex.herokuapp.com:443/announce
 https://yolo.liberbear.com:80/announce
 https://yuki.bt.bontal.net:443/announce
 https://zer0day.000webhostapp.com/announce
+udp://
 udp://10.rarbg.com/announce
 udp://103.122.21.50:6969/announce
 udp://104.131.98.232:6969/announce
@@ -1100,7 +1104,6 @@ udp://free.publictracker.xyz:6969/announce
 udp://freedom.1776.ga:6969/announce
 udp://freedomalternative.com:6969/announce
 udp://ftp.pet:2710/announce
-udp://http://www.peckservers.com:9000/announce
 udp://htz3.noho.st:6969/announce
 udp://ibksturm.synology.me:6969/announce
 udp://inferno.demonoid.is:3391/announce
