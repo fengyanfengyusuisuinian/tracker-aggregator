@@ -50,7 +50,7 @@ Tracker Aggregator 是一个用于聚合和管理 BitTorrent Tracker 列表的�
 | 文件              | 说明                          |        github        |         gitwarp          | 
 |-----------------|:----------------------------|:--------------------:|:------------------------:|
 | `tracker.txt`  | 聚合规则| [link][[tracker-github](https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/tracker.txt)] | [link][[tracker-gitwarp](http://hk-yd-proxy.gitwarp.com:6699/https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/tracker.txt)] 
-| `bad_tracker.txt`  | 无法拉取的规则| [link][[bad_tracker-github](https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/tracker.txt)] | [link][[bad_tracker-gitwarp](http://hk-yd-proxy.gitwarp.com:6699/https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/tracker.txt)] | 
+| `bad_tracker.txt`  | 无法拉取的规则| [link][[bad_tracker-github](https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/bad_tracker.txt)] | [link][[bad_tracker-gitwarp](http://hk-yd-proxy.gitwarp.com:6699/https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/bad_tracker.txt)] | 
 
 <!-- **⚠ 本仓库不再提供规则订阅，我们更推荐 fork 本项目自行构建规则集.** -->
 
