@@ -1,45 +1,47 @@
-#!/usr/bin/env python3
-"""
-Tracker 域名聚合脚本
-下载 sources.list 里的所有 URL → 提取 host → 去重排序
-输出到 TrackerServer/tracker.txt
-"""
-import re, os, requests
+name: Sync Tracker
+on:
+  # 每天 13:00（北京时间）自动运行 → UTC 05:00
+  schedule: 
+    - cron: '0 5 * * *'
+  # 允许在 Actions 页面手动点击运行
+  workflow_dispatch:
 
-# 源 URL 列表文件
-SOURCES = 'sources.list'
-# 输出文件（无空格目录）
-OUTPUT = 'TrackerServer/tracker.txt'
-HEADERS = {'User-Agent': 'Mozilla/5.0'}
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions: 
+      contents: write  # workflow 有权写仓库内容
 
-def domain_set(url: str) -> set[str]:
-    """从单个 URL 提取域名集合"""
-    try:
-        text = requests.get(url, headers=HEADERS, timeout=30).text
-    except Exception as e:
-        print(f'WARN: {url} 下载失败 {e}')
-        return set()
-    # 匹配 host:port 或纯 host
-    hosts = re.findall(r'(?i)([a-z0-9\-\.]+\.[a-z]{2,})(?=:\d+|$)', text)
-    return {h.lower() for h in hosts}
+    steps:
+      # 1️⃣ 检出仓库代码到 runner
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-def main():
-    # 读取 sources.list
-    with open(SOURCES, encoding='utf-8') as f:
-        urls = [line.strip() for line in f if line.strip() and not line.startswith('#')]
+      # 2️⃣ 设置 Python 环境
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
 
-    # 聚合去重
-    total = set().union(*map(domain_set, urls))
+      # 3️⃣ 安装 Python 依赖
+      - name: Install requests
+        run: pip install requests
 
-    # 确保输出目录存在
-    os.makedirs(os.path.dirname(OUTPUT), exist_ok=True)
+      # 4️⃣ 执行 Python 脚本，生成 TrackerServer/tracker.txt
+      - name: Run Tracker aggregation
+        run: python main.py
 
-    # 写入排序结果
-    with open(OUTPUT, 'w', encoding='utf-8') as f:
-        f.write('\n'.join(sorted(total)) + '\n')
+      # 5️⃣ 调试：显示 TrackerServer 文件夹内容，确认文件生成
+      - name: List TrackerServer folder
+        run: ls -l TrackerServer
 
-    # 打印日志：已写入条目数
-    print(f'✅ 已写入 {len(total)} 条域名到 {OUTPUT}')
+      # 6️⃣ 强制 commit 文件，无论之前是否存在，确保提交到仓库
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: update tracker.txt'
+          commit_options: '--all'
 
-if __name__ == '__main__':
-    main()
+      # 7️⃣ 打印提交 hash，用于日志确认
+      - name: Show last commit hash
+        run: git log -1 --pretty=format:"Commit hash: %H"
