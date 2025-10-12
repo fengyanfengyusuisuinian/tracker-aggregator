@@ -21,7 +21,7 @@
   </h4>
 </div>
 
-[English](README_en.md) | 中文
+English | 中文(README.md)
 
 <h2 id="a">📔 Project Description</h2>
 Tracker Aggregator Subscriber is a tool for aggregating and managing BitTorrent Tracker lists. This project is inspired by fordes123's ad filtering rule subscriber project (https://github.com/fordes123/ad-filters-subscribe) with optimizations and refactoring.
