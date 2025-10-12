@@ -1,5 +1,5 @@
 <div align="center">
-<h1>Tracker aggregator  Subscriber</h1>
+<h1>Tracker订阅聚合</h1>
   <p>
     tracker规则订阅器，整合不同来源的规则，帮助你快速构建属于自己的规则集~
   </p>
