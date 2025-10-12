@@ -1,7 +1,7 @@
 <div align="center">
 <h1>AD Filter Subscriber</h1>
   <p>
-    广告过滤规则订阅器，整合不同来源的规则，帮助你快速构建属于自己的规则集~
+    tracker规则订阅器，整合不同来源的规则，帮助你快速构建属于自己的规则集~
   </p>
 <!-- Badges -->
 <p>
@@ -40,55 +40,6 @@
 2. 接受不可避免的缩限，如 `||example.org^` 将拦截 example.org 及其所有子域，但将其转换为 hosts 格式时，将无法匹配子域名。
 3. 规则有效性检测基于域名解析，因此仅支持基本规则 (只能检测当前域有效性，而无法检测其是否存在有效子域，故此功能可能存在误杀)。
 
-<h2 id="b">🛠️ 快速开始</h2>
-
-### 示例配置
-
-```yaml
-application:
-  rule:
-    #远程规则订阅，path为 http、https地址
-    remote:
-      - name: 'Subscription 1'               #可选参数: 规则名称，如无将使用 path 作为名称
-        path: 'https://example.org/rule.txt' #必要参数: 规则url，仅支持 http/https，不限定响应内容格式
-        type:  easylist                      #可选参数: 规则类型：easylist (默认)、dnsmasq、clash、smartdns、hosts
-
-    #本地规则，path为 操作系统支持的绝对或相对路径
-    local:
-      - name: 'private rule'
-        path: '/rule/private.txt'
-
-  output:
-    #文件头配置，将自动作为注释添加至每个规则文件开始
-    #可使用占位符 ${name}、${type}、${desc} 以及 ${date} (当前日期)
-    file_header: |
-      ADFS Adblock List
-      Title: ${name}
-      Last Modified: ${date}
-      Homepage: https://github.com/fordes123/ad-filters-subscriber/
-    files:
-      - name: easylist.txt     #必要参数: 文件名
-        type: EASYLIST         #必要参数: 文件类型: easylist、dnsmasq、clash、smartdns、hosts
-        desc: 'ADFS EasyList'  #可选参数: 文件描述，可在file_header中通过 ${} 中使用
-        filter:                #可选参数: 包含规则的类型，默认全选
-          - basic              #基本规则，不包含任何控制、匹配符号, 可以转换为 hosts
-          - wildcard           #通配规则，仅使用通配符
-          - unknown            #其他规则，如使用了正则、高级修饰符号等，这表示目前无法支持
-```
-
----
-本程序基于 `Java21` 编写，使用 `Maven` 进行构建，你可以参照[示例配置](./config/application-example.yaml)，编辑 `config/application.yaml`
-，并通过以下任意一种方式快速开始：
-
-#### **本地调试**
-
-```bash
-git clone https://github.com/fordes123/ad-filters-subscriber.git
-cd ad-filters-subscriber
-mvn clean
-mvn spring-boot:run
-```
-
 #### **Github Action**
 
 - fork 本项目
@@ -114,7 +65,3 @@ mvn spring-boot:run
     <li><a href="https://github.com/xndeye/adblock_list/">xndeye/adblock_list</a></li>
 </ul>
 </details>
-
-<h2 id="d">💬 问题反馈</h2>
-
-- 👉 [issues](https://github.com/fordes123/ad-filters-subscriber/issues)
