@@ -1,38 +1,33 @@
 name: Sync Tracker
 
 on:
-  # 每天 13:00（北京时间）自动运行 → UTC 05:00
-  schedule: 
-    - cron: '0 5 * * *'
-  # 允许在 Actions 页面手动点击运行
-  workflow_dispatch:
+  schedule:
+    - cron: '0 5 * * *'  # 每天 13:00 北京时间
+  workflow_dispatch:      # 可手动触发
 
 jobs:
   sync:
     runs-on: ubuntu-latest
-    permissions: 
-      contents: write  # 提交需要写权限
+    permissions:
+      contents: write
 
     steps:
-      # 检出仓库代码
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      # 设置 Python 3.12 环境
-      - uses: actions/setup-python@v5
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      # 安装依赖
-      - run: pip install requests
+      - name: Install dependencies
+        run: pip install requests
 
-      # 执行 Python 聚合脚本
-      - run: python main.py
+      - name: Run Tracker aggregation
+        run: python main.py
 
-      # 调试：查看 TrackerServer 文件夹内容（可选）
-      - run: ls -l TrackerServer
-
-      # 强制提交 tracker.txt（即使之前存在）
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'chore: update tracker.txt'
-          commit_options: '--all'
+          file_pattern: 'TrackerServer/tracker.txt'
