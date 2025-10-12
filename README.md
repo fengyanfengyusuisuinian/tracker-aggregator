@@ -22,6 +22,7 @@
 </div>
 
 [English](./README_en.md) | 中文
+
 <h2 id="a">📔 项目说明</h2>
 Tracker aggregator Subscriber 是一个用于聚合和管理 BitTorrent Tracker 列表的工具。该项目受[fordes123的](https://github.com/fordes123/ad-filters-subscribe "广告过滤规则订阅器")的原始项目启发经过优化和重构。
 ## 功能
@@ -46,10 +47,10 @@ Tracker aggregator Subscriber 是一个用于聚合和管理 BitTorrent Tracker 
 
 <h2 id="c">🎯 规则订阅</h2>
 
-| 文件              | 说明                          |        github        |         gitwarp          | 
-|-----------------|:----------------------------|:--------------------:|:------------------------:|
-| `tracker.txt`  | 聚合规则| [link][[tracker-github](https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/tracker.txt)] | [link][[tracker-gitwarp](http://hk-yd-proxy.gitwarp.com:6699/https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/tracker.txt)] 
-| `bad_tracker.txt`  | 无法拉取的规则| [link][[bad_tracker-github](https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/bad_tracker.txt)] | [link][[bad_tracker-gitwarp](http://hk-yd-proxy.gitwarp.com:6699/https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/bad_tracker.txt)] | 
+| 文件              | 说明           |                                                               github                                                               |                                                                                 gitwarp                                                                                 |
+| ----------------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| `tracker.txt`     | 聚合规则       |     [link][tracker-github](https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/tracker.txt)]     |     [link][tracker-gitwarp](http://hk-yd-proxy.gitwarp.com:6699/https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/tracker.txt)]     |
+| `bad_tracker.txt` | 无法拉取的规则 | [link][bad_tracker-github](https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/bad_tracker.txt)] | [link][bad_tracker-gitwarp](http://hk-yd-proxy.gitwarp.com:6699/https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/bad_tracker.txt)] |
 
 <!-- **⚠ 本仓库不再提供规则订阅，我们更推荐 fork 本项目自行构建规则集.** -->
 
