@@ -1,6 +1,3 @@
-# ⚠ 以下源无法访问
-# https://gitea.com/XIU2/TrackersListCollection/raw/branch/master/all.txt
-
 
 http://00.mercax.com:443/announce
 http://00.xxtor.com:443/announce
@@ -735,7 +732,6 @@ https://bittorrent.gongt.net:443/announce
 https://bt.080609.xyz/announce
 https://bt.080609.xyz:443/announce
 https://bt.beatrice-raws.org/announce
-https://bt.bontal.net:443/announce
 https://bt.endpot.com/announce
 https://bt.nfshost.com/announce
 https://bt2.080609.xyz:443/announce
