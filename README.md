@@ -39,7 +39,7 @@ Tracker aggregator Subscriber 是一个用于聚合和管理 BitTorrent Tracker 
 - fork 本项目
 - 自定义规则订阅 (可选)
   - 修改tracker源文件: `sources.list`
-  - 修改修改配置文件: `config/sync.yml`
+  - 修改修改配置文件: `.github/workflows/sync.yml`
 - 打开 `Github Action` 页面，选中左侧 `Update Filters` 授权 `Workflow` 定时执行(⚠ 重要步骤)
 - 点击 `Run workflow` 或等待自动执行。执行完成后规则将生成在 `release` 分支
 
