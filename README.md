@@ -57,3 +57,7 @@ Tracker Aggregator 是一个用于聚合和管理 BitTorrent Tracker 列表的�
 <!--     <li><a href="https://github.com/xndeye/adblock_list/">xndeye/adblock_list</a></li> -->
 <!-- </ul> -->
 <!-- </details> -->
+
+<h2 id="d">💬 问题反馈</h2>
+
+- 👉 [issues](https://github.com/fengyanfengyusuisuinian/tracker-aggregator/issues)
