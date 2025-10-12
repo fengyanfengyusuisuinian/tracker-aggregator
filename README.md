@@ -55,6 +55,16 @@ Tracker aggregator Subscriber 是一个用于聚合和管理 BitTorrent Tracker 
 | `tracker.txt`     | 聚合规则       |     [link][tracker-github](https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/tracker.txt)]     |     [link][tracker-gitwarp](http://hk-yd-proxy.gitwarp.com:6699/https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/tracker.txt)]     |
 | `bad_tracker.txt` | 无法拉取的规则 | [link][bad_tracker-github](https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/bad_tracker.txt)] | [link][bad_tracker-gitwarp](http://hk-yd-proxy.gitwarp.com:6699/https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/bad_tracker.txt)] |
 
+
+<details>
+<summary>点击查看上游规则</summary>
+<ul>
+   <!--  <li><a href="https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_2_Base/filter.txt">AdGuard 基础过滤器</a></li> -->
+   
+   
+
+</ul>
+</details>
 <!-- **⚠ 本仓库不再提供规则订阅，我们更推荐 fork 本项目自行构建规则集.** -->
 
 <!-- 下面是使用了本项目进行构建的规则仓库，可在其中寻找合适的规则订阅: -->
