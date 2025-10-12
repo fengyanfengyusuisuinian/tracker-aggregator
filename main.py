@@ -6,10 +6,8 @@ Tracker 域名聚合脚本
 """
 import re, os, requests
 
-# 源 URL 列表文件
-SOURCES = 'sources.list'
-# 输出文件路径（无空格目录）
-OUTPUT = 'TrackerServer/tracker.txt'
+SOURCES = 'sources.list'              # 源 URL 列表
+OUTPUT  = 'TrackerServer/tracker.txt'  # 输出文件（无空格目录）
 HEADERS = {'User-Agent': 'Mozilla/5.0'}
 
 def domain_set(url: str) -> set[str]:
@@ -24,7 +22,7 @@ def domain_set(url: str) -> set[str]:
     return {h.lower() for h in hosts}
 
 def main():
-    # 读取 sources.list
+    # 读取源地址
     with open(SOURCES, encoding='utf-8') as f:
         urls = [line.strip() for line in f if line.strip() and not line.startswith('#')]
 
@@ -38,7 +36,6 @@ def main():
     with open(OUTPUT, 'w', encoding='utf-8') as f:
         f.write('\n'.join(sorted(total)) + '\n')
 
-    # 打印日志：已写入条目数
     print(f'✅ 已写入 {len(total)} 条域名到 {OUTPUT}')
 
 if __name__ == '__main__':
