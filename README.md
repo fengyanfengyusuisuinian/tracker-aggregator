@@ -25,13 +25,14 @@
 
 [English](./README_en.md) | 中文
 <h2 id="a">📔 项目说明</h2>
-
-本项目旨在聚合不同的tracker服务器
-#### **主要文件**
-
-- sync.yml
-- main.py
-- sources.list----------tracker服务器列表
+Tracker Aggregator 是一个用于聚合和管理 BitTorrent Tracker 列表的工具。  
+该项目受基于 [fordes123的广告过滤规则订阅器](https://github.com/fordes123/ad-filters-subscriber) 的原始项目启发经过优化和重构。
+## 功能
+- 自动抓取多个 Tracker 源
+- 去重与排序
+- 生成可用 Tracker 列表
+- 记录无法访问的源到 `TrackerServer/bad_tracker.txt`
+- 支持 GitHub Actions 自动更新
 #### **Github Action**
 
 - fork 本项目
@@ -57,25 +58,3 @@
     <li><a href="https://github.com/xndeye/adblock_list/">xndeye/adblock_list</a></li>
 </ul>
 </details>
-
-
-
-# Tracker Aggregator
-
-Tracker Aggregator 是一个用于聚合和管理 BitTorrent Tracker 列表的工具。  
-该文件**基于 [www.baidu.com](https://www.baidu.com) 的原始项目修改**，经过优化和重构，现已成为独立工具。
-
-## 功能
-
-- 自动抓取多个 Tracker 源
-- 去重与排序
-- 生成可用 Tracker 列表
-- 记录无法访问的源到 `TrackerServer/bad_tracker.txt`
-- 支持 GitHub Actions 自动更新
-
-## 使用方法
-
-1. 克隆仓库：
-   ```bash
-   git clone https://github.com/your-username/tracker-aggregator.git
-   cd tracker-aggregator
