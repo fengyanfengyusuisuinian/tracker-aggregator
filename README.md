@@ -19,11 +19,7 @@
   <span> · </span>
     <a href="#d">问题反馈</a>
   </h4>
-
-<p>[English](README_en.md) | 中文</p>
-</div>
-
-
+[English](README_en.md) | 中文
 ## <a id="a">📔 项目说明</a>
 Tracker aggregator Subscriber 是一个用于聚合和管理 BitTorrent Tracker 列表的工具。该项目受 fordes123的广告过滤规则订阅器 https://github.com/fordes123/ad-filters-subscribe 项目启发经过优化和重构。
 
