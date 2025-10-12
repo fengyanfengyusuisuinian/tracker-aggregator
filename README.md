@@ -15,8 +15,6 @@
 <h4>
     <a href="#a">项目说明</a>
   <span> · </span>
-    <a href="#b">快速开始</a>
-  <span> · </span>
     <a href="#c">规则订阅</a>
   <span> · </span>
     <a href="#d">问题反馈</a>
