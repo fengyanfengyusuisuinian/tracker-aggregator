@@ -1,5 +1,5 @@
 <div align="center">
-<h1>tracker aggregator  Subscriber</h1>
+<h1>Tracker aggregator  Subscriber</h1>
   <p>
     tracker规则订阅器，整合不同来源的规则，帮助你快速构建属于自己的规则集~
   </p>
@@ -23,7 +23,7 @@
 
 [English](./README_en.md) | 中文
 <h2 id="a">📔 项目说明</h2>
-Tracker Aggregator 是一个用于聚合和管理 BitTorrent Tracker 列表的工具。  
+Tracker aggregator Subscriber 是一个用于聚合和管理 BitTorrent Tracker 列表的工具。  
 该项目受基于 [fordes123的广告过滤规则订阅器](https://github.com/fordes123/ad-filters-subscriber) 的原始项目启发经过优化和重构。
 ## 功能
 - 自动抓取多个 Tracker 源
