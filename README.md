@@ -25,7 +25,9 @@
 
 <h2 id="a">📔 项目说明</h2>
 Tracker aggregator Subscriber 是一个用于聚合和管理 BitTorrent Tracker 列表的工具。该项目受 fordes123的广告过滤规则订阅器 https://github.com/fordes123/ad-filters-subscribe 项目启发经过优化和重构。
-### **功能**
+
+#### **功能**
+
 - 自动抓取多个 Tracker 源
 - 去重与排序
 - 生成可用 Tracker 列表
@@ -39,7 +41,6 @@ Tracker aggregator Subscriber 是一个用于聚合和管理 BitTorrent Tracker 
   - 修改修改配置文件: `config/sync.yml`
 - 打开 `Github Action` 页面，选中左侧 `Update Filters` 授权 `Workflow` 定时执行(⚠ 重要步骤)
 - 点击 `Run workflow` 或等待自动执行。执行完成后规则将生成在 `release` 分支
-
 #### **Codespaces**
 
 - 登录 `Github`，点击本仓库右上角 `Code` 按钮，选择并创建新的 `Codespaces`
