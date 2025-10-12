@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """
-Tracker URL 聚合脚本（最终版）
+Tracker URL 聚合脚本（最终版，支持 bad tracker 输出）
 功能：
 1. 保留原 URL
 2. 去重 + 排序
-3. 检测不可访问的源，并在文件头注释
-4. 拆分同一行多个 URL
-输出到 TrackerServer/tracker.txt
+3. 无法访问的源单独输出到 bad_tracker.txt
+4. 自动拆分同一行多个 URL
+输出：
+- TrackerServer/tracker.txt
+- TrackerServer/bad_tracker.txt
 """
 import os
 import re
@@ -14,6 +16,7 @@ import requests
 
 SOURCES = 'sources.list'
 OUTPUT = 'TrackerServer/tracker.txt'
+BAD_OUTPUT = 'TrackerServer/bad_tracker.txt'
 TIMEOUT = 10  # 秒
 
 def fetch_urls_from_source(url):
@@ -35,7 +38,7 @@ def fetch_urls_from_source(url):
 
 def main():
     all_urls = []
-    unreachable_sources = []
+    bad_sources = []
 
     # 读取 sources.list
     with open(SOURCES, encoding='utf-8') as f:
@@ -47,7 +50,7 @@ def main():
         if success:
             all_urls.extend(urls)
         else:
-            unreachable_sources.append(src)
+            bad_sources.append(src)
 
     # 去重 + 排序
     unique_urls = sorted(set(all_urls))
@@ -57,18 +60,15 @@ def main():
 
     # 写入 tracker.txt
     with open(OUTPUT, 'w', encoding='utf-8') as f:
-        if unreachable_sources:
-            f.write("# ⚠ 以下源无法访问\n")
-            for u in unreachable_sources:
-                f.write(f"# {u}\n")
-            f.write("\n")
         f.write('\n'.join(unique_urls) + '\n')
 
     print(f'✅ 已写入 {len(unique_urls)} 条 URL 到 {OUTPUT}')
-    if unreachable_sources:
-        print(f"⚠ {len(unreachable_sources)} 个源无法访问：")
-        for u in unreachable_sources:
-            print(f" - {u}")
+
+    # 写入 bad_tracker.txt
+    if bad_sources:
+        with open(BAD_OUTPUT, 'w', encoding='utf-8') as f:
+            f.write('\n'.join(bad_sources) + '\n')
+        print(f"⚠ {len(bad_sources)} 个源无法访问，已写入 {BAD_OUTPUT}")
 
 if __name__ == '__main__':
     main()
