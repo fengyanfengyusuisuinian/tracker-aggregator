@@ -28,7 +28,7 @@ jobs:
       # 执行聚合脚本：下载→解析→去重→生成 Tracker Server/tracker.txt
       - run: python main.py
 
-      # 如果 Tracker Server/tracker.txt 有变化，自动提交并推送到仓库
+      # 如果 TrackerServer/tracker.txt 有变化，自动提交并推送到仓库
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'chore: update tracker.txt'
