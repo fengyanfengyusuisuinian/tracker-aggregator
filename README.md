@@ -49,8 +49,8 @@ Tracker Aggregator 是一个用于聚合和管理 BitTorrent Tracker 列表的�
 
 | 文件              | 说明                          |        github        |         gitwarp          | 
 |-----------------|:----------------------------|:--------------------:|:------------------------:|
-| `tracker.txt`  | 聚合规则                      | [link][[easylist-raw](https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/tracker.tx)] | [link][[easylist-ghproxy](http://hk-yd-proxy.gitwarp.com:6699/https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/tracker.txt)] 
-| `bad_tracker.txt`  | 无法拉取的规则                      | [link][[easylist-raw](https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/tracker.tx)] | [link][[easylist-ghproxy](http://hk-yd-proxy.gitwarp.com:6699/https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/tracker.txt)] | 
+| `tracker.txt`  | 聚合规则| [link][[easylist-raw](https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/tracker.txt)] | [link][[easylist-ghproxy](http://hk-yd-proxy.gitwarp.com:6699/https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/tracker.txt)] 
+| `bad_tracker.txt`  | 无法拉取的规则| [link][[easylist-raw](https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/tracker.txt)] | [link][[easylist-ghproxy](http://hk-yd-proxy.gitwarp.com:6699/https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/tracker.txt)] | 
 
 <!-- **⚠ 本仓库不再提供规则订阅，我们更推荐 fork 本项目自行构建规则集.** -->
 
