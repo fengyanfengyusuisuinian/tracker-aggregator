@@ -26,8 +26,10 @@ jobs:
       - name: Run Tracker aggregation
         run: python main.py
 
-      - name: Commit and push changes
+      - name: Commit and push tracker files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: 'chore: update tracker.txt'
-          file_pattern: 'TrackerServer/tracker.txt'
+          commit_message: 'chore: update tracker files'
+          file_pattern: |
+            TrackerServer/tracker.txt
+            TrackerServer/bad_tracker.txt
