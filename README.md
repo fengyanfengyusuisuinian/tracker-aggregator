@@ -50,7 +50,7 @@ Tracker aggregator Subscriber 是一个用于聚合和管理 BitTorrent Tracker 
 
 
 <details>
-<summary>点击查看上游规则</summary>
+<summary>#### **点击查看上游规则**</summary>
 <ul>
    <!--  <li><a href="https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_2_Base/filter.txt">AdGuard 基础过滤器</a></li> -->
   <li><a href="https://newtrackon.com/api/all">newtrackon.com/api/all</a></li>
