@@ -1,133 +1,95 @@
 <div align="center">
-<h1>AD Filter Subscriber</h1>
+<h1>Tracker aggregator  Subscriber</h1>
   <p>
-    Ad Filter Rule Subscriber, integrating rules from various sources to help you quickly build your own rule set~
+   A tracker rule subscriber that integrates rules from different sources to help you quickly build your own rule set~
   </p>
 <!-- Badges -->
 <p>
-  <img src="https://img.shields.io/github/last-commit/fordes123/ad-filters-subscriber?style=flat-square" alt="last update" />
-  <img src="https://img.shields.io/github/forks/fordes123/ad-filters-subscriber?style=flat-square" alt="forks" />
-  <img src="https://img.shields.io/github/stars/fordes123/ad-filters-subscriber?style=flat-square" alt="stars" />
-  <img src="https://img.shields.io/github/issues/fordes123/ad-filters-subscriber?style=flat-square" alt="open issues" />
-  <img src="https://img.shields.io/github/license/fordes123/ad-filters-subscriber?style=flat-square" alt="license" />
+  <img src="https://img.shields.io/github/last-commit/fengyanfengyusuisuinian/tracker-aggregator?style=flat-square" alt="last update" />
+  <img src="https://img.shields.io/github/forks/fengyanfengyusuisuinian/tracker-aggregator?style=flat-square" alt="forks" />
+  <img src="https://img.shields.io/github/stars/fengyanfengyusuisuinian/tracker-aggregator?style=flat-square" alt="stars" />
+  <img src="https://img.shields.io/github/issues/fengyanfengyusuisuinian/tracker-aggregator?style=flat-square" alt="open issues" />
+  <img src="https://img.shields.io/github/license/fengyanfengyusuisuinian/tracker-aggregator?style=flat-square" alt="license" />
 </p>
 
 <h4>
-    <a href="#a">Introduction</a>
-  <span> · </span>
-    <a href="#b">Quick Start</a>
+    <a href="#a">Project Description</a>
   <span> · </span>
     <a href="#c">Rule Subscription</a>
   <span> · </span>
     <a href="#d">Feedback</a>
   </h4>
 </div>
-<br/>
 
-English | [中文](./README.md)
-<h2 id="a">📔 Introduction</h2>
+[English](README_en.md) | 中文
 
-This project aims to aggregate ad filtering rules from different sources and in various formats, allowing for flexible
-conversion and integration.
-> ⚠️ Note: The new version is not compatible with the original configuration format, so please be cautious before
-> migrating.
+<h2 id="a">📔 Project Description</h2>
+Tracker Aggregator Subscriber is a tool for aggregating and managing BitTorrent Tracker lists. This project is inspired by fordes123's ad filtering rule subscriber project (https://github.com/fordes123/ad-filters-subscribe) with optimizations and refactoring.
 
-#### Supported Rule Formats 
 
-- [x] easylist
-- [x] dnsmasq
-- [x] clash
-- [x] smartdns
-- [x] hosts
+#### **Features**
 
-#### Important Notes 
-
-1. Only basic rule conversions are supported, specifically rules consisting of domain names and wildcard domains. Rules
-   such as `||example.org^$popup` cannot be converted (merging and deduplication are not affected). 
-2. Accept unavoidable limitations. For example, `||example.org^` will block example.org and all its subdomains, but when
-   converted to hosts format, it will not match subdomains. 
-3. Rule validity check is based on domain resolution, so it only supports basic rules.
-
-<h2 id="b">🛠️ Quick Start</h2>
-
-### Example Configuration
-
-```yaml
-application:
-  rule:
-    # Remote rule subscription, path is http/https address
-    remote:
-      - name: 'Subscription 1'               # Optional parameter: Rule name, if no name is provided, the path will be used as the name.
-        path: 'https://example.org/rule.txt' # Required parameter: Rule url. Only support http/https. 
-        type: easylist                      # Optional parameter: Rule type: easylist (default)、dnsmasq、clash、smartdns、hosts
-
-    # Local rule, path is absolute or relative path
-    local:
-      - name: 'private rule'
-        path: '/rule/private.txt'
-
-  output:
-    # File header configuration, which will be automatically added as comments at the beginning of each rule file.
-    # You can use placeholders like ${name}, ${type}, ${desc}, and ${date} (current date).
-    file_header: |
-      ADFS Adblock List
-      Title: ${name}
-      Last Modified: ${date}
-      Homepage: https://github.com/fordes123/ad-filters-subscriber/
-    files:
-      - name: easylist.txt     # Required parameter: File name
-        type: EASYLIST         # Required parameter: File type: easylist、dnsmasq、clash、smartdns、hosts
-        desc: 'ADFS EasyList'  # Optional parameter: File description, which can be used within ${} in the file_header.
-        filter:                # Optional parameter: Types of included rules, all selected by default.
-          - basic              # Basic rules: Do not contain any control or matching symbols, can be converted to hosts.
-          - wildcard           # Wildcard rules: Only use wildcard symbols.
-          - unknown            # Other rules: Such as those using regex or advanced modifiers, cannot be converted at present.
-```
-
----
-This program is written in `Java 21` and built using `Maven`. You can refer to the [example configuration](./config/application-example.yaml),
-edit `config/application.yaml`, and quickly get started using any of the following methods:
-
-#### **Local Debugging**
-
-```bash
-git clone https://github.com/fordes123/ad-filters-subscriber.git
-cd ad-filters-subscriber
-mvn clean
-mvn spring-boot:run
-```
+- Automatically fetch multiple Tracker sources
+- Deduplication and sorting
+- Generate available Tracker lists
+- Record inaccessible sources in `TrackerServer/bad_tracker.txt`
+- Support automatic updates via GitHub Actions
 
 #### **Github Action**
 
 - Fork this project
-- Customize rule subscriptions
-    - Refer to the [example configuration](./config/application-example.yaml) and modify the configuration file: `config/application.yaml`
-- Open the GitHub Actions page, select Update Filters on the left side, and authorize the workflow for scheduled
-  execution (⚠ important step)
-- Click Run workflow or wait for automatic execution. Once completed, the corresponding rules will be generated in the
-  directory specified in the configuration.
+- Customize rule subscriptions (optional)
+  - Modify the tracker source file: `sources.list`
+  - Modify the configuration file: `.github/workflows/sync.yml`
+- Open the `Github Action` page, select `Update Filters` on the left, and authorize the `Workflow` to execute regularly (⚠ Important step)
+- Click `Run workflow` or wait for automatic execution. After completion, the rules will be generated in the `release` branch
 
 #### **Codespaces**
 
-- Log in to `GitHub`, click the `Code` button in the upper right corner of this repository, and select and create a
-  new `Codespace`.
-- Wait for `Codespaces` to start, and you can directly debug this project.
+ Log in to `Github`, click the `Code` button in the upper right corner of this repository, select and create a new `Codespaces`
+- Wait for `Codespaces` to start, then you can directly debug this project
 
-<h2 id="c">🎯 Rule Subscription</h2>
-
-> ⚠ This repository no longer provides rule subscriptions. We highly recommend forking this project to build your own
-> rule set.
-
-Below are rule repositories built using this project. You can find suitable rule subscriptions in them:
 
 <details>
-<summary>Click to view</summary>
+<summary>Click to view upstream rules</summary>
 <ul>
-<br/>
-<li><a href="https://github.com/xndeye/adblock_list/">xndeye/adblock_list</a></li>
+   <!--  <li><a href="https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_2_Base/filter.txt">AdGuard 基础过滤器</a></li> -->
+  <li><a href="https://newtrackon.com/api/all">newtrackon.com/api/all</a></li>
+  <li><a href="https://trackerslist.com/all.txt">trackerslist.com/all.txt</a></li>
+  <li><a href="https://newtrackon.com/api/stable">newtrackon.com/api/stable</a></li>
+  <li><a href="https://at.raxianch.moe/AT_all.txt">at.raxianch.moe/AT_all.txt</a></li>
+  <li><a href="https://gcore.jsdelivr.net/gh/XIU2/TrackersListCollection/all.txt">gcore.jsdelivr.net/gh/XIU2/TrackersListCollection/all.txt</a></li>
+  <li><a href="https://cdn.jsdelivr.net/gh/ngosang/trackerslist/trackers_best.txt">cdn.jsdelivr.net/gh/ngosang/trackerslist/trackers_best.txt</a></li>
+  <li><a href="https://cf.trackerslist.com/all.txt">cf.trackerslist.com/all.txt</a></li>
+  <li><a href="https://cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_all.txt">cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_all.txt</a></li>
+  <li><a href="https://raw.githubusercontent.com/1265578519/OpenTracker/master/tracker.txt">raw.githubusercontent.com/1265578519/OpenTracker/master/tracker.txt</a></li>
+  <li><a href="https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt">raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt</a></li>
+  <li><a href="https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all.txt">raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all.txt</a></li>
 </ul>
 </details>
 
-<h2 id="d">💬 Feedback</h2>
 
-- 👉 [issues](https://github.com/fordes123/ad-filters-subscriber/issues)
+
+<h2 id="c">🎯 规则订阅</h2>
+
+| 文件              | 说明           |                                                               github                                                               |                                                                                 gitwarp                                                                                 |
+| ----------------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| `tracker.txt`     |  Aggregated rules        |     [link](https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/tracker.txt)                       |     [link](http://hk-yd-proxy.gitwarp.com:6699/https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/tracker.txt)                       |
+| `bad_tracker.txt` | Unreachable rules| [link](https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/bad_tracker.txt)                       | [link](http://hk-yd-proxy.gitwarp.com:6699/https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/bad_tracker.txt)                       |
+
+
+
+<!-- **⚠ 本仓库不再提供规则订阅，我们更推荐 fork 本项目自行构建规则集.** -->
+
+<!-- 下面是使用了本项目进行构建的规则仓库，可在其中寻找合适的规则订阅: -->
+<!-- <details> -->
+<!-- <summary>点击查看</summary> -->
+<!-- <ul> -->
+<!--     <br/> -->
+<!--     <li><a href="https://github.com/xndeye/adblock_list/">xndeye/adblock_list</a></li> -->
+<!-- </ul> -->
+<!-- </details> -->
+
+<h2 id="d">💬 Feedbac</h2>
+
+- 👉 [issues](https://github.com/fengyanfengyusuisuinian/tracker-aggregator/issues)
