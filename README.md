@@ -27,6 +27,11 @@
 <h2 id="a">📔 项目说明</h2>
 
 本项目旨在聚合不同的tracker服务器
+#### **主要文件**
+
+- sync.yml
+- main.py
+- sources.list----------tracker服务器列表
 #### **Github Action**
 
 - fork 本项目
