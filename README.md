@@ -46,8 +46,9 @@ Tracker Aggregator 是一个用于聚合和管理 BitTorrent Tracker 列表的�
 - 等待 `Codespaces` 启动，即可直接对本项目进行调试
 
 <h2 id="c">🎯 规则订阅</h2>
-  - only one http://hk-yd-proxy.gitwarp.com:6699/https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/tracker.txt 
-  https://www.gitwarp.com/
+  - only one 加速链接[http://hk-yd-proxy.gitwarp.com:6699/https://github.com/fengyanfengyusuisuinian/tracker-aggregator/blob/main/TrackerServer/tracker.txt ]
+  - 加速由GitWarp提供[ https://www.gitwarp.com/]
+
 
 <!-- **⚠ 本仓库不再提供规则订阅，我们更推荐 fork 本项目自行构建规则集.** -->
 
