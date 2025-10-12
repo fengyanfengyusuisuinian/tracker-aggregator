@@ -60,7 +60,19 @@ Tracker aggregator Subscriber 是一个用于聚合和管理 BitTorrent Tracker 
 <summary>点击查看上游规则</summary>
 <ul>
    <!--  <li><a href="https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_2_Base/filter.txt">AdGuard 基础过滤器</a></li> -->
-   
+   <li>
+  <a href="https://newtrackon.com/api/all">https://newtrackon.com/api/all</a><br>
+  <a href="https://trackerslist.com/all.txt">https://trackerslist.com/all.txt</a><br>
+  <a href="https://newtrackon.com/api/stable">https://newtrackon.com/api/stable</a><br>
+  <a href="https://at.raxianch.moe/AT_all.txt">https://at.raxianch.moe/AT_all.txt</a><br>
+  <a href="https://gcore.jsdelivr.net/gh/XIU2/TrackersListCollection/all.txt">https://gcore.jsdelivr.net/gh/XIU2/TrackersListCollection/all.txt</a><br>
+  <a href="https://cdn.jsdelivr.net/gh/ngosang/trackerslist/trackers_best.txt">https://cdn.jsdelivr.net/gh/ngosang/trackerslist/trackers_best.txt</a><br>
+  <a href="https://cf.trackerslist.com/all.txt">https://cf.trackerslist.com/all.txt</a><br>
+  <a href="https://cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_all.txt">https://cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_all.txt</a><br>
+  <a href="https://raw.githubusercontent.com/1265578519/OpenTracker/master/tracker.txt">https://raw.githubusercontent.com/1265578519/OpenTracker/master/tracker.txt</a><br>
+  <a href="https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt">https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt</a><br>
+  <a href="https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all.txt">https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all.txt</a>
+</li>
    
 
 </ul>
