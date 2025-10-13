@@ -64,6 +64,7 @@ Tracker aggregator Subscriber 是一个用于聚合和管理 BitTorrent Tracker 
   <li><a href="https://raw.githubusercontent.com/1265578519/OpenTracker/master/tracker.txt">raw.githubusercontent.com/1265578519/OpenTracker/master/tracker.txt</a></li>
   <li><a href="https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt">raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt</a></li>
   <li><a href="https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all.txt">raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all.txt</a></li>
+  <li><a href="https://down.adysec.com/trackers_best.txt">https://github.com/adysec/tracker?tab=readme-ov-file</a></li>
 </ul>
 </details>
 
