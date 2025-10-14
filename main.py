@@ -8,6 +8,7 @@ Tracker URL 聚合脚本（优化版）
 4. 自动拆分同一行多个 URL
 5. 网络请求失败时重试 3 次
 6. 关键错误（如文件缺失、全源失败、失败比例过高）抛出异常，确保 GitHub Actions 标记失败
+7. 调试输出实际文件路径，确认生成位置
 输出：
 - TrackerServer/tracker.txt：去重排序后的 Tracker 列表
 - TrackerServer/bad_tracker.txt：失败的源 URL 和错误原因
@@ -19,7 +20,7 @@ import requests
 from typing import List, Tuple
 
 # 常量定义
-SOURCES = 'sources.list'  # 源文件路径
+SOURCES = 'sources.list'  # 源文件路径（根目录）
 OUTPUT = 'TrackerServer/tracker.txt'  # 输出 Tracker 文件
 BAD_OUTPUT = 'TrackerServer/bad_tracker.txt'  # 失败源输出文件
 TIMEOUT = 10  # 每个请求的超时时间（秒）
@@ -65,6 +66,9 @@ def main() -> None:
     主函数：读取源，抓取 Tracker，去重排序，写入输出文件
     如果关键步骤失败，抛出异常，确保 GitHub Actions 标记失败
     """
+    # 打印当前工作目录，调试用
+    print(f"DEBUG: Current working directory: {os.getcwd()}")
+
     all_urls: List[str] = []  # 存储所有 Tracker URL
     bad_sources: List[str] = []  # 存储失败的源和错误信息
 
@@ -72,6 +76,7 @@ def main() -> None:
     try:
         with open(SOURCES, encoding='utf-8') as f:
             source_urls = [line.strip() for line in f if line.strip() and not line.startswith('#')]
+        print(f"DEBUG: Reading {SOURCES} from {os.path.abspath(SOURCES)}")
     except FileNotFoundError:
         print(f"ERROR: {SOURCES} 文件未找到")
         raise  # 抛出异常，让 Actions 失败
@@ -94,6 +99,7 @@ def main() -> None:
 
     # 去重并排序（使用 dict.fromkeys 优化内存）
     unique_urls = sorted(dict.fromkeys(all_urls))  # dict.fromkeys 去重，sorted 排序
+    print(f"DEBUG: Collected {len(unique_urls)} unique URLs")
 
     # 检查是否所有源都失败
     if not unique_urls and bad_sources:
@@ -108,6 +114,7 @@ def main() -> None:
     # 确保输出目录存在
     try:
         os.makedirs(os.path.dirname(OUTPUT), exist_ok=True)
+        print(f"DEBUG: Output directory created at {os.path.abspath(os.path.dirname(OUTPUT))}")
     except Exception as e:
         print(f"ERROR: 创建输出目录 {os.path.dirname(OUTPUT)} 失败: {str(e)}")
         raise
@@ -116,7 +123,7 @@ def main() -> None:
     try:
         with open(OUTPUT, 'w', encoding='utf-8') as f:
             f.write('\n'.join(unique_urls) + '\n')
-        print(f"✅ 已写入 {len(unique_urls)} 条 URL 到 {OUTPUT}")
+        print(f"✅ 已写入 {len(unique_urls)} 条 URL 到 {os.path.abspath(OUTPUT)}")
     except Exception as e:
         print(f"ERROR: 写入 {OUTPUT} 失败: {str(e)}")
         raise
@@ -126,7 +133,7 @@ def main() -> None:
         try:
             with open(BAD_OUTPUT, 'w', encoding='utf-8') as f:
                 f.write('\n'.join(bad_sources) + '\n')
-            print(f"⚠ {len(bad_sources)} 个源无法访问，已写入 {BAD_OUTPUT}")
+            print(f"⚠ {len(bad_sources)} 个源无法访问，已写入 {os.path.abspath(BAD_OUTPUT)}")
         except Exception as e:
             print(f"ERROR: 写入 {BAD_OUTPUT} 失败: {str(e)}")
             raise
