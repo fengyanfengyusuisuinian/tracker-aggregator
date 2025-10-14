@@ -105,14 +105,11 @@ http://34.89.30.59:2710/announce
 http://34.94.213.23/announce
 http://34.94.213.23:11451/announce
 http://34.94.213.23:2710/announce
-http://34.94.76.146:443/announce
 http://35.227.12.84/announce
 http://35.227.12.84:2710/announce
-http://35.227.59.57:11450/announce
-http://35.227.59.57:2701/announce
+http://35.227.59.57/announce
 http://35.227.59.57:2710/announce
-http://35.227.59.57:443/announce
-http://35.227.59.57:6969/announce
+http://35.227.59.57:6960/announce
 http://37.235.174.46:2710/announce
 http://38.145.197.79:6961/announce
 http://43.139.20.56:6969/announce
@@ -205,6 +202,7 @@ http://99.192.12.191:6969/announce
 http://[2a04:ac00:1:3dd8::1:2710]:2710/announce
 http://aaa.army:8866/announce
 http://aboutbeautifulgallopinghorsesinthegreenpasture.online:80/announce
+http://all4nothin.net/announce
 http://all4nothin.net/announce.php
 http://all4nothin.net:80/announce.php
 http://alltorrents.net/bt/announce.php
@@ -289,6 +287,7 @@ http://chouchou.top:8080/announce
 http://cloud.nyap2p.com:8080/announce
 http://cn.pcfreetime.com:6969/announce
 http://concen.org:6969/announce
+http://data-bg.net/announce
 http://data-bg.net/announce.php
 http://data-bg.net:80/announce.php
 http://datascene.net/announce.php
@@ -334,6 +333,7 @@ http://ipv4.tracker.harry.lu/announce
 http://ipv4.tracker.harry.lu:80/announce
 http://ipv4announce.sktorrent.eu:6969/announce
 http://ipv6.rer.lol:6969/announce
+http://irrenhaus.dyndns.dk/announce
 http://irrenhaus.dyndns.dk/announce.php
 http://irrenhaus.dyndns.dk:80/announce.php
 http://joczo.duckdns.org:6969/announce
@@ -574,7 +574,6 @@ http://tracker.gcvchp.com:2710/announce
 http://tracker.gdp.pw:900/announce
 http://tracker.ghostchu-services.top:80/announce
 http://tracker.gigatorrents.ws:2710/announce
-http://tracker.guguan.000.pe/announce
 http://tracker.guguan.000.pe:80/announce
 http://tracker.h0me.cc:8880/announce
 http://tracker.hiyj.cn/announce
@@ -794,7 +793,6 @@ https://k.avc.cx/announce.php
 https://k.avc.cx:443/announce
 https://k.avc.cx:443/announce.php
 https://k3tracker.cc/announce/0b0b5b2bb71770aa0df56f80a4863f07
-https://mathkangaroo.jp/announce
 https://mathkangaroo.jp:443/announce
 https://nyaa.tracker.wf:7777/announce
 https://open.kickasstracker.com/announce
@@ -808,6 +806,7 @@ https://opentracker.xyz/announce
 https://opentracker.xyz:443/announce
 https://pybittrack.retiolus.net:443/announce
 https://retracker.x2k.ru/announce
+https://retracker2.x2k.ru/announce
 https://seeders-paradise.org/announce
 https://shahidrazi.online:443/announce
 https://socket.onvo.me:443/announce
@@ -829,6 +828,7 @@ https://tk.mabo.ltd/announce
 https://tk.mabo.ltd:443/announce
 https://torrent-tracker.hama3.net/announce
 https://torrent-tracker.hama3.net:443/announce
+https://torrent.opiums.eu/announce
 https://torrent.opiums.eu:443/announce
 https://torrent.tracker.durukanbal.com/announce
 https://torrent.tracker.durukanbal.com:443/announce
@@ -908,6 +908,7 @@ https://tracker.gbitt.info/announce
 https://tracker.gbitt.info:443/announce
 https://tracker.gcrenwp.top:443/announce
 https://tracker.ghostchu-services.top:443/announce
+https://tracker.guguan.dpdns.org/announce
 https://tracker.guguan.dpdns.org:443/announce
 https://tracker.guguan.us.kg:443/announce
 https://tracker.h3o2.me:443/announce
@@ -942,7 +943,6 @@ https://tracker.loligirl.cn/announce
 https://tracker.loligirl.cn:443/announce
 https://tracker.m-team.cc/announce.php
 https://tracker.m-team.cc:443/announce.php
-https://tracker.madtia.cc/announce
 https://tracker.mlsub.net/announce
 https://tracker.mlsub.net:443/announce
 https://tracker.moeblog.cn/announce
@@ -1730,7 +1730,6 @@ udp://ipv6.tracker.zerobytes.xyz:16661/announce
 udp://isk.richardsw.club:6969/announce
 udp://ismaarino.com:1234/announce
 udp://jeremylee.sh:6969/announce
-udp://joczo.duckdns.org:6969/announce
 udp://johnrosen1.com:6969/announce
 udp://jutone.com:6969/announce
 udp://keke.re:6969/announce
