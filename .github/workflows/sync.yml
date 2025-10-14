@@ -2,18 +2,20 @@ name: Sync Tracker
 
 on:
   schedule:
-    - cron: '0 5 * * *'  # 每天 13:00 北京时间
+    - cron: '0 5 * * *'  # 每天 13:00 北京时间 (UTC 05:00)
   workflow_dispatch:      # 支持手动触发
 
 jobs:
   sync:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # 使用 Ubuntu 最新版运行环境
     permissions:
-      contents: write
+      contents: write  # 授予写权限以提交文件
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4  # 检出仓库代码
+        with:
+          ref: main  # 明确检出 main 分支（替换为你的实际分支名）
 
       - name: Setup Python 3.12
         uses: actions/setup-python@v5  # 设置 Python 环境
@@ -21,23 +23,31 @@ jobs:
           python-version: '3.12'
 
       - name: Cache pip dependencies
-        uses: actions/cache@v4  # 缓存 pip 依赖
+        uses: actions/cache@v4  # 缓存 pip 依赖以加速安装
         with:
           path: ~/.cache/pip  # 缓存 pip 下载的包
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}  # 基于 requirements.txt 生成缓存键
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}  # 基于根目录 requirements.txt 的哈希
           restore-keys: |
             ${{ runner.os }}-pip-  # 回退键，匹配部分缓存
+
+      - name: Check requirements.txt exists
+        run: |  # 检查 requirements.txt 是否存在
+          if [ ! -f requirements.txt ]; then
+            echo "ERROR: requirements.txt not found in repository root"
+            exit 1
+          fi
 
       - name: Install dependencies
         run: pip install -r requirements.txt  # 安装 requirements.txt 中的依赖
 
       - name: Run Tracker aggregation
-        run: python main.py  # 运行主脚本
+        run: python main.py  # 运行主脚本生成 Tracker 文件
 
       - name: Commit and push tracker files
-        uses: stefanzweifel/git-auto-commit-action@v5  # 提交输出文件
+        uses: stefanzweifel/git-auto-commit-action@v5  # 自动提交输出文件
         with:
-          commit_message: 'chore: update tracker files'
-          file_pattern: |
+          commit_message: 'chore: update tracker files'  # 提交信息
+          branch: main  # 提交到 main 分支（替换为你的实际分支名）
+          file_pattern: |  # 要提交的文件
             TrackerServer/tracker.txt
             TrackerServer/bad_tracker.txt
