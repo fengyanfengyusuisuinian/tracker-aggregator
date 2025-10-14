@@ -30,58 +30,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
 
-      - name: Check requirements.txt exists
-        run: |
-          if [ ! -f requirements.txt ]; then
-            echo "错误：根目录未找到 requirements.txt 文件"
-            exit 1
-          fi
-
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install requests
 
       - name: Run Tracker aggregation
         run: python main.py
-
-      - name: Check for file changes
-        run: |
-          # 初始化无变化标志
-          NO_CHANGES=false
-          # 检查 TrackerServer/tracker.txt 是否与仓库中现有文件相同
-          if [ -f TrackerServer/tracker.txt ] && [ -f $GITHUB_WORKSPACE/TrackerServer/tracker.txt ]; then
-            if diff TrackerServer/tracker.txt $GITHUB_WORKSPACE/TrackerServer/tracker.txt > /dev/null; then
-              echo "警告：TrackerServer/tracker.txt 没有变化"
-              echo "更新无变化" > TrackerServer/无变化.txt
-              NO_CHANGES=true
-            else
-              echo "TrackerServer/tracker.txt 已更新"
-              rm -f TrackerServer/无变化.txt
-            fi
-          else
-            echo "TrackerServer/tracker.txt 为新文件"
-            rm -f TrackerServer/无变化.txt
-          fi
-          # 检查 TrackerServer/bad_tracker.txt 是否与仓库中现有文件相同
-          if [ -f TrackerServer/bad_tracker.txt ] && [ -f $GITHUB_WORKSPACE/TrackerServer/bad_tracker.txt ]; then
-            if diff TrackerServer/bad_tracker.txt $GITHUB_WORKSPACE/TrackerServer/bad_tracker.txt > /dev/null; then
-              echo "警告：TrackerServer/bad_tracker.txt 没有变化"
-              echo "更新无变化" >> TrackerServer/无变化.txt
-              NO_CHANGES=true
-            else
-              echo "TrackerServer/bad_tracker.txt 已更新"
-              rm -f TrackerServer/无变化.txt
-            fi
-          else
-            if [ -f TrackerServer/bad_tracker.txt ]; then
-              echo "TrackerServer/bad_tracker.txt 为新文件"
-              rm -f TrackerServer/无变化.txt
-            fi
-          fi
-          # 如果无变化，输出无变化.txt内容
-          if [ "$NO_CHANGES" = true ] && [ -f TrackerServer/无变化.txt ]; then
-            echo "以下文件没有变化："
-            cat TrackerServer/无变化.txt
-          fi
 
       - name: Commit and push tracker files
         uses: stefanzweifel/git-auto-commit-action@v5
@@ -91,4 +44,3 @@ jobs:
           file_pattern: |
             TrackerServer/tracker.txt
             TrackerServer/bad_tracker.txt
-            TrackerServer/无变化.txt
