@@ -7,47 +7,88 @@ on:
 
 jobs:
   sync:
-    runs-on: ubuntu-latest  # 使用 Ubuntu 最新版运行环境
+    runs-on: ubuntu-latest
     permissions:
-      contents: write  # 授予写权限以提交文件
+      contents: write
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4  # 检出仓库代码
+        uses: actions/checkout@v4
         with:
-          ref: main  # 明确检出 main 分支（替换为你的实际分支名）
+          ref: main  # 明确检出 main 分支
 
       - name: Setup Python 3.12
-        uses: actions/setup-python@v5  # 设置 Python 环境
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
       - name: Cache pip dependencies
-        uses: actions/cache@v4  # 缓存 pip 依赖以加速安装
+        uses: actions/cache@v4
         with:
-          path: ~/.cache/pip  # 缓存 pip 下载的包
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}  # 基于根目录 requirements.txt 的哈希
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
           restore-keys: |
-            ${{ runner.os }}-pip-  # 回退键，匹配部分缓存
+            ${{ runner.os }}-pip-
 
       - name: Check requirements.txt exists
-        run: |  # 检查 requirements.txt 是否存在
+        run: |
           if [ ! -f requirements.txt ]; then
-            echo "ERROR: requirements.txt not found in repository root"
+            echo "错误：根目录未找到 requirements.txt 文件"
             exit 1
           fi
 
       - name: Install dependencies
-        run: pip install -r requirements.txt  # 安装 requirements.txt 中的依赖
+        run: pip install -r requirements.txt
 
       - name: Run Tracker aggregation
-        run: python main.py  # 运行主脚本生成 Tracker 文件
+        run: python main.py
+
+      - name: Check for file changes
+        run: |
+          # 初始化无变化标志
+          NO_CHANGES=false
+          # 检查 TrackerServer/tracker.txt 是否与仓库中现有文件相同
+          if [ -f TrackerServer/tracker.txt ] && [ -f $GITHUB_WORKSPACE/TrackerServer/tracker.txt ]; then
+            if diff TrackerServer/tracker.txt $GITHUB_WORKSPACE/TrackerServer/tracker.txt > /dev/null; then
+              echo "警告：TrackerServer/tracker.txt 没有变化"
+              echo "更新无变化" > TrackerServer/无变化.txt
+              NO_CHANGES=true
+            else
+              echo "TrackerServer/tracker.txt 已更新"
+              rm -f TrackerServer/无变化.txt
+            fi
+          else
+            echo "TrackerServer/tracker.txt 为新文件"
+            rm -f TrackerServer/无变化.txt
+          fi
+          # 检查 TrackerServer/bad_tracker.txt 是否与仓库中现有文件相同
+          if [ -f TrackerServer/bad_tracker.txt ] && [ -f $GITHUB_WORKSPACE/TrackerServer/bad_tracker.txt ]; then
+            if diff TrackerServer/bad_tracker.txt $GITHUB_WORKSPACE/TrackerServer/bad_tracker.txt > /dev/null; then
+              echo "警告：TrackerServer/bad_tracker.txt 没有变化"
+              echo "更新无变化" >> TrackerServer/无变化.txt
+              NO_CHANGES=true
+            else
+              echo "TrackerServer/bad_tracker.txt 已更新"
+              rm -f TrackerServer/无变化.txt
+            fi
+          else
+            if [ -f TrackerServer/bad_tracker.txt ]; then
+              echo "TrackerServer/bad_tracker.txt 为新文件"
+              rm -f TrackerServer/无变化.txt
+            fi
+          fi
+          # 如果无变化，输出无变化.txt内容
+          if [ "$NO_CHANGES" = true ] && [ -f TrackerServer/无变化.txt ]; then
+            echo "以下文件没有变化："
+            cat TrackerServer/无变化.txt
+          fi
 
       - name: Commit and push tracker files
-        uses: stefanzweifel/git-auto-commit-action@v5  # 自动提交输出文件
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: 'chore: update tracker files'  # 提交信息
-          branch: main  # 提交到 main 分支（替换为你的实际分支名）
-          file_pattern: |  # 要提交的文件
+          commit_message: 'chore: update tracker files'
+          branch: main
+          file_pattern: |
             TrackerServer/tracker.txt
             TrackerServer/bad_tracker.txt
+            TrackerServer/无变化.txt
