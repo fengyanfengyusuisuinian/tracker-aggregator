@@ -3,11 +3,11 @@
 Tracker URL 聚合脚本（优化版）
 功能：
 1. 从 sources.list 读取 Tracker 源 URL
-2. 抓取每个源的 Tracker 列表，去重并排序
+2. 抓取每个源的 Tracker 列表，去重（用 dict.fromkeys 优化内存）并排序
 3. 无法访问的源记录到 bad_tracker.txt（包含错误原因）
 4. 自动拆分同一行多个 URL
 5. 网络请求失败时重试 3 次
-6. 关键错误（如文件缺失、全源失败）抛出异常，确保 GitHub Actions 标记失败
+6. 关键错误（如文件缺失、全源失败、失败比例过高）抛出异常，确保 GitHub Actions 标记失败
 输出：
 - TrackerServer/tracker.txt：去重排序后的 Tracker 列表
 - TrackerServer/bad_tracker.txt：失败的源 URL 和错误原因
@@ -92,13 +92,18 @@ def main() -> None:
         else:
             bad_sources.append(error)
 
-    # 去重并排序
-    unique_urls = sorted(set(all_urls))  # 使用 set 去重，sorted 排序
+    # 去重并排序（使用 dict.fromkeys 优化内存）
+    unique_urls = sorted(dict.fromkeys(all_urls))  # dict.fromkeys 去重，sorted 排序
 
     # 检查是否所有源都失败
     if not unique_urls and bad_sources:
         print("ERROR: 所有源都无法访问，无有效 Tracker")
         raise RuntimeError("No valid trackers collected")
+
+    # 检查失败比例
+    if bad_sources and len(bad_sources) / len(source_urls) > 0.5:  # 超50%源失败
+        print(f"ERROR: {len(bad_sources)}/{len(source_urls)} 源失败，建议检查 sources.list")
+        raise RuntimeError("Too many sources failed")
 
     # 确保输出目录存在
     try:
