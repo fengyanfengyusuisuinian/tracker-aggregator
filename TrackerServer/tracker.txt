@@ -105,14 +105,12 @@ http://34.94.213.23/announce
 http://34.94.213.23:11451/announce
 http://34.94.213.23:2710/announce
 http://34.94.76.146/announce
-http://34.94.76.146:11450/announce
+http://34.94.76.146:2710/announce
 http://34.94.76.146:6960/announce
 http://35.227.12.84/announce
 http://35.227.12.84:2710/announce
-http://35.227.59.57:11450/announce
+http://35.227.59.57:2701/announce
 http://35.227.59.57:2710/announce
-http://35.227.59.57:443/announce
-http://35.227.59.57:6960/announce
 http://35.227.59.57:6969/announce
 http://37.235.174.46:2710/announce
 http://38.145.197.79:6961/announce
@@ -206,7 +204,6 @@ http://99.192.12.191:6969/announce
 http://[2a04:ac00:1:3dd8::1:2710]:2710/announce
 http://aaa.army:8866/announce
 http://aboutbeautifulgallopinghorsesinthegreenpasture.online:80/announce
-http://all4nothin.net/announce
 http://all4nothin.net/announce.php
 http://all4nothin.net:80/announce.php
 http://alltorrents.net/bt/announce.php
@@ -232,7 +229,6 @@ http://bithq.org/announce
 http://bithq.org/announce.php
 http://bithq.org:80/announce.php
 http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce
-http://blackz.ro/announce
 http://blackz.ro/announce.php
 http://bluebird-hd.org/announce.php
 http://bluebird-hd.org:80/announce.php
@@ -475,6 +471,7 @@ http://tk.greedland.net/announce
 http://tk.greedland.net:80/announce
 http://tk2.greedland.net/announce
 http://tor.rev.pm:6969/announce
+http://torrent-team.net/announce
 http://torrent-team.net/announce.php
 http://torrent-team.net:80/announce.php
 http://torrent-tracker.ru/announce.php
@@ -493,6 +490,7 @@ http://torrents.hikarinokiseki.com:6969/announce
 http://torrents.linuxmint.com/announce.php
 http://torrents.linuxmint.com:80/announce.php
 http://torrentsmd.com:8080/announce
+http://torrentsmd.me:8080/announce
 http://torrenttracker.nwc.acsalaska.net:6969/announce
 http://torrentzilla.org/announce
 http://torrentzilla.org/announce.php
@@ -800,7 +798,6 @@ https://k.avc.cx/announce.php
 https://k.avc.cx:443/announce
 https://k.avc.cx:443/announce.php
 https://k3tracker.cc/announce/0b0b5b2bb71770aa0df56f80a4863f07
-https://mathkangaroo.jp/announce
 https://mathkangaroo.jp:443/announce
 https://nyaa.tracker.wf:7777/announce
 https://open.kickasstracker.com/announce
@@ -914,7 +911,6 @@ https://tracker.gbitt.info/announce
 https://tracker.gbitt.info:443/announce
 https://tracker.gcrenwp.top:443/announce
 https://tracker.ghostchu-services.top:443/announce
-https://tracker.guguan.dpdns.org/announce
 https://tracker.guguan.dpdns.org:443/announce
 https://tracker.guguan.us.kg:443/announce
 https://tracker.h3o2.me:443/announce
@@ -949,6 +945,7 @@ https://tracker.loligirl.cn/announce
 https://tracker.loligirl.cn:443/announce
 https://tracker.m-team.cc/announce.php
 https://tracker.m-team.cc:443/announce.php
+https://tracker.madtia.cc/announce
 https://tracker.mlsub.net/announce
 https://tracker.mlsub.net:443/announce
 https://tracker.moeblog.cn/announce
