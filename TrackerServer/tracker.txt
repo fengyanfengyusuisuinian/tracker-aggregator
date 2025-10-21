@@ -105,13 +105,11 @@ http://34.94.213.23/announce
 http://34.94.213.23:11451/announce
 http://34.94.213.23:2710/announce
 http://34.94.76.146:1337/announce
-http://34.94.76.146:2701/announce
-http://34.94.76.146:6969/announce
 http://35.227.12.84/announce
 http://35.227.12.84:2710/announce
-http://35.227.59.57/announce
 http://35.227.59.57:11450/announce
-http://35.227.59.57:443/announce
+http://35.227.59.57:2701/announce
+http://35.227.59.57:2710/announce
 http://35.227.59.57:6960/announce
 http://35.227.59.57:6969/announce
 http://37.235.174.46:2710/announce
@@ -232,7 +230,6 @@ http://bithq.org/announce
 http://bithq.org/announce.php
 http://bithq.org:80/announce.php
 http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce
-http://blackz.ro/announce
 http://blackz.ro/announce.php
 http://bluebird-hd.org/announce.php
 http://bluebird-hd.org:80/announce.php
@@ -337,8 +334,10 @@ http://ipv4.tracker.harry.lu/announce
 http://ipv4.tracker.harry.lu:80/announce
 http://ipv4announce.sktorrent.eu:6969/announce
 http://ipv6.rer.lol:6969/announce
+http://irrenhaus.dyndns.dk/announce
 http://irrenhaus.dyndns.dk/announce.php
 http://irrenhaus.dyndns.dk:80/announce.php
+http://isk.richardsw.club:6969/announce
 http://joczo.duckdns.org:6969/announce
 http://jp.moeweb.pw:6969/announce
 http://jvavav.com:80/announce
@@ -381,7 +380,6 @@ http://open.8a.is:6969/announce
 http://open.acgnxtracker.com/announce
 http://open.acgnxtracker.com:80/announce
 http://open.acgtracker.com:1096/announce
-http://open.demonii.si/announce
 http://open.miotracker.com/announce
 http://open.nyap2p.com:8080/announce
 http://open.stealth.si/announce
@@ -509,7 +507,6 @@ http://tr.nyacat.pw/announce
 http://tr.nyacat.pw:80/announce
 http://tr1.aag.moe:2095/announce
 http://tracker-rh.zhuqiy.eu.org:80/announce
-http://tracker-udp.anirena.com/announce
 http://tracker-zhuqiy.dgj055.icu:80/announce
 http://tracker.23794.top:6969/announce
 http://tracker.acgnx.se/announce
@@ -703,6 +700,7 @@ http://trackme.theom.nz/announce
 http://trackme.theom.nz:80/announce
 http://trun.tom.ru/announce
 http://trun.tom.ru:80/announce
+http://uatracker.net/announce
 http://uatracker.net/announce.php
 http://unknownsite.de:6969/announce
 http://uraniumhexafluori.de:1919/announce
@@ -717,6 +715,7 @@ http://widemus.de:6969/announce
 http://www.all4nothin.net/announce
 http://www.all4nothin.net/announce.php
 http://www.all4nothin.net:80/announce.php
+http://www.ansktracker.net/announce
 http://www.ansktracker.net/announce.php?passkey=58fff4518e745565986d5d2d3e884841
 http://www.arabp2p.net:2052/f5a1e35785c9f3885fd54f34b6e262b8/announce
 http://www.bit-hdtv.com:2710/announce
@@ -788,6 +787,7 @@ https://cernet-tracker.appspot.com/announce
 https://cernet-tracker.appspot.com:443/announce
 https://chihaya-heroku.120181311.xyz/announce
 https://chihaya-heroku.120181311.xyz:443/announce
+https://cny.fan:443/announce
 https://dev.tracker.cf-identity-wallet.metadata.dev.cf-deployments.org/announce
 https://dev.tracker.cf-identity-wallet.metadata.dev.cf-deployments.org:443/announce
 https://docker-tracker-production.up.railway.app/announce
@@ -834,6 +834,7 @@ https://tk.mabo.ltd/announce
 https://tk.mabo.ltd:443/announce
 https://torrent-tracker.hama3.net/announce
 https://torrent-tracker.hama3.net:443/announce
+https://torrent.opiums.eu/announce
 https://torrent.opiums.eu:443/announce
 https://torrent.tracker.durukanbal.com:443/announce
 https://torrent.ubuntu.com/announce
@@ -1835,6 +1836,7 @@ udp://run-2.publictracker.xyz:6969/announce
 udp://run.publictracker.xyz:6969/announce
 udp://rutorrent.frontline-mod.com:6969/announce
 udp://ryjer.com:6969/announce
+udp://sabross.xyz:6969/announce
 udp://saltwood.top:6969/announce
 udp://sanincode.com:6969/announce
 udp://santost12.xyz:6969/announce
@@ -1989,6 +1991,7 @@ udp://tracker.qu.ax:6969/announce
 udp://tracker.renfei.net:8080/announce
 udp://tracker.rescuecrew7.com:1337/announce
 udp://tracker.sbsub.com:2710/announce
+udp://tracker.shkinev.me:6969/announce
 udp://tracker.sigterm.xyz:6969/announce
 udp://tracker.silksa.co.za:6969/announce
 udp://tracker.skillindia.site:6969/announce
@@ -2099,4 +2102,3 @@ wss://tracker.magnetoo.io/announce
 wss://tracker.magnetoo.io:443/announce
 wss://tracker.openwebtorrent.com/announce
 wss://tracker.openwebtorrent.com:443/announce
-wss://tracker.webtorrent.dev:443/announce
