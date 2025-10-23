@@ -3,15 +3,6 @@
   <p>
     tracker规则订阅器，整合不同来源的规则，帮助你快速构建属于自己的规则集~
   </p>
-<!-- Badges -->
-<p>
-  <img src="https://img.shields.io/github/last-commit/fengyanfengyusuisuinian/tracker-aggregator?style=flat-square" alt="last update" />
-  <img src="https://img.shields.io/github/forks/fengyanfengyusuisuinian/tracker-aggregator?style=flat-square" alt="forks" />
-  <img src="https://img.shields.io/github/stars/fengyanfengyusuisuinian/tracker-aggregator?style=flat-square" alt="stars" />
-  <img src="https://img.shields.io/github/issues/fengyanfengyusuisuinian/tracker-aggregator?style=flat-square" alt="open issues" />
-  <img src="https://img.shields.io/github/license/fengyanfengyusuisuinian/tracker-aggregator?style=flat-square" alt="license" />
-</p>
-
 <h4>
     <a href="#a">项目说明</a>
   <span> · </span>
