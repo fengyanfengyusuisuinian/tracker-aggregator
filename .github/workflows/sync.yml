@@ -1,50 +1,165 @@
-name: Sync Tracker          # ← 保持你原来的名字
+# main.py - 终极修复版（去重 + 必写 bad + 清洗逗号）
+import re
+import socket
+import urllib.parse
+from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor
+import requests
 
-on:
-  schedule:
-    - cron: '0 5 * * *'     # 北京时间 13:00 (UTC 5:00)
-  workflow_dispatch:        # 支持手动触发
+# ==================== 配置 ====================
+SOURCES_FILE = "sources.list"
+OUTPUT_DIR = Path("TrackerServer")
+OUTPUT_DIR.mkdir(exist_ok=True)
 
-jobs:
-  sync:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write        # 确保写权限（修复常见权限问题）
+VALID_FILE = OUTPUT_DIR / "tracker.txt"
+BAD_FILE = OUTPUT_DIR / "bad_tracker.txt"
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}  # 加 token 增强权限
+TIMEOUT = 7
+MAX_WORKERS = 30
+HEADERS = {"User-Agent": "qBittorrent/4.6.0"}
 
-      - name: Setup Python 3.11
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+BLACK_DOMAINS = {
+    "cloudflare.com", "cloudflareinsights.com", "github.com",
+    "pages.dev", "gitwarp.com", "raw.githubusercontent.com"
+}
+REQUIRE_KEYWORDS = ("announce", "scrape")
 
-      - name: Cache pip
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+# ==================== 工具函数 ====================
+def normalize_url(url: str) -> str:
+    """标准化 URL：去掉结尾符号、空格、强制小写路径"""
+    url = url.strip()
+    # 去掉常见结尾污染
+    url = re.sub(r"[,\s;]+$", "", url)
+    # 标准化 + 数字 → ?passkey=
+    url = re.sub(r"\+(\d+)$", r"?passkey=\1", url)
+    return url
 
-      - name: Install deps
-        run: |
-          pip install -U pip
-          pip install -r requirements.txt
-        # 加容错：如果失败，继续执行（可选）
-        continue-on-error: true  # 临时测试用，后移除
+def extract_clean_url(raw: str) -> tuple[str | None, str]:
+    """返回 (normalized_url, comment)"""
+    raw = raw.strip()
+    if not raw or raw.startswith("#"):
+        return None, raw
 
-      - name: Run aggregation
-        run: python main.py
-        continue-on-error: true  # 临时测试
+    # 分离注释
+    parts = re.split(r"\s+#\s+", raw, 1)
+    url_part = parts[0]
+    comment = f" # {parts[1]}" if len(parts) > 1 else ""
 
-      - name: Commit & push
-        if: always()  # 即使失败也尝试 commit（日志有用）
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: 'chore: update tracker files'
-          branch: main
-          file_pattern: |
-            TrackerServer/tracker.txt
-            TrackerServer/bad_tracker.txt
+    # 提取第一个 http/https/udp
+    m = re.search(r"(udp://|https?://)[^\s|\"'>;,]+", url_part)
+    if not m:
+        return None, comment
+
+    url = m.group(0)
+    url = normalize_url(url)
+
+    # 基础合法性检查
+    if not url.startswith(("http://", "https://", "udp://")):
+        return None, comment
+    parsed = urllib.parse.urlparse(url)
+    if parsed.hostname in BLACK_DOMAINS:
+        return None, comment
+    if not any(kw in parsed.path.lower() for kw in REQUIRE_KEYWORDS):
+        return None, comment
+
+    return url, comment
+
+def fetch_source(source_url: str):
+    try:
+        r = requests.get(source_url, headers=HEADERS, timeout=TIMEOUT)
+        r.raise_for_status()
+        return source_url, r.text.splitlines(), None
+    except Exception as e:
+        return source_url, [], f"ERROR: {e}"
+
+def test_tracker_alive(url: str) -> bool:
+    if url.startswith("udp://"):
+        return True
+    parsed = urllib.parse.urlparse(url)
+    host = parsed.hostname
+    port = parsed.port or (80 if parsed.scheme == "http" else 443)
+    try:
+        with socket.create_connection((host, port), timeout=3):
+            return True
+    except Exception:
+        return False
+
+# ==================== 主逻辑 ====================
+def main():
+    if not Path(SOURCES_FILE).exists():
+        print("sources.list not found!")
+        return
+
+    # 读取所有行
+    with open(SOURCES_FILE, encoding="utf-8") as f:
+        all_lines = f.readlines()
+
+    # 提取纯 URL 行
+    source_urls = []
+    for line in all_lines:
+        line = line.strip()
+        if line.startswith(("http://", "https://")) and not line.startswith("#"):
+            source_urls.append(line)
+
+    print(f"Fetching {len(source_urls)} sources...")
+    raw_results = []
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
+        raw_results = list(pool.map(fetch_source, source_urls))
+
+    # 收集所有候选
+    url_to_info = {}  # url -> (final_line, source_comment)
+    bad_sources = []
+
+    for src_url, lines, err in raw_results:
+        if err:
+            bad_sources.append(f"{src_url}  # {err}")
+            continue
+
+        for raw_line in lines:
+            url, comment = extract_clean_url(raw_line)
+            if not url:
+                continue
+
+            final_line = url + comment
+            # 去重：如果已存在，用第一个出现的
+            if url not in url_to_info:
+                url_to_info[url] = (final_line, src_url)
+
+    print(f"Found {len(url_to_info)} unique trackers, testing liveness...")
+
+    # 并行验证
+    valid_lines = []
+    invalid_lines = []
+
+    def check_and_classify(url):
+        final_line = url_to_info[url][0]
+        if test_tracker_alive(url):
+            return final_line, True
+        else:
+            return final_line, False
+
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
+        for final_line, alive in pool.map(check_and_classify, url_to_info.keys()):
+            if alive:
+                valid_lines.append(final_line)
+            else:
+                invalid_lines.append(final_line)
+
+    # 写入文件
+    with open(VALID_FILE, "w", encoding="utf-8") as f:
+        f.write("\n".join(sorted(valid_lines)) + "\n")
+
+    with open(BAD_FILE, "w", encoding="utf-8") as f:
+        content = []
+        if invalid_lines:
+            content.extend(sorted(invalid_lines))
+        if bad_sources:
+            if content:
+                content.append("")
+            content.extend(bad_sources)
+        f.write("\n".join(content) + "\n")
+
+    print(f"Done! {len(valid_lines)} valid, {len(invalid_lines)} invalid, {len(bad_sources)} bad sources")
+
+if __name__ == "__main__":
+    main()
