@@ -63,3 +63,39 @@ https://newtrackon.com/api/all
 https://newtrackon.com/api/atable
 https://newtrackon.com/api/udp
 https://newtrackon.com/api/http
+
+# 建议补充：XIU2 细分与镜像（best/udp/http/https/ws）
+https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/best.txt
+https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/udp.txt
+https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/http.txt
+https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/https.txt
+https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/ws.txt
+https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection/best.txt
+https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection/udp.txt
+https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection/http.txt
+https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection/https.txt
+https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection/ws.txt
+https://gcore.jsdelivr.net/gh/XIU2/TrackersListCollection/best.txt
+https://gcore.jsdelivr.net/gh/XIU2/TrackersListCollection/udp.txt
+https://gcore.jsdelivr.net/gh/XIU2/TrackersListCollection/http.txt
+https://gcore.jsdelivr.net/gh/XIU2/TrackersListCollection/https.txt
+https://gcore.jsdelivr.net/gh/XIU2/TrackersListCollection/ws.txt
+
+# 建议补充：trackerslist.com 分类直链
+https://trackerslist.com/best.txt
+https://trackerslist.com/udp.txt
+https://trackerslist.com/http.txt
+https://trackerslist.com/https.txt
+https://trackerslist.com/ws.txt
+https://cf.trackerslist.com/best.txt
+https://cf.trackerslist.com/udp.txt
+https://cf.trackerslist.com/http.txt
+https://cf.trackerslist.com/https.txt
+https://cf.trackerslist.com/ws.txt
+
+# 建议补充：ngosang 主要文件的更多 jsDelivr 节点
+https://fastly.jsdelivr.net/gh/ngosang/trackerslist/trackers_best.txt
+https://fastly.jsdelivr.net/gh/ngosang/trackerslist/trackers_all.txt
+https://gcore.jsdelivr.net/gh/ngosang/trackerslist/trackers_best.txt
+https://gcore.jsdelivr.net/gh/ngosang/trackerslist/trackers_all.txt
+
