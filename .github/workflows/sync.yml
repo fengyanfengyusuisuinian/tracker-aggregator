@@ -1,45 +1,137 @@
-name: Sync Tracker          # ← 保持你原来的名字
+# main.py - 终极修复版 Tracker 聚合器
+import re
+import socket
+import urllib.parse
+from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor
 
-on:
-  schedule:
-    - cron: '0 5 * * *'     # 北京时间 13:00
-  workflow_dispatch:
+import requests
 
-jobs:
-  sync:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
+# ==================== 配置 ====================
+SOURCES_FILE = "sources.list"
+OUTPUT_DIR = Path("TrackerServer")
+OUTPUT_DIR.mkdir(exist_ok=True)
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+VALID_FILE = OUTPUT_DIR / "tracker.txt"
+BAD_FILE = OUTPUT_DIR / "bad_tracker.txt"
 
-      # 用 3.11 镜像自带 websocket-client 二进制 wheel
-      - name: Setup Python 3.11
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+TIMEOUT = 7               # 抓取超时
+MAX_WORKERS = 30          # 并行线程数
+HEADERS = {"User-Agent": "qBittorrent/4.6.0"}
 
-      - name: Cache pip
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+# 过滤掉的域名（防污染）
+BLACK_DOMAINS = {
+    "cloudflare.com", "cloudflareinsights.com", "github.com",
+    "pages.dev", "gitwarp.com", "raw.githubusercontent.com"
+}
+REQUIRE_KEYWORDS = ("announce", "scrape")
 
-      - name: Install deps
-        run: |
-          pip install -U pip
-          pip install -r requirements.txt
+# ==================== 工具函数 ====================
+def is_valid_tracker_url(url: str) -> bool:
+    """基本合法性检查"""
+    if not url.startswith(("http://", "https://", "udp://")):
+        return False
+    parsed = urllib.parse.urlparse(url)
+    if parsed.hostname in BLACK_DOMAINS:
+        return False
+    if not any(kw in parsed.path.lower() for kw in REQUIRE_KEYWORDS):
+        return False
+    return True
 
-      - name: Run aggregation
-        run: python main.py
 
-      - name: Commit & push
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: 'chore: update tracker files'
-          branch: main
-          file_pattern: |
-            TrackerServer/tracker.txt
-            TrackerServer/bad_tracker.txt
+def clean_url(raw: str) -> str | None:
+    """从任意行中提取并清洗一个 tracker URL"""
+    raw = raw.strip()
+    if not raw or raw.startswith("#"):
+        return None
+
+    # 取第一个 http/https/udp 开头的完整片段
+    m = re.search(r"(udp://|https?://)[^\s|\"'>]+", raw)
+    if not m:
+        return None
+    url = m.group(0).split("|")[0]          # 去掉 | 后面的污染
+
+    # 修复 +108 这类写法（可选）
+    url = re.sub(r"\+(\d+)$", r"?passkey=\1", url)
+
+    return url if is_valid_tracker_url(url) else None
+
+
+def fetch_source(source_url: str):
+    """下载单个源并返回行列表"""
+    try:
+        r = requests.get(source_url, headers=HEADERS, timeout=TIMEOUT)
+        r.raise_for_status()
+        return source_url, r.text.splitlines(), None
+    except Exception as e:
+        return source_url, [], f"ERROR: {e}"
+
+
+def test_tracker_alive(url: str) -> bool:
+    """TCP 连通性快速检查（不发 announce）"""
+    if url.startswith("udp://"):
+        return True                     # UDP 暂不检测
+    parsed = urllib.parse.urlparse(url)
+    host = parsed.hostname
+    port = parsed.port or (80 if parsed.scheme == "http" else 443)
+    try:
+        with socket.create_connection((host, port), timeout=3):
+            return True
+    except Exception:
+        return False
+
+
+# ==================== 主逻辑 ====================
+def main():
+    if not Path(SOURCES_FILE).exists():
+        print("sources.list not found!")
+        return
+
+    # 读取源列表
+    with open(SOURCES_FILE, encoding="utf-8") as f:
+        sources = [line.strip() for line in f if line.strip() and not line.startswith("#")]
+
+    print(f"Fetching {len(sources)} sources...")
+    raw_results = []
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
+        for src, lines, err in pool.map(fetch_source, sources):
+            raw_results.append((src, lines, err))
+
+    # 收集所有候选 URL
+    candidates = set()
+    bad_sources = []
+
+    for src, lines, err in raw_results:
+        if err:
+            bad_sources.append(f"{src}  # {err}")
+            continue
+        for line in lines:
+            if url := clean_url(line):
+                candidates.add(url)
+
+    print(f"Found {len(candidates)} unique candidates, testing liveness...")
+
+    # 并行验证
+    valid = []
+    invalid = []
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
+        for url, alive in zip(candidates, pool.map(test_tracker_alive, candidates)):
+            (valid if alive else invalid).append(url)
+
+    # 写入文件（排序保证可比对）
+    with open(VALID_FILE, "w", encoding="utf-8") as f:
+        f.write("\n".join(sorted(valid)) + "\n")
+
+    with open(BAD_FILE, "w", encoding="utf-8") as f:
+        lines = sorted(invalid)
+        if bad_sources:
+            if lines:
+                lines.append("")
+            lines.extend(bad_sources)
+        f.write("\n".join(lines) + "\n")
+
+    print(f"Done! {len(valid)} valid, {len(invalid)} invalid, {len(bad_sources)} bad sources")
+
+
+if __name__ == "__main__":
+    main()
