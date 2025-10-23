@@ -1,0 +1,8 @@
+https://at.raxianch.moe/AT,AT_all_https.txt | HTTP错误: 404 (尝试 3/3)
+https://raw.kkgithub.com/XIU2/TrackersListCollection/master/best.txt | 连接错误 (DNS或网络问题) (尝试 3/3)
+https://wget.la/.../XIU2/TrackersListCollection/master/best.txt | HTTP错误: 403 (尝试 3/3)
+https://ghfast.top/.../XIU2/TrackersListCollection/master/best.txt | HTTP错误: 403 (尝试 3/3)
+https://ghproxy.net/.../XIU2/TrackersListCollection/master/best.txt | HTTP错误: 403 (尝试 3/3)
+https://gh-proxy.com/.../XIU2/TrackersListCollection/master/best.txt | HTTP错误: 403 (尝试 3/3)
+https://hk.gh-proxy.com/.../XIU2/TrackersListCollection/master/best.txt | HTTP错误: 403 (尝试 3/3)
+https://github.moeyy.xyz/.../XIU2/TrackersListCollection/master/best.txt | 超时 10秒 (尝试 3/3)
