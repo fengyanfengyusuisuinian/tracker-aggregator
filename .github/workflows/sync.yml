@@ -1,128 +1,44 @@
-# main.py - 网页修复版：必写 bad + 去重 + 清洗逗号
-import re
-import socket
-import urllib.parse
-from pathlib import Path
-from concurrent.futures import ThreadPoolExecutor
-import requests
+name: Sync Tracker
 
-SOURCES_FILE = "sources.list"
-OUTPUT_DIR = Path("TrackerServer")
-OUTPUT_DIR.mkdir(exist_ok=True)
-VALID_FILE = OUTPUT_DIR / "tracker.txt"
-BAD_FILE = OUTPUT_DIR / "bad_tracker.txt"
+on:
+  schedule:
+    - cron: '0 5 * * *'
+  workflow_dispatch:
 
-TIMEOUT = 7
-MAX_WORKERS = 30
-HEADERS = {"User-Agent": "qBittorrent/4.6.0"}
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
-BLACK_DOMAINS = {"cloudflare.com", "cloudflareinsights.com", "github.com", "pages.dev"}
-REQUIRE_KEYWORDS = ("announce", "scrape")
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-def normalize_url(url: str) -> str:
-    url = url.strip()
-    url = re.sub(r"[,\s;]+$", "", url)  # 去掉结尾逗号、分号、空格
-    url = re.sub(r"\+(\d+)$", r"?passkey=\1", url)
-    return url
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-def extract_clean_url(raw: str) -> tuple[str | None, str]:
-    raw = raw.strip()
-    if not raw or raw.startswith("#"):
-        return None, raw
-    parts = re.split(r"\s+#\s+", raw, 1)
-    url_part = parts[0]
-    comment = f" # {parts[1]}" if len(parts) > 1 else ""
-    m = re.search(r"(udp://|https?://)[^\s|\"'>;,]+", url_part)
-    if not m:
-        return None, comment
-    url = normalize_url(m.group(0))
-    if not url.startswith(("http://", "https://", "udp://")):
-        return None, comment
-    parsed = urllib.parse.urlparse(url)
-    if parsed.hostname in BLACK_DOMAINS:
-        return None, comment
-    if not any(kw in parsed.path.lower() for kw in REQUIRE_KEYWORDS):
-        return None, comment
-    return url, comment
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
 
-def fetch_source(source_url: str):
-    try:
-        r = requests.get(source_url, headers=HEADERS, timeout=TIMEOUT)
-        r.raise_for_status()
-        return source_url, r.text.splitlines(), None
-    except Exception as e:
-        return source_url, [], f"ERROR: {e}"
+      - name: Install deps
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
 
-def test_tracker_alive(url: str) -> bool:
-    if url.startswith("udp://"):
-        return True
-    parsed = urllib.parse.urlparse(url)
-    host = parsed.hostname
-    port = parsed.port or (80 if parsed.scheme == "http" else 443)
-    try:
-        with socket.create_connection((host, port), timeout=3):
-            return True
-    except:
-        return False
+      - name: Run aggregation
+        run: python main.py
 
-def main():
-    if not Path(SOURCES_FILE).exists():
-        print("sources.list not found!")
-        return
-
-    with open(SOURCES_FILE, encoding="utf-8") as f:
-        all_lines = f.readlines()
-
-    source_urls = [line.strip() for line in all_lines if line.strip().startswith(("http://", "https://"))]
-
-    print(f"Fetching {len(source_urls)} sources...")
-    raw_results = []
-    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
-        raw_results = list(pool.map(fetch_source, source_urls))
-
-    url_to_line = {}
-    bad_sources = []
-
-    for src_url, lines, err in raw_results:
-        if err:
-            bad_sources.append(f"{src_url}  # {err}")
-            continue
-        for raw_line in lines:
-            url, comment = extract_clean_url(raw_line)
-            if not url:
-                continue
-            final_line = url + comment
-            if url not in url_to_line:
-                url_to_line[url] = final_line
-
-    print(f"Found {len(url_to_line)} unique trackers, testing...")
-
-    valid_lines = []
-    invalid_lines = []
-
-    def check(url):
-        line = url_to_line[url]
-        return line, test_tracker_alive(url)
-
-    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
-        for line, alive in pool.map(check, url_to_line.keys()):
-            if alive:
-                valid_lines.append(line)
-            else:
-                invalid_lines.append(line)
-
-    with open(VALID_FILE, "w", encoding="utf-8") as f:
-        f.write("\n".join(sorted(valid_lines)) + "\n")
-
-    with open(BAD_FILE, "w", encoding="utf-8") as f:
-        content = sorted(invalid_lines)
-        if bad_sources:
-            if content:
-                content.append("")
-            content.extend(bad_sources)
-        f.write("\n".join(content) + "\n")
-
-    print(f"Done! {len(valid_lines)} valid, {len(invalid_lines)} invalid")
-
-if __name__ == "__main__":
-    main()
+      - name: Commit & push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: update tracker files'
+          branch: main
+          file_pattern: 'TrackerServer/tracker.txt TrackerServer/bad_tracker.txt'
