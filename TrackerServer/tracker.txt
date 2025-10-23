@@ -1,4 +1,3 @@
-http://',location.protocol+'//') + nextChapterData.id + '.html'; if (nextChapterData.id != null && url && url != '.html' && url != location.href) return url",
 http://00.mercax.com:443/announce
 http://00.xxtor.com:443/announce
 http://0123456789nonexistent.com/announce
@@ -2136,6 +2135,8 @@ udp://zecircle.xyz:6969/announce
 udp://zephir.monocul.us:6969/announce
 udp://zer0day.ch:1337/announce
 udp://zer0day.to:1337/announce
+ws://tracker.files.fm:7072/announce
+ws://tracker.ghostchu-services.top:80/announce
 wss://qot.abiir.top:443/announce
 wss://spacetradersapi-chatbox.herokuapp.com:443/announce
 wss://tracker.btorrent.xyz:443/announce
