@@ -1,53 +1,126 @@
-name: Sync Tracker
+#!/usr/bin/env python3
+"""
+Tracker 聚合器（彻底去重版）
+修复：跨行逗号/分号导致重复
+支持：udp/http/https/wss/ltseed/bcudp/bchttp/bchttps
+"""
+import os
+import re
+import time
+import requests
+import websocket
+import socket
+import concurrent.futures
+from typing import Set, List
 
-on:
-  schedule:
-    - cron: '0 5 * * *'   # UTC 05:00 = 北京时间 13:00
-  workflow_dispatch:
+SOURCES_FILE = "sources.list"
+OUTPUT_GOOD = "TrackerServer/tracker.txt"
+OUTPUT_BAD  = "TrackerServer/bad_tracker.txt"
+TIMEOUT     = 5
+MAX_WORKERS = 32
+RETRY       = 1
 
-jobs:
-  sync:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
+# ---------- 工具 ----------
+def read_sources(path: str) -> List[str]:
+    if not os.path.isfile(path):
+        return []
+    with open(path, encoding="utf-8") as f:
+        return [line.strip() for line in f if line.strip() and not line.startswith("#")]
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: main
+def fetch_text(url: str) -> str:
+    try:
+        r = requests.get(url, timeout=TIMEOUT)
+        r.raise_for_status()
+        return r.text
+    except Exception:
+        return ""
 
-      - name: Install system deps
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gcc python3-dev
+def parse_trackers(text: str) -> Set[str]:
+    """先全局抹掉逗号/分号，再按行切分，彻底去重"""
+    text = re.sub(r'[;,]', ' ', text)          # 跨行也替换
+    urls = set()
+    for line in text.splitlines():
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        for part in line.split():
+            if re.match(r'^(udp|https?|wss|ltseed|bcudp|bchttp|bchttps)://', part):
+                urls.add(part)
+    return urls
 
-      - name: Setup Python 3.12
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
+# ---------- 探测 ----------
+def tcp_port_open(host: str, port: int) -> bool:
+    try:
+        with socket.create_connection((host, port), timeout=TIMEOUT):
+            return True
+    except Exception:
+        return False
 
-      - name: Cache pip
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
+def probe_http_https(url: str) -> bool:
+    try:
+        r = requests.head(url, timeout=TIMEOUT, allow_redirects=True)
+        return 200 <= r.status_code < 500
+    except Exception:
+        return False
 
-      - name: Install Python deps
-        run: |
-          pip install -U pip
-          pip install -r requirements.txt
+def probe_wss(url: str) -> bool:
+    try:
+        ws = websocket.create_connection(url, timeout=TIMEOUT, suppress_origin=True)
+        ws.close()
+        return True
+    except Exception:
+        return False
 
-      - name: Run aggregation
-        run: python main.py
+def probe_once(url: str) -> bool:
+    if url.startswith("udp://"):
+        m = re.match(r'udp://([^:/]+):(\d+)', url)
+        return tcp_port_open(m.group(1), int(m.group(2))) if m else False
+    if url.startswith("wss://"):
+        return probe_wss(url)
+    if url.startswith(("http://", "https://")):
+        return probe_http_https(url)
+    # 私有协议
+    m = re.match(r'(?:ltseed|bcudp|bchttp|bchttps)://(?:[^@]*@)?([^:/]+):(\d+)', url)
+    return tcp_port_open(m.group(1), int(m.group(2))) if m else False
 
-      - name: Commit & push
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: 'chore: update tracker files'
-          branch: main
-          file_pattern: |
-            TrackerServer/tracker.txt
-            TrackerServer/bad_tracker.txt
+def probe(url: str) -> bool:
+    for _ in range(RETRY + 1):
+        if probe_once(url):
+            return True
+        time.sleep(0.3)
+    return False
+
+# ---------- 主流程 ----------
+def main():
+    sources = read_sources(SOURCES_FILE)
+    all_urls = set()
+    for src in sources:
+        all_urls.update(parse_trackers(fetch_text(src)))
+
+    good, bad = set(), set()
+    with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as exe:
+        future_map = {exe.submit(probe, u): u for u in all_urls}
+        for f in concurrent.futures.as_completed(future_map):
+            u = future_map[f]
+            (good if f.result() else bad).add(u)
+
+    # 分组排序
+    PROTO_ORDER = {'udp': 0, 'http': 1, 'https': 2, 'wss': 3,
+                   'ltseed': 4, 'bcudp': 5, 'bchttp': 6, 'bchttps': 7}
+    def sort_key(url: str):
+        scheme = url.split('://', 1)[0].lower()
+        return (PROTO_ORDER.get(scheme, 99), url)
+
+    os.makedirs(os.path.dirname(OUTPUT_GOOD), exist_ok=True)
+    with open(OUTPUT_GOOD, 'w', encoding='utf-8') as f:
+        for u in sorted(good, key=sort_key):
+            f.write(u + '\n')
+    with open(OUTPUT_BAD, 'w', encoding='utf-8') as f:
+        for u in sorted(bad):
+            f.write(u + '\n')
+
+    print(f'可用 Tracker: {len(good)} 条 → {OUTPUT_GOOD}')
+    print(f'失效地址: {len(bad)} 条 → {OUTPUT_BAD}')
+
+if __name__ == '__main__':
+    main()
