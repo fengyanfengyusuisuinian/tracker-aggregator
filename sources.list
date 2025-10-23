@@ -1,99 +1,14 @@
-# ============================== BT Tracker 聚合源列表 ==============================
-# 按作者/维护者分类 | 全部已验证可访问（2025-10-23） | 无 HTML/404/JS 污染
-# 直接用于 tracker-aggregator 项目 | 配合 main.py 终极版使用
-
+# ============================== BT Tracker 聚合源合集 ==============================
+# 说明:
+# 1) 一级分类: 作者 / 维护者 / 网站
+# 2) 二级分类: 原始源 | CDN/加速镜像
+# 3) 用于 tracker-aggregator/main.py
 # ==============================================================================
-# 作者 1: ngosang (https://github.com/ngosang)
-# 项目: trackerslist | 星标 10k+ | 自动 bot 更新 | 最全最权威
-# ==============================================================================
-https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best.txt
-https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt
-https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all_udp.txt
-https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all_http.txt
-https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all_https.txt
-https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all_ws.txt
-# --- CDN 镜像（防 GitHub 限流）
-https://cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_best.txt
-https://cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_all.txt
-https://cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_all_udp.txt
-https://cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_all_http.txt
-https://cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_all_https.txt
-https://cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_all_ws.txt
-# --- 备用 CDN
-https://cdn.staticaly.com/gh/ngosang/trackerslist/master/trackers_best.txt
-https://cdn.staticaly.com/gh/ngosang/trackerslist/master/trackers_all.txt
-
-# ==============================================================================
-# 作者 2: DeSireFire (https://github.com/DeSireFire)
-# 项目: animeTrackerList | 星标 3.9k+ | 动漫专用 | 国内镜像超快
-# ==============================================================================
-https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_best.txt
-https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all.txt
-https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all_udp.txt
-https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all_http.txt
-https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all_https.txt
-https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all_ws.txt
-# --- 国内镜像（raxianch.moe，超快）
-https://at.raxianch.moe/AT_best.txt
-https://at.raxianch.moe/AT_all.txt
-https://at.raxianch.moe/AT_all_udp.txt
-https://at.raxianch.moe/AT_all_http.txt
-https://at.raxianch.moe/AT,AT_all_https.txt
-https://at.raxianch.moe/AT_all_ws.txt
-# --- CDN 镜像
-https://cdn.jsdelivr.net/gh/DeSireFire/animeTrackerList@master/AT_best.txt
-https://cdn.jsdelivr.net/gh/DeSireFire/animeTrackerList@master/AT_all.txt
-
-# ==============================================================================
-# 作者 3: CorralPeltzer (https://github.com/CorralPeltzer)
-# 项目: newTrackon | API 监控服务 | 95%+ 可用率 | 极稳定
-# ==============================================================================
-https://newtrackon.com/api/stable
-https://newtrackon.com/api/all
-https://newtrackon.com/api/udp
-https://newtrackon.com/api/http
-
-# ==============================================================================
-# 作者 4: adysec (https://github.com/adysec)
-# 项目: tracker | 每日存活测试 | 中文维护 | 高质量
-# ==============================================================================
-https://down.adysec.com/trackers_best.txt
-https://raw.githubusercontent.com/adysec/tracker/main/trackers_best.txt
-
-# ==============================================================================
-# 作者 5: XIU2 (https://github.com/XIU2)
-# 项目: TrackersListCollection | 星标 28k+ | 每日热门更新
-# ==============================================================================
-https://bitbucket.org/xiu2/trackerslistcollection/raw/master/best.txt
-https://gh.akass.cn/XIU2/UserScript/master/other/Autopage/rules.json
-https://jsd.onmicrosoft.cn/gh/XIU2/TrackersListCollection/best.txt
-https://cdn.jsdmirror.com/gh/XIU2/TrackersListCollection/best.txt
-https://js.cdn.haah.net/gh/XIU2/TrackersListCollection/best.txt
-https://raw.kkgithub.com/XIU2/TrackersListCollection/master/best.txt
-https://fastly.jsdelivr.net/gh/XIU2/TrackersListCollection/best.txt
-https://wget.la/.../XIU2/TrackersListCollection/master/best.txt
-https://ghfast.top/.../XIU2/TrackersListCollection/master/best.txt
-https://ghproxy.net/.../XIU2/TrackersListCollection/master/best.txt
-https://gh-proxy.com/.../XIU2/TrackersListCollection/master/best.txt
-https://hk.gh-proxy.com/.../XIU2/TrackersListCollection/master/best.txt
-https://github.moeyy.xyz/.../XIU2/TrackersListCollection/master/best.txt
-# 精选列表
-https://cf.trackerslist.com/best.txt
-# 完整列表
-https://cf.trackerslist.com/all.txt
-# HTTP(S) 列表
-https://cf.trackerslist.com/http.txt
-# 无 HTTP 列表
-https://cf.trackerslist.com/nohttp.txt
-
-# ============================== 扩展版 BT Tracker 聚合源列表 ==============================
-# 按作者/维护者分类 | 尽可能多（非动漫） | 全部验证可访问（2025-10-23） | 无污染
-# 来源: GitHub + 网站搜索 | 总源数: 40+ | 直接用于 tracker-aggregator 项目
 
 # ==============================================================================
 # 作者 1: ngosang (https://github.com/ngosang/trackerslist)
-# 项目: trackerslist | 星标 10k+ | 每日 bot 更新 | 最全公共 Tracker 列表
 # ==============================================================================
+# 原始源
 https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best.txt
 https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt
 https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all_udp.txt
@@ -103,7 +18,7 @@ https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all_ws.tx
 https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all_ip.txt
 https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best_ip.txt
 https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all_i2p.txt
-# --- CDN 镜像（jsDelivr + Staticaly + fastly/gcore 加速）
+# CDN/加速镜像
 https://cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_best.txt
 https://cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_all.txt
 https://cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_all_udp.txt
@@ -114,38 +29,66 @@ https://cdn.staticaly.com/gh/ngosang/trackerslist/master/trackers_best.txt
 https://cdn.staticaly.com/gh/ngosang/trackerslist/master/trackers_all.txt
 https://fastly.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_best.txt
 https://gcore.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_all.txt
-# --- 网站镜像
 https://ngosang.github.io/trackerslist/trackers_best.txt
 https://ngosang.github.io/trackerslist/trackers_all.txt
 
 # ==============================================================================
-# 作者 2: XIU2 (https://github.com/XIU2/TrackersListCollection)
-# 项目: TrackersListCollection | 星标 28k+ | 每日热门 Tracker 更新
+# 作者 2: DeSireFire (https://github.com/DeSireFire/animeTrackerList)
 # ==============================================================================
-https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/best.txt
-https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/all.txt
-https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/udp.txt
-https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/http.txt
-https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/https.txt
-https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/ws.txt
-# --- CDN 镜像
-https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection@master/best.txt
-https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection@master/all.txt
-https://gcore.jsdelivr.net/gh/XIU2/TrackersListCollection@master/best.txt
+# 原始源
+https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_best.txt
+https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all.txt
+https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all_udp.txt
+https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all_http.txt
+https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all_https.txt
+https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all_ws.txt
+# CDN/加速镜像
+https://cdn.jsdelivr.net/gh/DeSireFire/animeTrackerList@master/AT_best.txt
+https://cdn.jsdelivr.net/gh/DeSireFire/animeTrackerList@master/AT_all.txt
+https://at.raxianch.moe/AT_best.txt
+https://at.raxianch.moe/AT_all.txt
+https://at.raxianch.moe/AT_all_udp.txt
+https://at.raxianch.moe/AT_all_http.txt
+https://at.raxianch.moe/AT_all_https.txt
+https://at.raxianch.moe/AT_all_ws.txt
 
 # ==============================================================================
 # 作者 3: CorralPeltzer (https://github.com/CorralPeltzer/newTrackon)
-# 项目: newTrackon | API 监控服务 | 95%+ 可用率 | 公共 Tracker 健康检查
 # ==============================================================================
+# 原始源
 https://newtrackon.com/api/stable
 https://newtrackon.com/api/all
 https://newtrackon.com/api/udp
 https://newtrackon.com/api/http
 
 # ==============================================================================
-# 作者 4: Lord1413 (https://github.com/Lord1413/BitTorrent-trackers-list)
-# 项目: BitTorrent-trackers-list | 自动抓取 + 存活测试 | 公共 Tracker 聚合
+# 作者 4: adysec (https://github.com/adysec/tracker)
 # ==============================================================================
+# 原始源
+https://raw.githubusercontent.com/adysec/tracker/main/trackers_best.txt
+https://down.adysec.com/trackers_best.txt
+# CDN/加速镜像
+https://cdn.jsdelivr.net/gh/adysec/tracker@main/trackers_best.txt
+
+# ==============================================================================
+# 作者 5: XIU2 (https://github.com/XIU2/TrackersListCollection)
+# ==============================================================================
+# 原始源
+https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/best.txt
+https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/all.txt
+https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/udp.txt
+https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/http.txt
+https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/https.txt
+https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/ws.txt
+# CDN/加速镜像
+https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection@master/best.txt
+https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection@master/all.txt
+https://gcore.jsdelivr.net/gh/XIU2/TrackersListCollection@master/best.txt
+
+# ==============================================================================
+# 作者 6: Lord1413 (https://github.com/Lord1413/BitTorrent-trackers-list)
+# ==============================================================================
+# 原始源
 https://raw.githubusercontent.com/Lord1413/BitTorrent-trackers-list/main/trackers_best.txt
 https://raw.githubusercontent.com/Lord1413/BitTorrent-trackers-list/main/trackers_all.txt
 https://raw.githubusercontent.com/Lord1413/BitTorrent-trackers-list/main/trackers_udp.txt
@@ -154,16 +97,12 @@ https://raw.githubusercontent.com/Lord1413/BitTorrent-trackers-list/main/tracker
 https://raw.githubusercontent.com/Lord1413/BitTorrent-trackers-list/main/trackers_ws.txt
 
 # ==============================================================================
-# 作者 5: adysec (https://github.com/adysec/tracker)
-# 项目: tracker | 每日存活测试 | 高质量公共 Tracker
+# 公共聚合网站
 # ==============================================================================
-https://raw.githubusercontent.com/adysec/tracker/main/trackers_best.txt
-https://down.adysec.com/trackers_best.txt
-
-# ==============================================================================
-# 其他高质量源（网站/社区聚合，无具体作者）
-# 来源: torrenttrackerlist.com, techspree.net, rapidseedbox.com 等
-# ==============================================================================
-https://www.torrenttrackerlist.com/torrent-tracker-list.txt  # TorrentTrackerList (2025 更新)
-https://techspree.net/torrent-tracker-list-updated.txt  # TechSpree 每周更新
-https://www.rapidseedbox.com/blog/best-public-trackers-list.txt  # RapidSeedbox 存活列表
+# 原始源
+https://www.torrenttrackerlist.com/torrent-tracker-list.txt
+https://techspree.net/torrent-tracker-list-updated.txt
+https://www.rapidseedbox.com/blog/best-public-trackers-list.txt
+# CDN/加速镜像
+https://trackerslist.com/all.txt
+https://trackerslist.com/best.txt
