@@ -1,4 +1,4 @@
-# main.py - 终极最终版：100% 干净 + 排序 + 必写 bad
+# main.py - 终极最终版：100% 干净 + 字母排序 + 必写 bad + 语法修复
 import re
 import socket
 import urllib.parse
@@ -6,7 +6,6 @@ from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
 import requests
 
-# ==================== 配置 ====================
 SOURCES_FILE = "sources.list"
 OUTPUT_DIR = Path("TrackerServer")
 OUTPUT_DIR.mkdir(exist_ok=True)
@@ -17,18 +16,14 @@ TIMEOUT = 7
 MAX_WORKERS = 30
 HEADERS = {"User-Agent": "qBittorrent/4.6.0"}
 
-# 黑名单域名
 BLACK_DOMAINS = {
     "cloudflare.com", "github.com", "pages.dev", "location.", "protocol",
     "nextchapter", "merca", "kitaujisub", "kuroy"
 }
-
 REQUIRE_KEYWORDS = ("announce", "scrape")
 
-# 非法字符（JS、|、引号等）
 ILLEGAL_PATTERN = re.compile(r"""[|;"'\\{}<>()[\]]|location\.|\+.*\+\s*['"]|nextChapterData|//.*//""")
 
-# ==================== 工具函数 ====================
 def is_clean_line(line: str) -> bool:
     line = line.lower()
     if any(kw in line for kw in ["javascript", "eval(", "document.", "window.", "location.", "nextchapter"]):
@@ -83,14 +78,12 @@ def test_alive(url: str) -> bool:
     except:
         return False
 
-# ==================== 主逻辑 ====================
 def main():
     if not Path(SOURCES_FILE).exists():
         print("sources.list not found!")
         return
 
-    # 读取源
-    with open(SOURCES_FILE, "r", encoding="utf-8") as f:
+    with open(SOURCES_FILE, encoding="utf-8") as f:
         lines = f.readlines()
 
     source_urls = [l.strip() for l in lines if l.strip().startswith(("http://", "https://"))]
@@ -114,7 +107,6 @@ def main():
 
     print(f"Found {len(trackers)} unique trackers, testing...")
 
-    # 并行验证
     valid = []
     invalid = []
 
@@ -127,11 +119,10 @@ def main():
             else:
                 invalid.append(line)
 
-    # 新增：排序功能（字母顺序）
+    # 字母排序
     valid.sort(key=lambda x: x.lower())
     invalid.sort(key=lambda x: x.lower())
 
-    # 写入文件
     with open(VALID_FILE, "w", encoding="utf-8") as f:
         f.write("\n".join(valid) + "\n")
 
