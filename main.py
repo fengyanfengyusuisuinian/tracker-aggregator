@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Tracker 聚合脚本（最终版，支持多协议 + 乱码过滤）
+Tracker 聚合脚本（最终可选死链验证）
 """
 
 import os
@@ -11,7 +11,7 @@ from typing import List, Tuple
 import requests
 
 # -------------------------------
-# 常量配置
+# 配置区
 # -------------------------------
 SOURCES = 'sources.list'
 OUTPUT = 'TrackerServer/tracker.txt'
@@ -31,13 +31,16 @@ SCHEME_ORDER = [
     "dht", "ptp", "ftp", "btsp", "btih"
 ]
 
+# 死链检测开关
+CHECK_URL_ALIVE = False  # True = 验证 URL 可用性，False = 只抓取不测试
+
 # 正则切分协议
 SPLIT_PROTOCOL_RE = re.compile(
     r'(?=(?:https?://|udp://|wss://|ltseed://|bcudp://|bchttp://|bchttps://|dht://|ptp://|ftp://|ws://|btsp://|btih://))',
     re.IGNORECASE
 )
 
-# 过滤垃圾 JS / 拼接
+# 过滤 JS / 拼接垃圾
 ILLEGAL_RE = re.compile(
     r"(location\.protocol|nextChapterData|document\.|window\.|eval\(|\+.*[\'\"]|[\'\"]\+|return url|var |function\()",
     re.I
@@ -47,24 +50,16 @@ ILLEGAL_RE = re.compile(
 # 工具函数
 # -------------------------------
 def split_line_urls(line: str) -> List[str]:
-    """按协议切分一行文本里的多个 URL，忽略 # 注释与空白，并过滤 JS 拼接或乱码。"""
+    """按协议切分一行文本里的多个 URL，忽略 # 注释与 JS 拼接乱码。"""
     line = line.split('#', 1)[0].strip()
-    if not line:
+    if not line or ILLEGAL_RE.search(line):
         return []
 
-    # 直接过滤整行明显 JS 或拼接垃圾
-    if ILLEGAL_RE.search(line):
-        return []
-
-    # 按协议切分
     parts = [p.strip() for p in SPLIT_PROTOCOL_RE.split(line) if p.strip()]
-
-    # 只保留合法协议 URL
     urls = [p for p in parts if re.match(
         r'^(?:https?://|udp://|wss://|ltseed://|bcudp://|bchttp://|bchttps://|dht://|ptp://|ftp://|ws://|btsp://|btih://)',
         p, re.I
     )]
-
     return urls
 
 
@@ -72,7 +67,7 @@ def fetch_urls_from_source(url: str) -> Tuple[List[str], bool, str]:
     """抓取单个 http/https 上游源，解析其文本中的 Tracker URL。"""
     for attempt in range(MAX_RETRIES):
         try:
-            resp = requests.get(url, timeout=TIMEOUT)
+            resp = requests.get(url, timeout=TIMEOUT, verify=False)
             resp.raise_for_status()
             lines: List[str] = []
             for raw in resp.text.splitlines():
@@ -91,6 +86,22 @@ def fetch_urls_from_source(url: str) -> Tuple[List[str], bool, str]:
     print(f"⚠ 警告: 无法拉取 {url}: {error}")
     return [], False, f"{url} | {error}"
 
+
+def test_alive(url: str) -> bool:
+    """可选 URL 可用性验证。"""
+    if not CHECK_URL_ALIVE:
+        return True
+
+    parsed = urlsplit(url)
+    if parsed.scheme in ("udp", "ltseed", "bcudp", "bchttp", "bchttps", "dht", "ptp", "btsp", "btih"):
+        return True  # UDP / 私有协议暂时直接认为可用
+
+    try:
+        resp = requests.head(url, timeout=3, allow_redirects=True, verify=False)
+        return resp.status_code < 400
+    except:
+        return False
+
 # -------------------------------
 # 主流程
 # -------------------------------
@@ -102,11 +113,9 @@ def main() -> None:
                 source_items.extend(split_line_urls(raw))
         print(f"ℹ 信息: 从 {os.path.abspath(SOURCES)} 读取 {SOURCES}")
     except FileNotFoundError:
-        print(f"❌ 错误: {SOURCES} 文件未找到")
-        raise
+        raise RuntimeError(f"❌ {SOURCES} 文件未找到")
     except Exception as e:
-        print(f"❌ 错误: 读取 {SOURCES} 失败: {str(e)}")
-        raise
+        raise RuntimeError(f"❌ 读取 {SOURCES} 失败: {str(e)}")
 
     if not source_items:
         raise RuntimeError("❌ sources.list 为空或无有效 URL")
@@ -151,10 +160,13 @@ def main() -> None:
     except Exception as e:
         raise RuntimeError(f"❌ 创建输出目录失败: {str(e)}")
 
-    if ordered_output:
+    # 验证 URL 可用性（可选）
+    final_urls = [u for u in ordered_output if test_alive(u)]
+
+    if final_urls:
         with open(OUTPUT, 'w', encoding='utf-8') as f:
-            f.write('\n'.join(ordered_output) + '\n')
-        print(f"✅ 成功写入 {len(ordered_output)} 条 URL 到 {os.path.abspath(OUTPUT)} 🎉")
+            f.write('\n'.join(final_urls) + '\n')
+        print(f"✅ 成功写入 {len(final_urls)} 条 URL 到 {os.path.abspath(OUTPUT)} 🎉")
     else:
         print("ℹ 信息: 可用条目为空，未写入 tracker.txt")
 
