@@ -1,27 +1,22 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Tracker 聚合脚本（分组与去重版）
+Tracker 聚合脚本（分组+直接候选支持）
 功能：
-1) 从 sources.list 读取上游地址（建议为 HTTP/HTTPS）
-2) 抓取上游文本，按协议正则切分一行多地址
-   支持协议：udp:// http:// https:// wss:// ltseed:// bcudp:// bchttp:// bchttps://
-3) 使用 dict.fromkeys 去重并过滤空白与不支持协议
-4) 按协议头分组，组内按字典序排序，按固定协议顺序输出
-5) 失败上游写入 bad_tracker.txt（仅在存在失败时）
-6) 失败重试 3 次；关键错误抛异常（例如：缺少文件、全部源失败）
-7) 自动创建输出目录；避免生成空的 tracker.txt
-
-输出：
-- TrackerServer/tracker.txt：分组+排序后的去重结果（非空时写出）
-- TrackerServer/bad_tracker.txt：失败上游与原因（仅当存在失败）
+1) 从 sources.list 读取源，支持一行多地址按协议切分
+2) http/https 作为“上游列表”抓取并解析；非 http(s) 作为“直接候选”直接纳入
+3) 正则切分支持：udp:// http:// https:// wss:// ltseed:// bcudp:// bchttp:// bchttps://
+4) 使用 dict.fromkeys 去重；过滤空白与不支持协议
+5) 按协议头分组，组内字典序输出；固定协议顺序
+6) 失败上游写入 bad_tracker.txt（仅当存在失败），避免生成空的 tracker.txt
+7) 上游失败重试 3 次；关键错误抛异常（缺文件、全部上游失败等）
 """
 
 import os
 import re
 from urllib.parse import urlsplit
-import requests
 from typing import List, Tuple
+import requests
 
 # -------------------------------
 # 常量配置
@@ -48,19 +43,17 @@ SPLIT_PROTOCOL_RE = re.compile(
 # -------------------------------
 
 def split_line_urls(line: str) -> List[str]:
-    """按协议切分一行文本里的多个 URL，忽略注释与空白。"""
-    # 去掉 # 注释
+    """按协议切分一行文本里的多个 URL，忽略 # 注释与空白。"""
     line = line.split('#', 1)[0].strip()
     if not line:
         return []
     parts = [p.strip() for p in SPLIT_PROTOCOL_RE.split(line) if p.strip()]
-    # 仅保留以受支持协议开头的片段
     urls = [p for p in parts if re.match(r'^(?:https?://|udp://|wss://|ltseed://|bcudp://|bchttps?://)', p, re.I)]
     return urls
 
 def fetch_urls_from_source(url: str) -> Tuple[List[str], bool, str]:
     """
-    抓取单个上游源的文本并解析其中的 Tracker URL。
+    抓取单个 http/https 上游源，解析其文本中的 Tracker URL。
     返回: (urls, success, error_message)
     """
     for attempt in range(MAX_RETRIES):
@@ -89,14 +82,12 @@ def fetch_urls_from_source(url: str) -> Tuple[List[str], bool, str]:
 # -------------------------------
 
 def main() -> None:
-    all_urls: List[str] = []
-    bad_sources: List[str] = []
-
-    # 读取 sources.list
+    # 读取 sources.list，并按协议切分（支持一行多地址）
     try:
         with open(SOURCES, encoding='utf-8') as f:
-            # 只收集非空且非注释的行
-            source_urls = [line.strip() for line in f if line.strip() and not line.startswith('#')]
+            source_items: List[str] = []
+            for raw in f:
+                source_items.extend(split_line_urls(raw))
         print(f"ℹ 信息: 从 {os.path.abspath(SOURCES)} 读取 {SOURCES}")
     except FileNotFoundError:
         print(f"❌ 错误: {SOURCES} 文件未找到")
@@ -105,19 +96,30 @@ def main() -> None:
         print(f"❌ 错误: 读取 {SOURCES} 失败: {str(e)}")
         raise
 
-    # 校验上游地址是否为空
-    if not source_urls:
+    # 校验是否读到任何地址
+    if not source_items:
         print("❌ 错误: sources.list 为空或无有效 URL")
         raise RuntimeError("No valid URLs in sources.list")
 
-    # 抓取并汇总（去重前计数）
-    for src in source_urls:
+    # 按是否为 http(s) 分类：上游列表 vs 直接候选
+    upstreams = [u for u in source_items if urlsplit(u).scheme.lower() in ("http", "https")]
+    direct_candidates = [u for u in source_items if urlsplit(u).scheme.lower() not in ("http", "https")]
+    print(f"✅ 分类完成：上游 {len(upstreams)} 条，直接候选 {len(direct_candidates)} 条")
+
+    # 抓取上游并汇总（不含去重）
+    all_urls: List[str] = []
+    bad_sources: List[str] = []
+    for src in upstreams:
         urls, success, error = fetch_urls_from_source(src)
         if success:
             all_urls.extend(urls)
         else:
             bad_sources.append(error)
 
+    # 将非 http(s) 的直接候选一并纳入
+    all_urls.extend(direct_candidates)
+
+    # 记录抓取到的总量（去重前）
     print(f"✅ 成功拉取 {len(all_urls)} 条 URL 🎉")
 
     # 去重 + 过滤空白 + 过滤不支持协议（保持原始出现顺序）
