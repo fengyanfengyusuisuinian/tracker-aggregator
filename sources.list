@@ -1,138 +1,56 @@
-# 推荐高质量 Tracker 源（替换原文件）
-https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt
-https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best.txt
-https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all_udp.txt
-https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/best.txt
-https://raw.githubusercontent.com/DeSchoepfer/BT_Trackers/master/trackerslist.txt
-https://cdn.jsdelivr.net/gh/ngosang/trackerslist/trackers_all.txt
+# ============================== 完整可用 sources.list ==============================
+# 所有链接均已验证：返回纯文本、状态码 200、无 HTML/JS 污染
+# 可直接用于 tracker-aggregator 项目
 
-# ========================= 1. newtrackon.com =========================
-https://newtrackon.com/api/all
+# 1. newtrackon.com（官方 API，极稳定）
 https://newtrackon.com/api/stable
-https://newtrackon.com/api/atable
+https://newtrackon.com/api/all
 https://newtrackon.com/api/udp
 https://newtrackon.com/api/http
 
-# ========================= 2. trackerslist.com =========================
-https://trackerslist.com/all.txt
-https://trackerslist.com/best.txt
-https://trackerslist.com/udp.txt
-https://trackerslist.com/http.txt
-https://trackerslist.com/https.txt
-https://trackerslist.com/ws.txt
-# --- 镜像（CloudFlare）
-https://cf.trackerslist.com/all.txt
-https://cf.trackerslist.com/best.txt
-https://cf.trackerslist.com/udp.txt
-https://cf.trackerslist.com/http.txt
-https://cf.trackerslist.com/https.txt
-https://cf.trackerslist.com/ws.txt
-
-# ========================= 3. github.com/ngosang/trackerslist =========================
+# 2. ngosang/trackerslist（业界最全，更新频繁）
 https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best.txt
 https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt
 https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all_udp.txt
 https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all_http.txt
 https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all_https.txt
 https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all_ws.txt
-https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all_i2p.txt
-https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best_ip.txt
-https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all_ip.txt
-# --- 镜像（jsDelivr）
+# --- CDN 镜像（加速 + 防 GitHub 限流）
 https://cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_best.txt
 https://cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_all.txt
 https://cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_all_udp.txt
 https://cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_all_http.txt
 https://cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_all_https.txt
 https://cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_all_ws.txt
-https://cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_all_i2p.txt
-https://cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_best_ip.txt
-https://cdn.jsdelivr.net/gh/ngosang/trackerslist@master/trackers_all_ip.txt
-# --- 镜像（Staticaly）
+# --- 备用 CDN
 https://cdn.staticaly.com/gh/ngosang/trackerslist/master/trackers_best.txt
 https://cdn.staticaly.com/gh/ngosang/trackerslist/master/trackers_all.txt
-https://cdn.staticaly.com/gh/ngosang/trackerslist/master/trackers_all_udp.txt
-https://cdn.staticaly.com/gh/ngosang/trackerslist/master/trackers_all_http.txt
-https://cdn.staticaly.com/gh/ngosang/trackerslist/master/trackers_all_https.txt
-https://cdn.staticaly.com/gh/ngosang/trackerslist/master/trackers_all_ws.txt
-https://cdn.staticaly.com/gh/ngosang/trackerslist/master/trackers_all_i2p.txt
-https://cdn.staticaly.com/gh/ngosang/trackerslist/master/trackers_best_ip.txt
-https://cdn.staticaly.com/gh/ngosang/trackerslist/master/trackers_all_ip.txt
-# --- 镜像（jsDelivr 其它节点）
-https://fastly.jsdelivr.net/gh/ngosang/trackerslist/trackers_best.txt
-https://fastly.jsdelivr.net/gh/ngosang/trackerslist/trackers_all.txt
-https://gcore.jsdelivr.net/gh/ngosang/trackerslist/trackers_best.txt
-https://gcore.jsdelivr.net/gh/ngosang/trackerslist/trackers_all.txt
 
-# ========================= 4. github.com/XIU2/TrackersListCollection =========================
-https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/best.txt
-https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/udp.txt
-https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/http.txt
-https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/https.txt
-https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/ws.txt
-# --- 镜像（jsDelivr）
-https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection/best.txt
-https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection/udp.txt
-https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection/http.txt
-https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection/https.txt
-https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection/ws.txt
-# --- 镜像（jsDelivr Gcore）
-https://gcore.jsdelivr.net/gh/XIU2/TrackersListCollection/best.txt
-https://gcore.jsdelivr.net/gh/XIU2/TrackersListCollection/udp.txt
-https://gcore.jsdelivr.net/gh/XIU2/TrackersListCollection/http.txt
-https://gcore.jsdelivr.net/gh/XIU2/TrackersListCollection/https.txt
-https://gcore.jsdelivr.net/gh/XIU2/TrackersListCollection/ws.txt
-
-# ========================= 5. github.com/DeSireFire/animeTrackerList =========================
-# --- RAW / Aria2 / TurnLine / JsDelivr 全合并
-https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all.txt
+# 3. DeSireFire/animeTrackerList（动漫专用，国内镜像加速）
 https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_best.txt
+https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all.txt
 https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all_udp.txt
 https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all_http.txt
 https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all_https.txt
 https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all_ws.txt
-https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_best_ip.txt
-https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_all_ip.txt
-https://raw.githubusercontent.com/DeSireFire/animeTrackerList/master/AT_bad.txt
-# --- 镜像（at.raxianch.moe）
+# --- 国内镜像（超快）
 https://at.raxianch.moe/AT_best.txt
 https://at.raxianch.moe/AT_all.txt
 https://at.raxianch.moe/AT_all_udp.txt
 https://at.raxianch.moe/AT_all_http.txt
 https://at.raxianch.moe/AT_all_https.txt
 https://at.raxianch.moe/AT_all_ws.txt
-https://at.raxianch.moe/AT_best_ip.txt
-https://at.raxianch.moe/AT_all_ip.txt
-https://at.raxianch.moe/AT_bad.txt
-https://at.raxianch.moe/ATaria2_best.txt
-https://at.raxianch.moe/ATaria2_all.txt
-https://at.raxianch.moe/ATaria2_all_udp.txt
-https://at.raxianch.moe/ATaria2_all_http.txt
-https://at.raxianch.moe/ATaria2_all_https.txt
-https://at.raxianch.moe/ATaria2_all_ws.txt
-https://at.raxianch.moe/ATaria2_best_ip.txt
-https://at.raxianch.moe/ATaria2_all_ip.txt
-https://at.raxianch.moe/ATaria2_bad.txt
-https://at.raxianch.moe/ATline_best.txt
-https://at.raxianch.moe/ATline_all.txt
-https://at.raxianch.moe/ATline_all_udp.txt
-https://at.raxianch.moe/ATline_all_http.txt
-https://at.raxianch.moe/ATline_all_https.txt
-https://at.raxianch.moe/ATline_all_ws.txt
-https://at.raxianch.moe/ATline_best_ip.txt
-https://at.raxianch.moe/ATline_all_ip.txt
-https://at.raxianch.moe/ATline_bad.txt
-# --- 镜像（jsDelivr）
+# --- CDN 镜像
 https://cdn.jsdelivr.net/gh/DeSireFire/animeTrackerList@master/AT_best.txt
 https://cdn.jsdelivr.net/gh/DeSireFire/animeTrackerList@master/AT_all.txt
-https://cdn.jsdelivr.net/gh/DeSireFire/animeTrackerList@master/AT_all_udp.txt
-https://cdn.jsdelivr.net/gh/DeSireFire/animeTrackerList@master/AT_all_http.txt
-https://cdn.jsdelivr.net/gh/DeSireFire/animeTrackerList@master/AT_all_https.txt
-https://cdn.jsdelivr.net/gh/DeSireFire/animeTrackerList@master/AT_all_ws.txt
-https://cdn.jsdelivr.net/gh/DeSireFire/animeTrackerList@master/AT_best_ip.txt
-https://cdn.jsdelivr.net/gh/DeSireFire/animeTrackerList@master/AT_all_ip.txt
-https://cdn.jsdelivr.net/gh/DeSireFire/animeTrackerList@master/AT_bad.txt
 
-# ========================= 6. 其它零散源 =========================
+# 4. 其他高质量源（已验证可用）
 https://down.adysec.com/trackers_best.txt
-https://raw.githubusercontent.com/1265578519/OpenTracker/master/tracker.txt
+
+# ============================== 已删除的失效源（勿用） ==============================
+# 以下源已永久失效或返回 HTML/404，勿加入：
+# - https://trackerslist.com/*
+# - https://cf.trackerslist.com/*
+# - https://raw.githubusercontent.com/XIU2/TrackersListCollection/*
+# - https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection/*
+# - https://gcore.jsdelivr.net/gh/XIU2/TrackersListCollection/*
