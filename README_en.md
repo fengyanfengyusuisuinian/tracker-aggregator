@@ -4,14 +4,6 @@
    A tracker rule subscriber that integrates rules from different sources to help you quickly build your own rule set~
   </p>
 <!-- Badges -->
-<p>
-  <img src="https://img.shields.io/github/last-commit/fengyanfengyusuisuinian/tracker-aggregator?style=flat-square" alt="last update" />
-  <img src="https://img.shields.io/github/forks/fengyanfengyusuisuinian/tracker-aggregator?style=flat-square" alt="forks" />
-  <img src="https://img.shields.io/github/stars/fengyanfengyusuisuinian/tracker-aggregator?style=flat-square" alt="stars" />
-  <img src="https://img.shields.io/github/issues/fengyanfengyusuisuinian/tracker-aggregator?style=flat-square" alt="open issues" />
-  <img src="https://img.shields.io/github/license/fengyanfengyusuisuinian/tracker-aggregator?style=flat-square" alt="license" />
-</p>
-
 <h4>
     <a href="#a">Project Description</a>
   <span> · </span>
