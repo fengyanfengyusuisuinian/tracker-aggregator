@@ -1,44 +1,164 @@
-name: Sync Tracker
+# main.py - 终极清洗版：彻底过滤 JS 代码 + |污染 + 非法字符
+import re
+import socket
+import urllib.parse
+from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor
+import requests
 
-on:
-  schedule:
-    - cron: '0 5 * * *'
-  workflow_dispatch:
+SOURCES_FILE = "sources.list"
+OUTPUT_DIR = Path("TrackerServer")
+OUTPUT_DIR.mkdir(exist_ok=True)
+VALID_FILE = OUTPUT_DIR / "tracker.txt"
+BAD_FILE = OUTPUT_DIR / "bad_tracker.txt"
 
-jobs:
-  sync:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
+TIMEOUT = 7
+MAX_WORKERS = 30
+HEADERS = {"User-Agent": "qBittorrent/4.6.0"}
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+# 黑名单域名（防 JS 注入）
+BLACK_DOMAINS = {
+    "cloudflare.com", "cloudflareinsights.com", "github.com",
+    "pages.dev", "gitwarp.com", "raw.githubusercontent.com",
+    "mercaX.com", "location.protocol", "nextChapterData"  # 防 JS
+}
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+# 必须包含关键词
+REQUIRE_KEYWORDS = ("announce", "scrape")
 
-      - name: Cache pip
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+# 非法字符正则（JS、|、;、'、" 等）
+ILLEGAL_CHARS = re.compile(r"""[|;"'\\{}<>()]|location\.|\+.*\+\s*['"]|nextChapterData""")
 
-      - name: Install deps
-        run: |
-          pip install --upgrade pip
-          pip install -r requirements.txt
+def is_valid_tracker_url(url: str) -> bool:
+    """严格校验 URL 是否为合法 Tracker"""
+    if not url or not url.startswith(("http://", "https://", "udp://")):
+        return False
 
-      - name: Run aggregation
-        run: python main.py
+    # 非法字符直接拒绝
+    if ILLEGAL_CHARS.search(url):
+        return False
 
-      - name: Commit & push
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: 'chore: update tracker files'
-          branch: main
-          file_pattern: 'TrackerServer/tracker.txt TrackerServer/bad_tracker.txt'
+    parsed = urllib.parse.urlparse(url)
+    hostname = parsed.hostname or ""
+
+    # 黑名单域名
+    if any(bad in hostname for bad in BLACK_DOMAINS):
+        return False
+
+    # 路径必须包含 announce/scrape
+    path = parsed.path.lower()
+    if not any(kw in path for kw in REQUIRE_KEYWORDS):
+        return False
+
+    # 路径不能太短或异常
+    if len(parsed.path) < 5:
+        return False
+
+    return True
+
+def extract_clean_url(raw: str) -> tuple[str | None, str]:
+    """从任意行提取并清洗一个 tracker URL"""
+    raw = raw.strip()
+    if not raw or raw.startswith("#"):
+        return None, raw
+
+    # 分离注释
+    parts = re.split(r"\s+#\s+", raw, 1)
+    url_part = parts[0]
+    comment = f" # {parts[1]}" if len(parts) > 1 else ""
+
+    # 提取第一个 http/https/udp 开头的完整片段
+    match = re.search(r"(udp://|https?://)[^|\s\"';]+", url_part)
+    if not match:
+        return None, comment
+
+    url = match.group(0)
+
+    # 去除结尾污染（, ; | 等）
+    url = re.sub(r"[,\s|;]+$", "", url)
+
+    # 修复 +108 → ?passkey=108
+    url = re.sub(r"\+(\d+)$", r"?passkey=\1", url)
+
+    # 最终校验
+    return (url, comment) if is_valid_tracker_url(url) else (None, comment)
+
+def fetch_source(source_url: str):
+    try:
+        r = requests.get(source_url, headers=HEADERS, timeout=TIMEOUT)
+        r.raise_for_status()
+        return source_url, r.text.splitlines(), None
+    except Exception as e:
+        return source_url, [], f"ERROR: {e}"
+
+def test_tracker_alive(url: str) -> bool:
+    if url.startswith("udp://"):
+        return True
+    parsed = urllib.parse.urlparse(url)
+    host = parsed.hostname
+    port = parsed.port or (80 if parsed.scheme == "http" else 443)
+    try:
+        with socket.create_connection((host, port), timeout=3):
+            return True
+    except:
+        return False
+
+def main():
+    if not Path(SOURCES_FILE).exists():
+        print("sources.list not found!")
+        return
+
+    with open(SOURCES_FILE, encoding="utf-8") as f:
+        lines = f.readlines()
+
+    source_urls = [l.strip() for l in lines if l.strip().startswith(("http://", "https://"))]
+
+    print(f"Fetching {len(source_urls)} sources...")
+    results = []
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
+        results = list(pool.map(fetch_source, source_urls))
+
+    tracker_dict = {}
+    bad_sources = []
+
+    for src, lines, err in results:
+        if err:
+            bad_sources.append(f"{src}  # {err}")
+            continue
+        for line in lines:
+            url, comment = extract_clean_url(line)
+            if url and url not in tracker_dict:
+                tracker_dict[url] = url + comment
+
+    print(f"Found {len(tracker_dict)} unique trackers, testing...")
+
+    valid = []
+    invalid = []
+
+    def check(url):
+        line = tracker_dict[url]
+        return line, test_tracker_alive(url)
+
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
+        for line, alive in pool.map(check, tracker_dict.keys()):
+            if alive:
+                valid.append(line)
+            else:
+                invalid.append(line)
+
+    # 写入文件
+    with open(VALID_FILE, "w", encoding="utf-8") as f:
+        f.write("\n".join(sorted(valid)) + "\n")
+
+    with open(BAD_FILE, "w", encoding="utf-8") as f:
+        content = sorted(invalid)
+        if bad_sources:
+            if content:
+                content.append("")
+            content.extend(bad_sources)
+        f.write("\n".join(content) + "\n")
+
+    print(f"Done! {len(valid)} valid, {len(invalid)} invalid")
+
+if __name__ == "__main__":
+    main()
