@@ -98,20 +98,25 @@ http://217.30.10.77:6969/announce
 http://220.130.15.27:6969/announce
 http://220.130.15.30:6969/announce
 http://34.170.169.34/announce
-http://34.170.169.34:6960/announce
 http://34.89.30.59/announce
 http://34.89.30.59:2710/announce
 http://34.94.213.23/announce
 http://34.94.213.23:11451/announce
 http://34.94.213.23:2710/announce
+http://34.94.76.146/announce
+http://34.94.76.146:11450/announce
 http://34.94.76.146:443/announce
+http://34.94.76.146:6960/announce
 http://35.227.12.84/announce
 http://35.227.12.84:2710/announce
 http://35.227.59.57/announce
+http://35.227.59.57:11450/announce
 http://35.227.59.57:1337/announce
 http://35.227.59.57:2701/announce
 http://35.227.59.57:2710/announce
 http://35.227.59.57:443/announce
+http://35.227.59.57:6960/announce
+http://35.227.59.57:6969/announce
 http://37.235.174.46:2710/announce
 http://38.145.197.79:6961/announce
 http://43.139.20.56:6969/announce
@@ -473,6 +478,7 @@ http://tk.greedland.net/announce
 http://tk.greedland.net:80/announce
 http://tk2.greedland.net/announce
 http://tor.rev.pm:6969/announce
+http://torrent-team.net/announce
 http://torrent-team.net/announce.php
 http://torrent-team.net:80/announce.php
 http://torrent-tracker.ru/announce.php
@@ -491,6 +497,7 @@ http://torrents.hikarinokiseki.com:6969/announce
 http://torrents.linuxmint.com/announce.php
 http://torrents.linuxmint.com:80/announce.php
 http://torrentsmd.com:8080/announce
+http://torrentsmd.me:8080/announce
 http://torrenttracker.nwc.acsalaska.net:6969/announce
 http://torrentzilla.org/announce
 http://torrentzilla.org/announce.php
@@ -942,6 +949,7 @@ https://tracker.loligirl.cn/announce
 https://tracker.loligirl.cn:443/announce
 https://tracker.m-team.cc/announce.php
 https://tracker.m-team.cc:443/announce.php
+https://tracker.madtia.cc/announce
 https://tracker.mlsub.net/announce
 https://tracker.mlsub.net:443/announce
 https://tracker.moeblog.cn/announce
@@ -1961,6 +1969,7 @@ udp://tracker.iperson.xyz:6969/announce
 udp://tracker.istole.it:80/announce
 udp://tracker.jamesthebard.net:6969/announce
 udp://tracker.kali.org:6969/announce
+udp://tracker.kmzs123.cn:17272/announce
 udp://tracker.kuroy.me:5944/announce
 udp://tracker.leechers-paradise.org:6969/announce
 udp://tracker.leena.network:6969/announce
@@ -2107,4 +2116,3 @@ wss://tracker.magnetoo.io/announce
 wss://tracker.magnetoo.io:443/announce
 wss://tracker.openwebtorrent.com/announce
 wss://tracker.openwebtorrent.com:443/announce
-wss://tracker.webtorrent.dev:443
