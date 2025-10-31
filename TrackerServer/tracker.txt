@@ -99,13 +99,15 @@ http://220.130.15.27:6969/announce
 http://220.130.15.30:6969/announce
 http://34.170.169.34/announce
 http://34.170.169.34:11450/announce
-http://34.170.169.34:6960/announce
+http://34.170.169.34:2710/announce
 http://34.89.30.59/announce
 http://34.89.30.59:2710/announce
 http://34.94.213.23/announce
 http://34.94.213.23:11451/announce
 http://34.94.213.23:2710/announce
+http://34.94.76.146:1337/announce
 http://34.94.76.146:2701/announce
+http://34.94.76.146:443/announce
 http://35.227.12.84/announce
 http://35.227.12.84:2710/announce
 http://35.227.59.57/announce
@@ -113,7 +115,8 @@ http://35.227.59.57:11450/announce
 http://35.227.59.57:1337/announce
 http://35.227.59.57:2701/announce
 http://35.227.59.57:2710/announce
-http://35.227.59.57:443/announce
+http://35.227.59.57:6960/announce
+http://35.227.59.57:6969/announce
 http://37.235.174.46:2710/announce
 http://38.145.197.79:6961/announce
 http://43.139.20.56:6969/announce
@@ -340,6 +343,7 @@ http://ipv6.rer.lol:6969/announce
 http://irrenhaus.dyndns.dk/announce
 http://irrenhaus.dyndns.dk/announce.php
 http://irrenhaus.dyndns.dk:80/announce.php
+http://isk.richardsw.club:6969/announce
 http://joczo.duckdns.org:6969/announce
 http://jp.moeweb.pw:6969/announce
 http://jvavav.com:80/announce
@@ -441,6 +445,7 @@ http://seeders-paradise.org:80/announce
 http://servandroidkino.ru/announce
 http://servandroidkino.ru:80/announce
 http://share.camoe.cn:8080/announce
+http://share.hkg-fansub.info/announce
 http://share.hkg-fansub.info/announce.php
 http://share.hkg-fansub.info:80/announce.php
 http://shogiroom.com:6969/announce
@@ -590,6 +595,7 @@ http://tracker.ismaarino.com:8880/announce
 http://tracker.istole.it/announce
 http://tracker.k.vu:6969/announce
 http://tracker.kali.org:6969/announce
+http://tracker.kmzs123.com/announce
 http://tracker.lelux.fi/announce
 http://tracker.lelux.fi:80/announce
 http://tracker.letpo.com/announce
@@ -764,7 +770,6 @@ https://2.tracker.eu.org:443/announce
 https://3.tracker.eu.org/announce
 https://3.tracker.eu.org:443/announce
 https://337hhh.xyz/announce
-https://4.tracker.eu.org/announce
 https://4.tracker.eu.org:443/announce
 https://9001-digitaladeel-bkwl-launch-oovrfk6mpz.app.codeanywhere.com:443/announce
 https://aaa.army:8866/announce
@@ -833,6 +838,7 @@ https://tk.mabo.ltd/announce
 https://tk.mabo.ltd:443/announce
 https://torrent-tracker.hama3.net/announce
 https://torrent-tracker.hama3.net:443/announce
+https://torrent.opiums.eu/announce
 https://torrent.opiums.eu:443/announce
 https://torrent.tracker.durukanbal.com:443/announce
 https://torrent.ubuntu.com/announce
@@ -1043,6 +1049,8 @@ udp://107.175.221.194:6969/announce
 udp://107.182.30.76.16clouds.com:6969/announce
 udp://107.189.11.58:6969/announce
 udp://107.189.3.200:6969/announce
+udp://107.189.4.235:1337/announce
+udp://107.189.7.165:6969/announce
 udp://108.53.194.223:6969/announce
 udp://108.61.166.249:6969/announce
 udp://109.121.134.121:1337/announce
@@ -1137,6 +1145,7 @@ udp://176.56.7.44:6969/announce
 udp://176.56.7.89:6969/announce
 udp://176.79.98.66:6969/announce
 udp://176.99.7.59:6969/announce
+udp://177.112.215.129:6969/announce
 udp://177.112.215.131:6969/announce
 udp://177.112.215.4:6969/announce
 udp://177.139.44.145:6969/announce
@@ -1948,6 +1957,7 @@ udp://tracker.fatkhoala.org:13710/announce
 udp://tracker.filemail.com:6969/announce
 udp://tracker.filepit.to:6969/announce
 udp://tracker.files.fm:6969/announce
+udp://tracker.filetracker.pl:8089/announce
 udp://tracker.fnix.net:6969/announce
 udp://tracker.fortu.io:6969/announce
 udp://tracker.gmi.gd:6969/announce
@@ -1964,6 +1974,8 @@ udp://tracker.istole.it:80/announce
 udp://tracker.jamesthebard.net:6969/announce
 udp://tracker.kali.org:6969/announce
 udp://tracker.kmzs123.cn:17272/announce
+udp://tracker.kmzs123.com:17272/announce
+udp://tracker.kmzs123.com:443/announce
 udp://tracker.kmzs123.tk:17272/announce
 udp://tracker.kuroy.me:5944/announce
 udp://tracker.leechers-paradise.org:6969/announce
@@ -2111,3 +2123,4 @@ wss://tracker.magnetoo.io/announce
 wss://tracker.magnetoo.io:443/announce
 wss://tracker.openwebtorrent.com/announce
 wss://tracker.openwebtorrent.com:443/announce
+wss://tracker.webtorrent.dev:443/announce
