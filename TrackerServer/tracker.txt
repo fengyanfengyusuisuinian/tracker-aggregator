@@ -104,15 +104,10 @@ http://34.89.30.59:2710/announce
 http://34.94.213.23/announce
 http://34.94.213.23:11451/announce
 http://34.94.213.23:2710/announce
-http://34.94.76.146:1337/announce
-http://34.94.76.146:2710/announce
-http://34.94.76.146:443/announce
+http://34.94.76.146:2701/announce
 http://35.227.12.84/announce
 http://35.227.12.84:2710/announce
-http://35.227.59.57:11450/announce
-http://35.227.59.57:1337/announce
-http://35.227.59.57:2710/announce
-http://35.227.59.57:443/announce
+http://35.227.59.57:2701/announce
 http://35.227.59.57:6960/announce
 http://37.235.174.46:2710/announce
 http://38.145.197.79:6961/announce
@@ -225,11 +220,14 @@ http://atrack.pow7.com/announce
 http://atrack.pow7.com:80/announce
 http://baibako.tv/announce
 http://baibako.tv:80/announce
+http://big-boss-tracker.net/announce
 http://big-boss-tracker.net/announce.php
 http://bigfoot1942.sektori.org:6969/announce
+http://bithq.org/announce
 http://bithq.org/announce.php
 http://bithq.org:80/announce.php
 http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce
+http://blackz.ro/announce
 http://blackz.ro/announce.php
 http://bluebird-hd.org/announce.php
 http://bluebird-hd.org:80/announce.php
@@ -337,6 +335,7 @@ http://ipv6.rer.lol:6969/announce
 http://irrenhaus.dyndns.dk/announce
 http://irrenhaus.dyndns.dk/announce.php
 http://irrenhaus.dyndns.dk:80/announce.php
+http://isk.richardsw.club:6969/announce
 http://joczo.duckdns.org:6969/announce
 http://jp.moeweb.pw:6969/announce
 http://jvavav.com:80/announce
@@ -379,7 +378,6 @@ http://open.8a.is:6969/announce
 http://open.acgnxtracker.com/announce
 http://open.acgnxtracker.com:80/announce
 http://open.acgtracker.com:1096/announce
-http://open.demonii.si/announce
 http://open.miotracker.com/announce
 http://open.nyap2p.com:8080/announce
 http://open.stealth.si/announce
@@ -424,6 +422,7 @@ http://retracker.ohys.net/announce
 http://retracker.ohys.net:80/announce
 http://retracker.spark-rostov.ru/announce
 http://retracker.spark-rostov.ru:80/announce
+http://retracker.x2k.ru/announce
 http://rfc5746.mywaifu.best:6969/announce
 http://rotracker.ohys.net/announce
 http://rotracker.ohys.net:80/announce
@@ -471,7 +470,6 @@ http://tk.greedland.net/announce
 http://tk.greedland.net:80/announce
 http://tk2.greedland.net/announce
 http://tor.rev.pm:6969/announce
-http://torrent-team.net/announce
 http://torrent-team.net/announce.php
 http://torrent-team.net:80/announce.php
 http://torrent-tracker.ru/announce.php
@@ -490,6 +488,7 @@ http://torrents.hikarinokiseki.com:6969/announce
 http://torrents.linuxmint.com/announce.php
 http://torrents.linuxmint.com:80/announce.php
 http://torrentsmd.com:8080/announce
+http://torrentsmd.me:8080/announce
 http://torrenttracker.nwc.acsalaska.net:6969/announce
 http://torrentzilla.org/announce
 http://torrentzilla.org/announce.php
@@ -657,6 +656,7 @@ http://tracker.tritan.gg:8080/announce
 http://tracker.vanitycore.co:6969/announce
 http://tracker.vraphim.com:6969/announce
 http://tracker.vrpnet.org:6969/announce
+http://tracker.waaa.moe:6969/announce
 http://tracker.xdvdz.com:2710/announce
 http://tracker.xfapi.top:6868/announce
 http://tracker.xfapi.top:7070/announce
@@ -717,6 +717,7 @@ http://www.ansktracker.net/announce
 http://www.ansktracker.net/announce.php?passkey=58fff4518e745565986d5d2d3e884841
 http://www.arabp2p.net:2052/f5a1e35785c9f3885fd54f34b6e262b8/announce
 http://www.bit-hdtv.com:2710/announce
+http://www.bitseduce.com/announce
 http://www.bitseduce.com/announce.php
 http://www.biztorrents.com/announce.php
 http://www.chouchou.club:8080/announce
@@ -730,6 +731,7 @@ http://www.mvgroup.org:2710/announce
 http://www.nartlof.com.br:6969/announce
 http://www.peckservers.com:9000/announce
 http://www.shnflac.net/announce.php
+http://www.siambt.com/announce
 http://www.siambt.com/announce.php
 http://www.thetradersden.org/forums/tracker/announce.php
 http://www.thetradersden.org/forums/tracker:80/announce.php
@@ -1018,6 +1020,7 @@ https://www.wareztorrent.com:443/announce
 https://x7x.up.railway.app/announce
 https://xtremex.herokuapp.com/announce
 https://xtremex.herokuapp.com:443/announce
+https://yuki.bt.bontal.net:443/announce
 https://zer0day.000webhostapp.com/announce
 udp://
 udp://0205.uptm.ch:6969/announce
@@ -1570,6 +1573,7 @@ udp://83.6.231.132:6969/announce
 udp://83.6.231.164:6969/announce
 udp://83.6.231.203:6969/announce
 udp://83.6.233.63:6969/announce
+udp://84.54.51.78:6969/announce
 udp://85.17.19.180:80/announce
 udp://85.239.33.28:6969/announce
 udp://86.127.239.222:1234/announce
@@ -1973,7 +1977,6 @@ udp://tracker.kmzs123.com:443/announce
 udp://tracker.kmzs123.tk:17272/announce
 udp://tracker.kuroy.me:5944/announce
 udp://tracker.leechers-paradise.org:6969/announce
-udp://tracker.leena.network:6969/announce
 udp://tracker.lelux.fi:6969/announce
 udp://tracker.lyretain.site:2710/announce
 udp://tracker.merded.xyz:8000/announce
