@@ -104,11 +104,15 @@ http://34.89.30.59:2710/announce
 http://34.94.213.23/announce
 http://34.94.213.23:11451/announce
 http://34.94.213.23:2710/announce
-http://34.94.76.146:2701/announce
+http://34.94.76.146:443/announce
 http://35.227.12.84/announce
 http://35.227.12.84:2710/announce
-http://35.227.59.57:2701/announce
-http://35.227.59.57:6960/announce
+http://35.227.59.57/announce
+http://35.227.59.57:11450/announce
+http://35.227.59.57:1337/announce
+http://35.227.59.57:2710/announce
+http://35.227.59.57:443/announce
+http://35.227.59.57:6969/announce
 http://37.235.174.46:2710/announce
 http://38.145.197.79:6961/announce
 http://43.139.20.56:6969/announce
@@ -227,7 +231,6 @@ http://bithq.org/announce
 http://bithq.org/announce.php
 http://bithq.org:80/announce.php
 http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce
-http://blackz.ro/announce
 http://blackz.ro/announce.php
 http://bluebird-hd.org/announce.php
 http://bluebird-hd.org:80/announce.php
@@ -437,6 +440,7 @@ http://seeders-paradise.org:80/announce
 http://servandroidkino.ru/announce
 http://servandroidkino.ru:80/announce
 http://share.camoe.cn:8080/announce
+http://share.hkg-fansub.info/announce
 http://share.hkg-fansub.info/announce.php
 http://share.hkg-fansub.info:80/announce.php
 http://shogiroom.com:6969/announce
@@ -470,6 +474,7 @@ http://tk.greedland.net/announce
 http://tk.greedland.net:80/announce
 http://tk2.greedland.net/announce
 http://tor.rev.pm:6969/announce
+http://torrent-team.net/announce
 http://torrent-team.net/announce.php
 http://torrent-team.net:80/announce.php
 http://torrent-tracker.ru/announce.php
@@ -671,7 +676,6 @@ http://tracker.yuelili.com:80/announce
 http://tracker.zerobytes.xyz:1337/announce
 http://tracker.zhuqiy.com:80/announce
 http://tracker.zhuqiy.dgj055.icu:80/announce
-http://tracker.zhuqiy.top/announce
 http://tracker1.bt.moack.co.kr/announce
 http://tracker1.bt.moack.co.kr:80/announce
 http://tracker1.itzmx.com:8080/announce
@@ -857,7 +861,6 @@ https://tr.fuckbitcoin.xyz/announce
 https://tr.fuckbitcoin.xyz:443/announce
 https://tr.highstar.shop/announce
 https://tr.highstar.shop:443/announce
-https://tr.kxmp.cf/announce
 https://tr.kxmp.cf:80/announce
 https://tr.nyacat.pw/announce
 https://tr.nyacat.pw:443/announce
@@ -990,7 +993,6 @@ https://tracker.yemekyedim.com/announce
 https://tracker.yemekyedim.com:443/announce
 https://tracker.zhuqiy.com/announce
 https://tracker.zhuqiy.com:443/announce
-https://tracker.zhuqiy.top/announce
 https://tracker.zhuqiy.top:443/announce
 https://tracker1.520.jp/announce
 https://tracker1.520.jp:443/announce
@@ -1231,6 +1233,7 @@ udp://191.101.229.236:1337/announce
 udp://191.23.121.129:6969/announce
 udp://191.23.62.147:6969/announce
 udp://191.23.71.103:6969/announce
+udp://191.23.71.22:6969/announce
 udp://191.23.94.237:6969/announce
 udp://191.254.171.95:6969/announce
 udp://191.255.155.138:6969/announce
@@ -1894,7 +1897,6 @@ udp://torrentclub.space:6969/announce
 udp://torrents.artixlinux.org:6969/announce
 udp://torrents.hikarinokiseki.com:6969/announce
 udp://torrenttracker.nwc.acsalaska.net:6969/announce
-udp://touhou.kawaiiarts.com:6969/announce
 udp://tr.bangumi.moe:6969/announce
 udp://tr.cili001.com:8070/announce
 udp://tr3.ysagin.top:2715/announce
@@ -1923,6 +1925,7 @@ udp://tracker.bittor.pw:1337/announce
 udp://tracker.blacksparrowmedia.net:6969/announce
 udp://tracker.breizh.pm:6969/announce
 udp://tracker.btsync.gq:233/announce
+udp://tracker.btzoo.eu:80/announce
 udp://tracker.ccc.de:80/announce
 udp://tracker.ccp.ovh:6969/announce
 udp://tracker.christianbro.pw:6969/announce
@@ -1963,7 +1966,6 @@ udp://tracker.halfchub.club:6969/announce
 udp://tracker.healthcareindia.store:1337/announce
 udp://tracker.hifimarket.in:2710/announce
 udp://tracker.hifitechindia.com:6969/announce
-udp://tracker.home.kmzs123.cn:17272/announce
 udp://tracker.iamhansen.xyz:2000/announce
 udp://tracker.ilibr.org:80/announce
 udp://tracker.internetwarriors.net:1337/announce
@@ -1971,7 +1973,6 @@ udp://tracker.iperson.xyz:6969/announce
 udp://tracker.istole.it:80/announce
 udp://tracker.jamesthebard.net:6969/announce
 udp://tracker.kali.org:6969/announce
-udp://tracker.kmzs123.cn:17272/announce
 udp://tracker.kmzs123.com:17272/announce
 udp://tracker.kmzs123.com:443/announce
 udp://tracker.kmzs123.tk:17272/announce
@@ -2054,7 +2055,6 @@ udp://tracker.zemoj.com:6969/announce
 udp://tracker.zer0day.to:1337/announce
 udp://tracker.zerobytes.xyz:1337/announce
 udp://tracker.zupix.online:1333/announce
-udp://tracker.zupix.online:6969/announce
 udp://tracker0.ufibox.com:6969/announce
 udp://tracker1.bt.moack.co.kr:80/announce
 udp://tracker1.itzmx.com:8080/announce
