@@ -104,12 +104,14 @@ http://34.89.30.59:2710/announce
 http://34.94.213.23/announce
 http://34.94.213.23:11451/announce
 http://34.94.213.23:2710/announce
-http://34.94.76.146:443/announce
+http://34.94.76.146:11450/announce
+http://34.94.76.146:1337/announce
+http://34.94.76.146:6960/announce
 http://35.227.12.84/announce
 http://35.227.12.84:2710/announce
-http://35.227.59.57/announce
-http://35.227.59.57:11450/announce
-http://35.227.59.57:2710/announce
+http://35.227.59.57:1337/announce
+http://35.227.59.57:443/announce
+http://35.227.59.57:6969/announce
 http://37.235.174.46:2710/announce
 http://38.145.197.79:6961/announce
 http://43.139.20.56:6969/announce
@@ -228,6 +230,7 @@ http://bithq.org/announce
 http://bithq.org/announce.php
 http://bithq.org:80/announce.php
 http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce
+http://blackz.ro/announce
 http://blackz.ro/announce.php
 http://bluebird-hd.org/announce.php
 http://bluebird-hd.org:80/announce.php
@@ -286,6 +289,7 @@ http://chouchou.top:8080/announce
 http://cloud.nyap2p.com:8080/announce
 http://cn.pcfreetime.com:6969/announce
 http://concen.org:6969/announce
+http://data-bg.net/announce
 http://data-bg.net/announce.php
 http://data-bg.net:80/announce.php
 http://datascene.net/announce.php
@@ -468,6 +472,7 @@ http://tk.greedland.net/announce
 http://tk.greedland.net:80/announce
 http://tk2.greedland.net/announce
 http://tor.rev.pm:6969/announce
+http://torrent-team.net/announce
 http://torrent-team.net/announce.php
 http://torrent-team.net:80/announce.php
 http://torrent-tracker.ru/announce.php
@@ -1660,6 +1665,7 @@ udp://bt.oiyo.tk:6969/announce
 udp://bt.okmp3.ru:2710/announce
 udp://bt.rer.lol:2710/announce
 udp://bt.rer.lol:6969/announce
+udp://bt.sc-ol.com:2710/announce
 udp://bt1.archive.org:6969/announce
 udp://bt1.xxxxbt.cc:6969/announce
 udp://bt2.54new.com:8080/announce
