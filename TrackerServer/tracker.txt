@@ -104,14 +104,8 @@ http://34.89.30.59:2710/announce
 http://34.94.213.23/announce
 http://34.94.213.23:11451/announce
 http://34.94.213.23:2710/announce
-http://34.94.76.146:11450/announce
-http://34.94.76.146:1337/announce
-http://34.94.76.146:6960/announce
 http://35.227.12.84/announce
 http://35.227.12.84:2710/announce
-http://35.227.59.57:1337/announce
-http://35.227.59.57:443/announce
-http://35.227.59.57:6969/announce
 http://37.235.174.46:2710/announce
 http://38.145.197.79:6961/announce
 http://43.139.20.56:6969/announce
@@ -439,6 +433,7 @@ http://seeders-paradise.org:80/announce
 http://servandroidkino.ru/announce
 http://servandroidkino.ru:80/announce
 http://share.camoe.cn:8080/announce
+http://share.hkg-fansub.info/announce
 http://share.hkg-fansub.info/announce.php
 http://share.hkg-fansub.info:80/announce.php
 http://shogiroom.com:6969/announce
@@ -1020,6 +1015,7 @@ https://voxhost.fr/announce
 https://voxhost.fr:443/announce
 https://w.wwwww.wtf/announce
 https://w.wwwww.wtf:443/announce
+https://www.google.com" crossorigin>
 https://www.peckservers.com:9443/announce
 https://www.wareztorrent.com/announce
 https://www.wareztorrent.com:443/announce
@@ -1117,6 +1113,7 @@ udp://151.243.109.163:6969/announce
 udp://151.80.120.114:2710/announce
 udp://152.231.114.120:1337/announce
 udp://152.243.213.163:6969/announce
+udp://152.249.214.198:6969/announce
 udp://152.249.214.53:6969/announce
 udp://152.249.214.68:6969/announce
 udp://152.249.214.74:6969/announce
@@ -2127,3 +2124,4 @@ wss://tracker.magnetoo.io/announce
 wss://tracker.magnetoo.io:443/announce
 wss://tracker.openwebtorrent.com/announce
 wss://tracker.openwebtorrent.com:443/announce
+wss://tracker.webtorrent.dev:443/announce
