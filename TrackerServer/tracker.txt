@@ -104,12 +104,13 @@ http://34.89.30.59:2710/announce
 http://34.94.213.23/announce
 http://34.94.213.23:11451/announce
 http://34.94.213.23:2710/announce
-http://34.94.76.146:6969/announce
+http://34.94.76.146:2701/announce
+http://34.94.76.146:443/announce
+http://34.94.76.146:6960/announce
 http://35.227.12.84/announce
 http://35.227.12.84:2710/announce
+http://35.227.59.57/announce
 http://35.227.59.57:11450/announce
-http://35.227.59.57:1337/announce
-http://35.227.59.57:2710/announce
 http://35.227.59.57:443/announce
 http://35.227.59.57:6960/announce
 http://35.227.59.57:6969/announce
@@ -205,6 +206,7 @@ http://99.192.12.191:6969/announce
 http://[2a04:ac00:1:3dd8::1:2710]:2710/announce
 http://aaa.army:8866/announce
 http://aboutbeautifulgallopinghorsesinthegreenpasture.online:80/announce
+http://all4nothin.net/announce
 http://all4nothin.net/announce.php
 http://all4nothin.net:80/announce.php
 http://alltorrents.net/bt/announce.php
@@ -288,6 +290,7 @@ http://chouchou.top:8080/announce
 http://cloud.nyap2p.com:8080/announce
 http://cn.pcfreetime.com:6969/announce
 http://concen.org:6969/announce
+http://data-bg.net/announce
 http://data-bg.net/announce.php
 http://data-bg.net:80/announce.php
 http://datascene.net/announce.php
@@ -336,7 +339,6 @@ http://ipv6.rer.lol:6969/announce
 http://irrenhaus.dyndns.dk/announce
 http://irrenhaus.dyndns.dk/announce.php
 http://irrenhaus.dyndns.dk:80/announce.php
-http://isk.richardsw.club:6969/announce
 http://joczo.duckdns.org:6969/announce
 http://jp.moeweb.pw:6969/announce
 http://jvavav.com:80/announce
@@ -422,6 +424,7 @@ http://retracker.ohys.net/announce
 http://retracker.ohys.net:80/announce
 http://retracker.spark-rostov.ru/announce
 http://retracker.spark-rostov.ru:80/announce
+http://retracker.x2k.ru/announce
 http://rfc5746.mywaifu.best:6969/announce
 http://rotracker.ohys.net/announce
 http://rotracker.ohys.net:80/announce
@@ -436,7 +439,6 @@ http://seeders-paradise.org:80/announce
 http://servandroidkino.ru/announce
 http://servandroidkino.ru:80/announce
 http://share.camoe.cn:8080/announce
-http://share.hkg-fansub.info/announce
 http://share.hkg-fansub.info/announce.php
 http://share.hkg-fansub.info:80/announce.php
 http://shogiroom.com:6969/announce
@@ -470,6 +472,7 @@ http://tk.greedland.net/announce
 http://tk.greedland.net:80/announce
 http://tk2.greedland.net/announce
 http://tor.rev.pm:6969/announce
+http://torrent-team.net/announce
 http://torrent-team.net/announce.php
 http://torrent-team.net:80/announce.php
 http://torrent-tracker.ru/announce.php
@@ -488,7 +491,6 @@ http://torrents.hikarinokiseki.com:6969/announce
 http://torrents.linuxmint.com/announce.php
 http://torrents.linuxmint.com:80/announce.php
 http://torrentsmd.com:8080/announce
-http://torrentsmd.me:8080/announce
 http://torrenttracker.nwc.acsalaska.net:6969/announce
 http://torrentzilla.org/announce
 http://torrentzilla.org/announce.php
@@ -712,6 +714,7 @@ http://wegkxfcivgx.ydns.eu:80/announce
 http://wepzone.net:6969/announce
 http://wg.mortis.me:6969/announce
 http://widemus.de:6969/announce
+http://www.all4nothin.net/announce
 http://www.all4nothin.net/announce.php
 http://www.all4nothin.net:80/announce.php
 http://www.ansktracker.net/announce
@@ -806,6 +809,7 @@ https://opentracker.i2p.rocks:443/announce
 https://opentracker.xyz/announce
 https://opentracker.xyz:443/announce
 https://pybittrack.retiolus.net:443/announce
+https://retracker.x2k.ru/announce
 https://retracker2.x2k.ru/announce
 https://seeders-paradise.org/announce
 https://shahidrazi.online:443/announce
@@ -1023,7 +1027,6 @@ https://www.wareztorrent.com:443/announce
 https://x7x.up.railway.app/announce
 https://xtremex.herokuapp.com/announce
 https://xtremex.herokuapp.com:443/announce
-https://yuki.bt.bontal.net:443/announce
 https://zer0day.000webhostapp.com/announce
 udp://
 udp://0205.uptm.ch:6969/announce
@@ -1142,6 +1145,7 @@ udp://176.99.7.59:6969/announce
 udp://177.112.215.129:6969/announce
 udp://177.112.215.131:6969/announce
 udp://177.112.215.4:6969/announce
+udp://177.112.215.99:6969/announce
 udp://177.139.44.145:6969/announce
 udp://177.139.47.236:6969/announce
 udp://177.139.47.40:6969/announce
