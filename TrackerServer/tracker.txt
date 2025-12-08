@@ -17,6 +17,7 @@ http://116.9.207.121:6969/announce
 http://116.9.207.164:6969/announce
 http://116.9.207.198:6969/announce
 http://116.9.207.226:6969/announce
+http://117.72.34.150:6969/announce
 http://119.28.71.45:8080/announce
 http://125.227.79.123/announce
 http://129.146.193.240:6699/announce
@@ -105,18 +106,11 @@ http://34.89.30.59:2710/announce
 http://34.94.213.23/announce
 http://34.94.213.23:11451/announce
 http://34.94.213.23:2710/announce
+http://34.94.76.146:11450/announce
 http://34.94.76.146:1337/announce
-http://34.94.76.146:6969/announce
 http://35.227.12.84/announce
 http://35.227.12.84:2710/announce
-http://35.227.59.57/announce
-http://35.227.59.57:11450/announce
-http://35.227.59.57:1337/announce
-http://35.227.59.57:2701/announce
 http://35.227.59.57:2710/announce
-http://35.227.59.57:443/announce
-http://35.227.59.57:6960/announce
-http://35.227.59.57:6969/announce
 http://37.235.174.46:2710/announce
 http://38.145.197.79:6961/announce
 http://43.139.20.56:6969/announce
@@ -227,14 +221,12 @@ http://atrack.pow7.com/announce
 http://atrack.pow7.com:80/announce
 http://baibako.tv/announce
 http://baibako.tv:80/announce
-http://big-boss-tracker.net/announce
 http://big-boss-tracker.net/announce.php
 http://bigfoot1942.sektori.org:6969/announce
 http://bithq.org/announce
 http://bithq.org/announce.php
 http://bithq.org:80/announce.php
 http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce
-http://blackz.ro/announce
 http://blackz.ro/announce.php
 http://bluebird-hd.org/announce.php
 http://bluebird-hd.org:80/announce.php
@@ -341,7 +333,6 @@ http://ipv6.rer.lol:6969/announce
 http://irrenhaus.dyndns.dk/announce
 http://irrenhaus.dyndns.dk/announce.php
 http://irrenhaus.dyndns.dk:80/announce.php
-http://isk.richardsw.club:6969/announce
 http://joczo.duckdns.org:6969/announce
 http://jp.moeweb.pw:6969/announce
 http://jvavav.com:80/announce
@@ -719,6 +710,7 @@ http://www.ansktracker.net/announce
 http://www.ansktracker.net/announce.php?passkey=58fff4518e745565986d5d2d3e884841
 http://www.arabp2p.net:2052/f5a1e35785c9f3885fd54f34b6e262b8/announce
 http://www.bit-hdtv.com:2710/announce
+http://www.bitseduce.com/announce
 http://www.bitseduce.com/announce.php
 http://www.biztorrents.com/announce.php
 http://www.chouchou.club:8080/announce
@@ -732,6 +724,7 @@ http://www.mvgroup.org:2710/announce
 http://www.nartlof.com.br:6969/announce
 http://www.peckservers.com:9000/announce
 http://www.shnflac.net/announce.php
+http://www.siambt.com/announce
 http://www.siambt.com/announce.php
 http://www.thetradersden.org/forums/tracker/announce.php
 http://www.thetradersden.org/forums/tracker:80/announce.php
@@ -805,7 +798,6 @@ https://opentracker.i2p.rocks:443/announce
 https://opentracker.xyz/announce
 https://opentracker.xyz:443/announce
 https://pybittrack.retiolus.net:443/announce
-https://retracker.x2k.ru/announce
 https://retracker2.x2k.ru/announce
 https://seeders-paradise.org/announce
 https://shahidrazi.online:443/announce
@@ -828,6 +820,7 @@ https://tk.mabo.ltd:443/announce
 https://torrent-tracker.hama3.net/announce
 https://torrent-tracker.hama3.net:443/announce
 https://torrent.opiums.eu:443/announce
+https://torrent.tracker.durukanbal.com/announce
 https://torrent.tracker.durukanbal.com:443/announce
 https://torrent.ubuntu.com/announce
 https://torrent.ubuntu.com:443/announce
@@ -909,6 +902,7 @@ https://tracker.h3o2.me:443/announce
 https://tracker.hdarea.club/announce
 https://tracker.imgoingto.icu/announce
 https://tracker.imgoingto.icu:443/announce
+https://tracker.iochimari.moe/announce
 https://tracker.iochimari.moe:443/announce
 https://tracker.ipfsscan.io/announce
 https://tracker.ipfsscan.io:443/announce
@@ -1167,6 +1161,7 @@ udp://178.215.224.155:6969/announce
 udp://178.33.73.26:2710/announce
 udp://179.118.132.77:6969/announce
 udp://179.175.247.60:6969/announce
+udp://179.98.254.138:6969/announce
 udp://179.98.254.201:6969/announce
 udp://179.98.254.95:6969/announce
 udp://179.98.51.208:6969/announce
@@ -1829,6 +1824,7 @@ udp://parag.rs:6969/announce
 udp://passpulse.net:8000/announce
 udp://peerfect.org:6969/announce
 udp://pirate.t-1.org:1337/announce
+udp://play.aimisayo.com:6969/announce
 udp://pow7.com:80/announce
 udp://private.anonseed.com:6969/announce
 udp://psyco.fr:6969/announce
