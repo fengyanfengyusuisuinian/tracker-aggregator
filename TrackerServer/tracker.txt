@@ -106,12 +106,11 @@ http://34.89.30.59:2710/announce
 http://34.94.213.23/announce
 http://34.94.213.23:11451/announce
 http://34.94.213.23:2710/announce
-http://34.94.76.146:2701/announce
+http://34.94.76.146/announce
+http://34.94.76.146:2710/announce
 http://35.227.12.84/announce
 http://35.227.12.84:2710/announce
-http://35.227.59.57:1337/announce
-http://35.227.59.57:2701/announce
-http://35.227.59.57:443/announce
+http://35.227.59.57/announce
 http://37.235.174.46:2710/announce
 http://38.145.197.79:6961/announce
 http://43.139.20.56:6969/announce
@@ -182,6 +181,7 @@ http://83.6.231.40:6969/announce
 http://83.6.232.23:6969/announce
 http://83.6.234.75:6969/announce
 http://83.6.237.118:6969/announce
+http://87.248.186.252:8080/announce
 http://88.99.189.199:6969/announce
 http://91.224.92.110:6969/announce
 http://93.158.213.92:1337/announce
@@ -335,8 +335,10 @@ http://ipv4.tracker.harry.lu/announce
 http://ipv4.tracker.harry.lu:80/announce
 http://ipv4announce.sktorrent.eu:6969/announce
 http://ipv6.rer.lol:6969/announce
+http://irrenhaus.dyndns.dk/announce
 http://irrenhaus.dyndns.dk/announce.php
 http://irrenhaus.dyndns.dk:80/announce.php
+http://isk.richardsw.club:6969/announce
 http://joczo.duckdns.org:6969/announce
 http://jp.moeweb.pw:6969/announce
 http://jvavav.com:80/announce
@@ -422,6 +424,7 @@ http://retracker.ohys.net/announce
 http://retracker.ohys.net:80/announce
 http://retracker.spark-rostov.ru/announce
 http://retracker.spark-rostov.ru:80/announce
+http://retracker.x2k.ru/announce
 http://rfc5746.mywaifu.best:6969/announce
 http://rotracker.ohys.net/announce
 http://rotracker.ohys.net:80/announce
@@ -487,6 +490,7 @@ http://torrents.hikarinokiseki.com:6969/announce
 http://torrents.linuxmint.com/announce.php
 http://torrents.linuxmint.com:80/announce.php
 http://torrentsmd.com:8080/announce
+http://torrentsmd.me:8080/announce
 http://torrenttracker.nwc.acsalaska.net:6969/announce
 http://torrentzilla.org/announce
 http://torrentzilla.org/announce.php
@@ -654,7 +658,6 @@ http://tracker.vanitycore.co:6969/announce
 http://tracker.vraphim.com:6969/announce
 http://tracker.vrpnet.org:6969/announce
 http://tracker.waaa.moe:6969/announce
-http://tracker.wepzone.net:6969/announce
 http://tracker.xdvdz.com:2710/announce
 http://tracker.xfapi.top:6868/announce
 http://tracker.xfapi.top:7070/announce
@@ -804,6 +807,7 @@ https://opentracker.xyz/announce
 https://opentracker.xyz:443/announce
 https://pybittrack.retiolus.net:443/announce
 https://retracker.x2k.ru/announce
+https://retracker2.x2k.ru/announce
 https://seeders-paradise.org/announce
 https://shahidrazi.online:443/announce
 https://sparkle.ghostchu-services.top/announce
@@ -824,7 +828,7 @@ https://tk.mabo.ltd/announce
 https://tk.mabo.ltd:443/announce
 https://torrent-tracker.hama3.net/announce
 https://torrent-tracker.hama3.net:443/announce
-https://torrent.opiums.eu:443/announce
+https://torrent.tracker.durukanbal.com/announce
 https://torrent.tracker.durukanbal.com:443/announce
 https://torrent.ubuntu.com/announce
 https://torrent.ubuntu.com:443/announce
@@ -905,7 +909,6 @@ https://tracker.h3o2.me:443/announce
 https://tracker.hdarea.club/announce
 https://tracker.imgoingto.icu/announce
 https://tracker.imgoingto.icu:443/announce
-https://tracker.iochimari.moe/announce
 https://tracker.iochimari.moe:443/announce
 https://tracker.ipfsscan.io/announce
 https://tracker.ipfsscan.io:443/announce
@@ -1013,6 +1016,7 @@ https://www.wareztorrent.com:443/announce
 https://x7x.up.railway.app/announce
 https://xtremex.herokuapp.com/announce
 https://xtremex.herokuapp.com:443/announce
+https://yuki.bt.bontal.net:443/announce
 https://zer0day.000webhostapp.com/announce
 udp://
 udp://0205.uptm.ch:6969/announce
@@ -1159,6 +1163,7 @@ udp://178.156.140.201:3074/announce
 udp://178.170.48.154:1337/announce
 udp://178.215.224.155:6969/announce
 udp://178.33.73.26:2710/announce
+udp://179.118.129.194:6969/announce
 udp://179.118.132.77:6969/announce
 udp://179.175.247.60:6969/announce
 udp://179.98.254.138:6969/announce
