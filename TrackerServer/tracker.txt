@@ -1013,7 +1013,6 @@ https://www.wareztorrent.com:443/announce
 https://x7x.up.railway.app/announce
 https://xtremex.herokuapp.com/announce
 https://xtremex.herokuapp.com:443/announce
-https://yuki.bt.bontal.net:443/announce
 https://zer0day.000webhostapp.com/announce
 udp://
 udp://0205.uptm.ch:6969/announce
