@@ -28,7 +28,7 @@ SCHEME_ORDER = [
     "ltseed", "bcudp", "bchttp", "bchttps",
     "dht", "ptp", "ftp", "btsp", "btih"
 ]
-CHECK_URL_ALIVE = False
+CHECK_URL_ALIVE = True
 SPLIT_PROTOCOL_RE = re.compile(
     r'(?=(?:https?://|udp://|wss://|ltseed://|bcudp://|bchttp://|bchttps://|dht://|ptp://|ftp://|ws://|btsp://|btih://))',
     re.IGNORECASE
