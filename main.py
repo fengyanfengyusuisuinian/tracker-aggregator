@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Tracker聚合脚本 - 最终完整版（带表情包）
-向下兼容：继续生成 tracker.txt / bad_tracker.txt
-附加输出：trackers_merged.txt / trackers_alive.txt / sources_failed.txt
-并发+超时，启用存活检测，自带排错打印
+Tracker聚合 - 检查常见协议，其他默认放行
+常见协议（http/https）做 HEAD 检测；
+其他协议（udp/wss/ltseed/dht...）直接视为存活。
 """
-
 import os
 import re
 import time
@@ -15,29 +13,25 @@ from urllib.parse import urlsplit
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List, Tuple, Optional
 
-# ---------- 配置 ----------
+# ---------------- 配置 ----------------
 SOURCES = 'sources.list'
 OUTPUT_DIR = 'TrackerServer'
-OUTPUT = os.path.join(OUTPUT_DIR, 'tracker.txt')          # 旧文件
-BAD_OUTPUT = os.path.join(OUTPUT_DIR, 'bad_tracker.txt')  # 旧文件
+OUTPUT = os.path.join(OUTPUT_DIR, 'tracker.txt')
+BAD_OUTPUT = os.path.join(OUTPUT_DIR, 'bad_tracker.txt')
 
 TIMEOUT = (5, 8)          # (连接, 读取) 秒
 MAX_RETRIES = 2           # 数据源重试
 MAX_WORKERS = 20          # 并发线程
 CHECK_URL_ALIVE = True    # 启用存活检测
 
-SUPPORTED_SCHEMES = (
-    "http", "https", "udp", "wss",
-    "ltseed", "bcudp", "bchttp", "bchttps",
-    "dht", "ptp", "ftp", "ws", "btsp", "btih"
-)
+# 协议优先级
 SCHEME_ORDER = [
-    "http", "https", "udp", "ws", "wss",
+    "http", "https", "udp", "wss", "ws",
     "ltseed", "bcudp", "bchttp", "bchttps",
     "dht", "ptp", "ftp", "btsp", "btih"
 ]
 
-# ---------- 工具 ----------
+# ---------------- 工具 ----------------
 def split_line_urls(line: str) -> List[str]:
     line = line.split('#', 1)[0].strip()
     if not line:
@@ -46,7 +40,6 @@ def split_line_urls(line: str) -> List[str]:
     return [p for p in parts if re.match(r'^[a-zA-Z][a-zA-Z0-9+.-]*://', p)]
 
 def fetch_one_source(url: str) -> Tuple[str, List[str], str]:
-    """并发抓取单个数据源，快速失败"""
     for attempt in range(MAX_RETRIES):
         try:
             r = requests.get(url, timeout=TIMEOUT, verify=False, headers={'User-Agent': 'tracker-sub/1.0'})
@@ -61,30 +54,32 @@ def fetch_one_source(url: str) -> Tuple[str, List[str], str]:
             time.sleep(1)
 
 def test_tracker_alive(url: str) -> Optional[str]:
-    """返回原URL（存活）或 None（失效）"""
+    """常见协议检测，其他默认放行"""
     scheme = urlsplit(url).scheme.lower()
-    if scheme == 'udp':
-        return url          # 直接视为存活
-    try:
-        r = requests.head(url, timeout=TIMEOUT, allow_redirects=True, verify=False, headers={'User-Agent': 'tracker-sub/1.0'})
-        return url if r.status_code < 500 else None
-    except:
-        return None
+    # 1. 常见协议：HEAD 检测
+    if scheme in ('http', 'https'):
+        try:
+            r = requests.head(url, timeout=TIMEOUT, allow_redirects=True, verify=False, headers={'User-Agent': 'tracker-sub/1.0'})
+            return url if r.status_code < 500 else None
+        except:
+            return None
+    # 2. 其他协议：直接存活
+    return url
 
-# ---------- 主函数 ----------
+# ---------------- 主函数 ----------------
 def main():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    # 1. 读取数据源列表
+    # 1. 读取数据源
     with open(SOURCES, encoding='utf-8') as f:
         source_items = []
         for raw in f:
             source_items.extend(split_line_urls(raw))
     print(f'📄 [INFO] 读取 {SOURCES} 完成，共 {len(source_items)} 条数据源')
 
-    # 2. 并发抓取所有上游源
+    # 2. 并发抓取上游
     upstreams = [u for u in source_items if urlsplit(u).scheme.lower() in ("http", "https")]
-    direct = [u for u in source_items if urlsplit(u).scheme.lower() not in ("http", "https")]
+    direct   = [u for u in source_items if urlsplit(u).scheme.lower() not in ("http", "https")]
     all_urls, bad_sources = [], []
 
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
@@ -99,12 +94,12 @@ def main():
     print(f'🔄 [INFO] 抓取完成，合并后 {len(all_urls)} 条 URL')
 
     # 3. 去重
-    supported = [u for u in dict.fromkeys(all_urls) if u.strip() and urlsplit(u).scheme.lower() in SUPPORTED_SCHEMES]
-    print(f'🧹 [INFO] 去重后 {len(supported)} 条有效 URL')
+    supported = [u for u in dict.fromkeys(all_urls) if u.strip()]
+    print(f'🧹 [INFO] 去重后 {len(supported)} 条 URL')
 
-    # 4. 并发存活检测
+    # 4. 存活检测（常见协议检查，其他放行）
     if CHECK_URL_ALIVE:
-        print('🔍 [INFO] 开始并发存活检测...')
+        print('🔍 [INFO] 开始并发存活检测（常见协议检查，其他放行）...')
         with ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
             future_map = {ex.submit(test_tracker_alive, u): u for u in supported}
             alive = [url for f in as_completed(future_map) if (url := f.result()) is not None]
@@ -121,6 +116,7 @@ def main():
         ordered.extend(sorted(grouped[s]))
 
     # 6. 输出文件
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
     # 6.1 新文件（附加）
     merged_file = os.path.join(OUTPUT_DIR, 'trackers_merged.txt')
     with open(merged_file, 'w', encoding='utf-8') as f:
