@@ -1,23 +1,32 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Tracker聚合脚本 - 只改顺序版
-处理顺序：合并 → 去重 → 存活检测 → 排序
-数据源逻辑完全不动
+Tracker聚合脚本 - 并发+超时+存活检测完整版
+输出：
+  trackers_merged.txt   合并+去重后完整列表
+  trackers_alive.txt    通过存活检测的可用列表
+  sources_failed.txt    数据源拉取失败记录
 """
 
 import os
 import re
-from urllib.parse import urlsplit
-from typing import List, Tuple
+import time
 import requests
+from urllib.parse import urlsplit
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from typing import List, Tuple
 
-# 原始配置完全不动
+# ========== 配置 ==========
 SOURCES = 'sources.list'
-OUTPUT = 'TrackerServer/tracker.txt'
-BAD_OUTPUT = 'TrackerServer/bad_tracker.txt'
-TIMEOUT = 10
-MAX_RETRIES = 3
+OUTPUT_DIR = 'TrackerServer'
+OUTPUT = os.path.join(OUTPUT_DIR, 'tracker.txt')          # 兼容旧文件
+BAD_OUTPUT = os.path.join(OUTPUT_DIR, 'bad_tracker.txt')  # 兼容旧文件
+
+TIMEOUT = (5, 8)          # (连接, 读取) 秒
+MAX_RETRIES = 2           # 数据源重试
+MAX_WORKERS = 20          # 并发线程
+CHECK_URL_ALIVE = True    # 启用存活检测！！！
+
 SUPPORTED_SCHEMES = (
     "http", "https", "udp", "wss",
     "ltseed", "bcudp", "bchttp", "bchttps",
@@ -28,145 +37,118 @@ SCHEME_ORDER = [
     "ltseed", "bcudp", "bchttp", "bchttps",
     "dht", "ptp", "ftp", "btsp", "btih"
 ]
-CHECK_URL_ALIVE = True
-SPLIT_PROTOCOL_RE = re.compile(
-    r'(?=(?:https?://|udp://|wss://|ltseed://|bcudp://|bchttp://|bchttps://|dht://|ptp://|ftp://|ws://|btsp://|btih://))',
-    re.IGNORECASE
-)
-ILLEGAL_RE = re.compile(
-    r"(location\.protocol|nextChapterData|document\.|window\.|eval\(|\+.*[\'\"]|[\'\"]\+|return url|var |function\()",
-    re.I
-)
 
-# 原始函数完全不动
+# ========== 工具函数 ==========
 def split_line_urls(line: str) -> List[str]:
     line = line.split('#', 1)[0].strip()
-    if not line or ILLEGAL_RE.search(line):
+    if not line:
         return []
-    parts = [p.strip() for p in SPLIT_PROTOCOL_RE.split(line) if p.strip()]
-    return [p for p in parts if re.match(
-        r'^(?:https?://|udp://|wss://|ltseed://|bcudp://|bchttp://|bchttps://|dht://|ptp://|ftp://|ws://|btsp://|btih://)',
-        p, re.I
-    )]
+    parts = [p.strip() for p in re.split(r'(?=(?:https?://|udp://|wss?://|ltseed://|bcudp://|bchttp://|bchttps://|dht://|ptp://|ftp://|ws://|btsp://|btih://))', line, flags=re.I) if p.strip()]
+    return [p for p in parts if re.match(r'^[a-zA-Z][a-zA-Z0-9+.-]*://', p)]
 
-def fetch_urls_from_source(url: str) -> Tuple[List[str], bool, str]:
+def fetch_one_source(url: str) -> Tuple[str, List[str], str]:
+    """并发抓取单个数据源，快速失败"""
     for attempt in range(MAX_RETRIES):
         try:
-            resp = requests.get(url, timeout=TIMEOUT, verify=False)
-            resp.raise_for_status()
-            lines: List[str] = []
-            for raw in resp.text.splitlines():
-                urls = split_line_urls(raw)
-                if urls:
-                    lines.extend(urls)
-            return lines, True, ""
-        except requests.Timeout:
-            error = f"超时 {TIMEOUT}秒 (尝试 {attempt+1}/{MAX_RETRIES})"
-        except requests.HTTPError as e:
-            error = f"HTTP错误: {e.response.status_code} (尝试 {attempt+1}/{MAX_RETRIES})"
-        except requests.ConnectionError:
-            error = f"连接错误 (DNS或网络问题) (尝试 {attempt+1}/{MAX_RETRIES})"
+            r = requests.get(url, timeout=TIMEOUT, verify=False, headers={'User-Agent': 'tracker-sub/1.0'})
+            r.raise_for_status()
+            lines = []
+            for raw in r.text.splitlines():
+                lines.extend(split_line_urls(raw))
+            return url, lines, ""
         except Exception as e:
-            error = f"意外错误: {str(e)} (尝试 {attempt+1}/{MAX_RETRIES})"
-    print(f"⚠ 警告: 无法拉取 {url}: {error}")
-    return [], False, f"{url} | {error}"
+            if attempt == MAX_RETRIES - 1:
+                return url, [], f"{url} | {e}"
+            time.sleep(1)
 
-def test_alive(url: str) -> bool:
-    if not CHECK_URL_ALIVE:
-        return True
-    parsed = urlsplit(url)
-    if parsed.scheme in ("udp", "ltseed", "bcudp", "bchttp", "bchttps", "dht", "ptp", "btsp", "btih"):
+def test_tracker_alive(url: str) -> bool:
+    """单tracker存活检测，粗暴快速"""
+    scheme = urlsplit(url).scheme.lower()
+    if scheme == 'udp':
+        # UDP 检测省略，直接视为存活
         return True
     try:
-        resp = requests.head(url, timeout=3, allow_redirects=True, verify=False)
-        return resp.status_code < 400
+        r = requests.head(url, timeout=TIMEOUT, allow_redirects=True, verify=False, headers={'User-Agent': 'tracker-sub/1.0'})
+        return r.status_code < 500
     except:
         return False
 
-# 主函数只改顺序，其他不动
+# ========== 主函数 ==========
 def main():
-    try:
-        # 1. 读取sources.list（数据源URL列表）
-        with open(SOURCES, encoding='utf-8') as f:
-            source_items: List[str] = []
-            for raw in f:
-                source_items.extend(split_line_urls(raw))
-        print(f"ℹ 信息: 从 {os.path.abspath(SOURCES)} 读取 {SOURCES}")
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    except FileNotFoundError:
-        raise RuntimeError(f"❌ {SOURCES} 文件未找到")
-    except Exception as e:
-        raise RuntimeError(f"❌ 读取 {SOURCES} 失败: {str(e)}")
+    # 1. 读取数据源列表
+    with open(SOURCES, encoding='utf-8') as f:
+        source_items = []
+        for raw in f:
+            source_items.extend(split_line_urls(raw))
+    print(f'[INFO] 读取 {SOURCES} 完成，共 {len(source_items)} 条数据源')
 
-    if not source_items:
-        raise RuntimeError("❌ sources.list 为空或无有效 URL")
-
-    # 2. 原始分类逻辑不动
+    # 2. 并发抓取所有上游源
     upstreams = [u for u in source_items if urlsplit(u).scheme.lower() in ("http", "https")]
-    direct_candidates = [u for u in source_items if urlsplit(u).scheme.lower() not in ("http", "https")]
-    print(f"✅ 分类完成：上游 {len(upstreams)} 条，直接候选 {len(direct_candidates)} 条")
+    direct = [u for u in source_items if urlsplit(u).scheme.lower() not in ("http", "https")]
+    all_urls, bad_sources = [], []
 
-    # 3. 抓取上游源
-    all_urls: List[str] = []
-    bad_sources: List[str] = []
-    for src in upstreams:
-        urls, success, error = fetch_urls_from_source(src)
-        if success:
-            all_urls.extend(urls)
-        else:
-            bad_sources.append(error)
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
+        future_map = {ex.submit(fetch_one_source, u): u for u in upstreams}
+        for f in as_completed(future_map):
+            src, urls, err = f.result()
+            if err:
+                bad_sources.append(err)
+            else:
+                all_urls.extend(urls)
+    all_urls.extend(direct)
+    print(f'[INFO] 抓取完成，合并后 {len(all_urls)} 条 URL')
 
-    # 4. 合并所有抓取结果 + 直接候选
-    all_urls.extend(direct_candidates)
-    print(f"✅ 合并完成，共 {len(all_urls)} 条 URL")
+    # 3. 去重
+    supported = [u for u in dict.fromkeys(all_urls) if u.strip() and urlsplit(u).scheme.lower() in SUPPORTED_SCHEMES]
+    print(f'[INFO] 去重后 {len(supported)} 条有效 URL')
 
-    # 5. 去重（保持原始dict.fromkeys方式）
-    deduped = [u for u in dict.fromkeys(all_urls).keys() if u.strip()]
-    supported = [u for u in deduped if urlsplit(u).scheme.lower() in SUPPORTED_SCHEMES]
-    print(f"ℹ 信息: 去重后 {len(supported)} 条有效 URL")
-
-    # 6. 存活检测（如果开启）
+    # 4. 并发存活检测
     if CHECK_URL_ALIVE:
-        print(f"🔍 开始存活检测...")
-        final_urls = [u for u in supported if test_alive(u)]
-        print(f"✅ 存活检测完成: {len(final_urls)}/{len(supported)} 个可用")
+        print('[INFO] 开始并发存活检测...')
+        with ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
+            future_map = {ex.submit(test_tracker_alive, u): u for u in supported}
+            alive = [f.result() for f in as_completed(future_map) if f.result()]
+        print(f'[INFO] 存活检测完成：{len(alive)}/{len(supported)} 可用')
     else:
-        final_urls = supported
-        print(f"ℹ️  跳过存活检测，使用全部 {len(final_urls)} 个URL")
+        alive = supported
 
-    # 7. 最后排序：按协议优先级
-    grouped = {scheme: [] for scheme in SCHEME_ORDER}
-    for u in final_urls:
-        scheme = urlsplit(u).scheme.lower()
-        if scheme in grouped:
-            grouped[scheme].append(u)
-    
-    # 按SCHEME_ORDER顺序输出，同协议内按字母排序
-    ordered_output: List[str] = []
-    for scheme in SCHEME_ORDER:
-        grouped[scheme].sort()
-        ordered_output.extend(grouped[scheme])
+    # 5. 按协议排序
+    grouped = {s: [] for s in SCHEME_ORDER}
+    for u in alive:
+        grouped[urlsplit(u).scheme.lower()].append(u)
+    ordered = []
+    for s in SCHEME_ORDER:
+        ordered.extend(sorted(grouped[s]))
 
-    # 8. 输出文件（路径和格式完全不动）
-    try:
-        os.makedirs(os.path.dirname(OUTPUT), exist_ok=True)
-    except Exception as e:
-        raise RuntimeError(f"❌ 创建输出目录失败: {str(e)}")
+    # 6. 输出三文件 + 兼容旧文件
+    merged_file = os.path.join(OUTPUT_DIR, 'trackers_merged.txt')
+    alive_file = os.path.join(OUTPUT_DIR, 'trackers_alive.txt')
+    failed_file = os.path.join(OUTPUT_DIR, 'sources_failed.txt')
 
-    if ordered_output:
-        with open(OUTPUT, 'w', encoding='utf-8') as f:
-            f.write('\n'.join(ordered_output) + '\n')
-        print(f"✅ 成功写入 {len(ordered_output)} 条 URL 到 {os.path.abspath(OUTPUT)}")
-    else:
-        print("ℹ 信息: 可用条目为空，未写入 tracker.txt")
+    with open(merged_file, 'w', encoding='utf-8') as f:
+        f.write('\n'.join(supported) + '\n')
+    print(f'[OUT] 未检测完整列表 → {merged_file}')
 
-    # 错误源报告（完全不动）
+    if CHECK_URL_ALIVE:
+        with open(alive_file, 'w', encoding='utf-8') as f:
+            f.write('\n'.join(ordered) + '\n')
+        print(f'[OUT] 存活列表 → {alive_file}')
+
+    if bad_sources:
+        with open(failed_file, 'w', encoding='utf-8') as f:
+            f.write('\n'.join(bad_sources) + '\n')
+        print(f'[OUT] 失败源记录 → {failed_file}')
+
+    # 兼容旧文件（供 GitHub Actions 提交用）
+    with open(OUTPUT, 'w', encoding='utf-8') as f:
+        f.write('\n'.join(ordered) + '\n')
     if bad_sources:
         with open(BAD_OUTPUT, 'w', encoding='utf-8') as f:
             f.write('\n'.join(bad_sources) + '\n')
-        print(f"⚠ 警告: {len(bad_sources)} 个源无法访问，已写入 {os.path.abspath(BAD_OUTPUT)}")
-    else:
-        print("ℹ 信息: 无失败源，未生成 bad_tracker.txt")
+
+    print('[DONE] 全部完成！')
 
 
 if __name__ == '__main__':
