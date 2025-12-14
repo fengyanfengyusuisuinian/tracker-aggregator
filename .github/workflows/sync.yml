@@ -2,7 +2,12 @@ name: Sync Tracker
 
 on:
   schedule:
-    - cron: '0 5 * * *'  # 每天 13:00 北京时间
+    # 早 05:00（北京时间 13:00）
+    - cron: '0 5 * * *'
+    # 中 13:00（北京时间 21:00）
+    - cron: '0 13 * * *'
+    # 晚 21:00（北京时间 次日 05:00）
+    - cron: '0 21 * * *'
   workflow_dispatch:      # 可手动触发
 
 jobs:
