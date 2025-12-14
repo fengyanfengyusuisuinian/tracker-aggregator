@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Tracker聚合脚本 - 并发+超时+存活检测完整版
-输出：
-  trackers_merged.txt   合并+去重后完整列表
-  trackers_alive.txt    通过存活检测的可用列表
-  sources_failed.txt    数据源拉取失败记录
+Tracker聚合脚本 - 最终版
+向下兼容：继续生成 tracker.txt / bad_tracker.txt
+附加输出：trackers_merged.txt / trackers_alive.txt / sources_failed.txt
+并发+超时，启用存活检测
 """
 
 import os
@@ -14,9 +13,9 @@ import time
 import requests
 from urllib.parse import urlsplit
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from typing import List, Tuple
+from typing import List, Tuple, Optional
 
-# ========== 配置 ==========
+# ---------- 配置 ----------
 SOURCES = 'sources.list'
 OUTPUT_DIR = 'TrackerServer'
 OUTPUT = os.path.join(OUTPUT_DIR, 'tracker.txt')          # 兼容旧文件
@@ -25,7 +24,7 @@ BAD_OUTPUT = os.path.join(OUTPUT_DIR, 'bad_tracker.txt')  # 兼容旧文件
 TIMEOUT = (5, 8)          # (连接, 读取) 秒
 MAX_RETRIES = 2           # 数据源重试
 MAX_WORKERS = 20          # 并发线程
-CHECK_URL_ALIVE = True    # 启用存活检测！！！
+CHECK_URL_ALIVE = True    # 启用存活检测
 
 SUPPORTED_SCHEMES = (
     "http", "https", "udp", "wss",
@@ -38,7 +37,7 @@ SCHEME_ORDER = [
     "dht", "ptp", "ftp", "btsp", "btih"
 ]
 
-# ========== 工具函数 ==========
+# ---------- 工具 ----------
 def split_line_urls(line: str) -> List[str]:
     line = line.split('#', 1)[0].strip()
     if not line:
@@ -61,19 +60,18 @@ def fetch_one_source(url: str) -> Tuple[str, List[str], str]:
                 return url, [], f"{url} | {e}"
             time.sleep(1)
 
-def test_tracker_alive(url: str) -> bool:
-    """单tracker存活检测，粗暴快速"""
+def test_tracker_alive(url: str) -> Optional[str]:
+    """返回原URL（存活）或 None（失效）"""
     scheme = urlsplit(url).scheme.lower()
     if scheme == 'udp':
-        # UDP 检测省略，直接视为存活
-        return True
+        return url          # 直接视为存活
     try:
         r = requests.head(url, timeout=TIMEOUT, allow_redirects=True, verify=False, headers={'User-Agent': 'tracker-sub/1.0'})
-        return r.status_code < 500
+        return url if r.status_code < 500 else None
     except:
-        return False
+        return None
 
-# ========== 主函数 ==========
+# ---------- 主函数 ----------
 def main():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
@@ -109,7 +107,7 @@ def main():
         print('[INFO] 开始并发存活检测...')
         with ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
             future_map = {ex.submit(test_tracker_alive, u): u for u in supported}
-            alive = [f.result() for f in as_completed(future_map) if f.result()]
+            alive = [url for f in as_completed(future_map) if (url := f.result()) is not None]
         print(f'[INFO] 存活检测完成：{len(alive)}/{len(supported)} 可用')
     else:
         alive = supported
@@ -122,26 +120,26 @@ def main():
     for s in SCHEME_ORDER:
         ordered.extend(sorted(grouped[s]))
 
-    # 6. 输出三文件 + 兼容旧文件
+    # 6. 输出文件
+    # 6.1 新文件（附加）
     merged_file = os.path.join(OUTPUT_DIR, 'trackers_merged.txt')
-    alive_file = os.path.join(OUTPUT_DIR, 'trackers_alive.txt')
-    failed_file = os.path.join(OUTPUT_DIR, 'sources_failed.txt')
-
     with open(merged_file, 'w', encoding='utf-8') as f:
         f.write('\n'.join(supported) + '\n')
     print(f'[OUT] 未检测完整列表 → {merged_file}')
 
     if CHECK_URL_ALIVE:
+        alive_file = os.path.join(OUTPUT_DIR, 'trackers_alive.txt')
         with open(alive_file, 'w', encoding='utf-8') as f:
             f.write('\n'.join(ordered) + '\n')
         print(f'[OUT] 存活列表 → {alive_file}')
 
     if bad_sources:
+        failed_file = os.path.join(OUTPUT_DIR, 'sources_failed.txt')
         with open(failed_file, 'w', encoding='utf-8') as f:
             f.write('\n'.join(bad_sources) + '\n')
         print(f'[OUT] 失败源记录 → {failed_file}')
 
-    # 兼容旧文件（供 GitHub Actions 提交用）
+    # 6.2 旧文件（向下兼容）
     with open(OUTPUT, 'w', encoding='utf-8') as f:
         f.write('\n'.join(ordered) + '\n')
     if bad_sources:
