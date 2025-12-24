@@ -1,7 +1,6 @@
 http://00.xxtor.com:443/announce
 http://117.72.34.150:6969/announce
 http://1337.abcvg.info/announce
-http://1337.abcvg.info/announce+108
 http://1337.abcvg.info:80/announce
 http://167.235.245.209/announce
 http://185.230.4.150:1337/announce
@@ -30,9 +29,11 @@ http://60-fps.org/bt/announce.php
 http://60-fps.org/bt:80/announce.php
 http://60-fps.org:80/bt/announce.php
 http://60-fps.org:80/bt:80/announce.php
-http://93.158.213.92:1337/announce
 http://93.88.129.16/announce
 http://95.217.167.10:6969/announce
+http://all4nothin.net/announce
+http://all4nothin.net/announce.php
+http://all4nothin.net:80/announce.php
 http://alltorrents.net/bt/announce.php
 http://alltorrents.net/bt:80/announce.php
 http://alltorrents.net:80/bt/announce.php
@@ -51,8 +52,6 @@ http://bluebird-hd.org/announce.php
 http://bluebird-hd.org:80/announce.php
 http://bt.3kb.xyz/announce
 http://bt.3kb.xyz:80/announce
-http://bt.beatrice-raws.org/announce
-http://bt.beatrice-raws.org:80/announce
 http://bt.dl1234.com/announce
 http://bt.edwardk.info:12891/announce
 http://bt.edwardk.info:2710/announce
@@ -76,6 +75,9 @@ http://carbon-bonsai-621.appspot.com/announce
 http://carbon-bonsai-621.appspot.com:80/announce
 http://ch3oh.ru:6969/announce
 http://concen.org:6969/announce
+http://data-bg.net/announce
+http://data-bg.net/announce.php
+http://data-bg.net:80/announce.php
 http://ehtracker.org/1/announce
 http://ehtracker.org/1104308/announce
 http://ehtracker.org/1113709/announce
@@ -84,7 +86,6 @@ http://ehtracker.org/2496841/announce
 http://ehtracker.org/2541477/announce
 http://ehtracker.org/2566145/1159106xUfsJkT9Btg/announce
 http://extracker.dahrkael.net:6969/announce
-http://ftp.pet:2710/announce
 http://grifon.info/announce
 http://grifon.info:80/announce
 http://i.bandito.org/announce
@@ -123,6 +124,7 @@ http://pow7.com:80/announce
 http://proaudiotorrents.org/announce.php
 http://proaudiotorrents.org:80/announce.php
 http://retracker.joxnet.ru/announce
+http://retracker.joxnet.ru:80/announce
 http://retracker.ohys.net/announce
 http://retracker.ohys.net:80/announce
 http://rotracker.ohys.net/announce
@@ -135,7 +137,6 @@ http://siambit.com/announce
 http://sukebei.tracker.wf:8888/announce
 http://t.nyaatracker.com/announce
 http://t.nyaatracker.com:80/announce
-http://t.overflow.biz:6969/announce
 http://t1.pow7.com/announce
 http://t1.pow7.com:80/announce
 http://t2.pow7.com/announce
@@ -143,6 +144,9 @@ http://t2.pow7.com:80/announce
 http://tk.greedland.net/announce
 http://tk.greedland.net:80/announce
 http://tk2.greedland.net/announce
+http://torrent-team.net/announce
+http://torrent-team.net/announce.php
+http://torrent-team.net:80/announce.php
 http://torrent.arjlover.net:2710/announce
 http://torrent.fedoraproject.org:6969/announce
 http://torrent.ubuntu.com:6969/announce
@@ -151,6 +155,7 @@ http://torrent.unix-ag.uni-kl.de:80/announce
 http://torrentsmd.com:8080/announce
 http://torrentzilla.org/announce
 http://torrentzilla.org:80/announce
+http://tr.kxmp.cf/announce
 http://tr.kxmp.cf:80/announce
 http://tr.nyacat.pw/announce
 http://tr.nyacat.pw:80/announce
@@ -224,6 +229,9 @@ http://trun.tom.ru/announce
 http://trun.tom.ru:80/announce
 http://uatracker.net/announce
 http://uatracker.net/announce.php
+http://www.all4nothin.net/announce
+http://www.all4nothin.net/announce.php
+http://www.all4nothin.net:80/announce.php
 http://www.ansktracker.net/announce
 http://www.ansktracker.net/announce.php?passkey=58fff4518e745565986d5d2d3e884841
 http://www.arabp2p.net:2052/f5a1e35785c9f3885fd54f34b6e262b8/announce
@@ -255,7 +263,6 @@ https://1337.abcvg.info/announce
 https://1337.abcvg.info:443/announce
 https://abir0dev.github.io/announce
 https://abir0dev.github.io:443/announce
-https://bt.beatrice-raws.org/announce
 https://bt.bontal.net:443/announce
 https://bt2.080609.xyz:443/announce
 https://carapax.net/announce
@@ -287,6 +294,8 @@ https://tr-zhuqiy-2.dgj055.icu:443/announce
 https://tr.nyacat.pw/announce
 https://tr.nyacat.pw:443/announce
 https://tr.qfruiti.com/announce
+https://tr.torland.ga/announce
+https://tr.torland.ga:443/announce
 https://tr.zukizuki.org:443/announce
 https://tracker.alaskantf.com:443/announce
 https://tracker.bt4g.com/announce
@@ -329,8 +338,6 @@ https://tracker.zhuqiy.com/announce
 https://tracker.zhuqiy.com:443/announce
 https://tracker.zhuqiy.top/announce
 https://tracker.zhuqiy.top:443/announce
-https://tracker1.520.jp/announce
-https://tracker2.ctix.cn/announce
 https://trakx.herokuapp.com/announce
 https://trakx.herokuapp.com:443/announce
 https://voxhost.fr/announce
