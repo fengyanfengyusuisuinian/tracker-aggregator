@@ -1,6 +1,5 @@
 http://00.xxtor.com:443/announce
 http://117.72.34.150:6969/announce
-http://1337.abcvg.info/announce
 http://1337.abcvg.info/announce+108
 http://1337.abcvg.info:80/announce
 http://167.235.245.209/announce
@@ -10,9 +9,10 @@ http://193.31.26.113:6969/announce
 http://207.241.226.111:6969/announce
 http://207.241.231.226:6969/announce
 http://216.144.239.90:6969/announce
+http://222.191.171.198:6969/announce
 http://51.68.122.172/announce
 http://51.68.122.172:80/announce
-http://93.158.213.92:1337/announce
+http://93.88.129.16/announce
 http://95.217.167.10:6969/announce
 http://alltorrents.net/bt/announce.php
 http://alltorrents.net/bt:80/announce.php
@@ -29,8 +29,6 @@ http://bluebird-hd.org/announce.php
 http://bluebird-hd.org:80/announce.php
 http://bt.3kb.xyz/announce
 http://bt.3kb.xyz:80/announce
-http://bt.beatrice-raws.org/announce
-http://bt.beatrice-raws.org:80/announce
 http://bt.dl1234.com/announce
 http://bt.edwardk.info:12891/announce
 http://bt.edwardk.info:2710/announce
@@ -51,7 +49,6 @@ http://bt2.edwardk.info:6969/announce
 http://bvarf.tracker.sh:2086/announce
 http://carbon-bonsai-621.appspot.com/announce
 http://carbon-bonsai-621.appspot.com:80/announce
-http://ch3oh.ru:6969/announce
 http://concen.org:6969/announce
 http://ehtracker.org/1/announce
 http://ehtracker.org/1104308/announce
@@ -79,7 +76,6 @@ http://mediaclub.tv/announce
 http://mediaclub.tv/announce.php
 http://mediaclub.tv:80/announce
 http://mediaclub.tv:80/announce.php
-http://mkfs.ru/announce
 http://mvgforumtracker.mvgroup.org/tracker.php/announce
 http://mvgforumtracker.mvgroup.org/tracker.php:80/announce
 http://mvgforumtracker.mvgroup.org:80/tracker.php/announce
@@ -99,7 +95,6 @@ http://pow7.com/announce
 http://pow7.com:80/announce
 http://proaudiotorrents.org/announce.php
 http://proaudiotorrents.org:80/announce.php
-http://retracker.joxnet.ru/announce
 http://retracker.ohys.net/announce
 http://retracker.ohys.net:80/announce
 http://retracker.xxtor.com/announce
@@ -129,6 +124,7 @@ http://torrentsmd.com:8080/announce
 http://torrentzilla.org/announce
 http://torrentzilla.org:80/announce
 http://tr.kxmp.cf/announce
+http://tr.kxmp.cf:80/announce
 http://tr.nyacat.pw/announce
 http://tr.nyacat.pw:80/announce
 http://tracker-udp.anirena.com/announce
@@ -140,16 +136,13 @@ http://tracker.anirena.com:80/announce
 http://tracker.anirena.com:80/b16a15d9a238d1f59178d3614b857290/announce
 http://tracker.breizh.pm:6969/announce
 http://tracker.bt-chat.com/announce
-http://tracker.bt4g.com:2095/announce
 http://tracker.darkness.services:6969/announce
 http://tracker.dhitechnical.com:6969/announce
 http://tracker.dler.com:6969/announce
 http://tracker.dler.org:6969/announce
-http://tracker.etree.org:6969/announce
 http://tracker.gcvchp.com:2710/announce
 http://tracker.ghostchu-services.top:80/announce
 http://tracker.gigatorrents.ws:2710/announce
-http://tracker.internetwarriors.net:1337/announce
 http://tracker.iro.moe/announce
 http://tracker.kali.org:6969/announce
 http://tracker.kmzs123.com/announce
@@ -157,6 +150,7 @@ http://tracker.linkomanija.org:2710/announce
 http://tracker.minglong.org:8080/announce
 http://tracker.mywaifu.best:6969/announce
 http://tracker.novaopcj.eu.org:6969/announce
+http://tracker.opentrackr.org:1337/announce
 http://tracker.openzim.org/announce
 http://tracker.pow7.com/announce
 http://tracker.pow7.com:80/announce
@@ -167,7 +161,6 @@ http://tracker.qu.ax:6969/announce
 http://tracker.renfei.net:8080/announce
 http://tracker.shittyurl.org/announce
 http://tracker.shittyurl.org:80/announce
-http://tracker.skyts.net:6969/announce
 http://tracker.tfile.co/announce
 http://tracker.tfile.co:80/announce
 http://tracker.tfile.me/announce
@@ -178,7 +171,6 @@ http://tracker.torrentino.com/announce
 http://tracker.trancetraffic.com/announce
 http://tracker.trancetraffic.com/announce.php
 http://tracker.trancetraffic.com:80/announce.php
-http://tracker.tritan.gg:8080/announce
 http://tracker.waaa.moe:6969/announce
 http://tracker.xn--djrq4gl4hvoi.top/announce
 http://tracker.xn--djrq4gl4hvoi.top:80/announce
@@ -219,10 +211,8 @@ http://www.yqzuji.com:80/announce
 http://xtremewrestlingtorrents.net/announce.php
 http://xtremewrestlingtorrents.net:80/announce.php
 https://1337.abcvg.info/announce
-https://1337.abcvg.info:443/announce
 https://abir0dev.github.io/announce
 https://abir0dev.github.io:443/announce
-https://bt.beatrice-raws.org/announce
 https://bt2.080609.xyz:443/announce
 https://carapax.net/announce
 https://carbon-bonsai-621.appspot.com/announce
@@ -238,19 +228,23 @@ https://sparkle.ghostchu-services.top/announce
 https://t.213891.xyz/announce
 https://t.213891.xyz:443/announce
 https://threads.canofsocks.com:443/announce
-https://torrent.tracker.durukanbal.com:443/announce
+https://torrent.ubuntu.com/announce
+https://torrent.ubuntu.com:443/announce
 https://torrentonline.cc/announce
 https://tp.m-team.cc/announce.php
 https://tp.m-team.cc:443/announce.php
 https://tr.nyacat.pw/announce
 https://tr.nyacat.pw:443/announce
 https://tr.qfruiti.com/announce
-https://tracker.bt4g.com/announce
-https://tracker.bt4g.com:443/announce
+https://tr.torland.ga/announce
+https://tracker.alaskantf.com:443/announce
+https://tracker.gcrenwp.top:443/announce
 https://tracker.ghostchu-services.top:443/announce
 https://tracker.iochimari.moe/announce
 https://tracker.iochimari.moe:443/announce
 https://tracker.keepfrds.com/announce
+https://tracker.kitaujisub.site/announce.php?authkey=213|10003|j46n2q
+https://tracker.kitaujisub.site/announce.php?authkey=215|10003|j46n2q
 https://tracker.leechshield.link:443/announce
 https://tracker.lilithraws.org/announce
 https://tracker.lilithraws.org:443/announce
@@ -275,8 +269,8 @@ https://tracker.zhuqiy.com/announce
 https://tracker.zhuqiy.com:443/announce
 https://tracker.zhuqiy.top/announce
 https://tracker.zhuqiy.top:443/announce
-https://tracker1.520.jp:443/announce
-https://tracker2.ctix.cn:443/announce
+https://tracker1.520.jp/announce
+https://tracker2.ctix.cn/announce
 https://trakx.herokuapp.com/announce
 https://trakx.herokuapp.com:443/announce
 https://voxhost.fr/announce
@@ -1496,5 +1490,4 @@ wss://tracker.magnetoo.io/announce
 wss://tracker.magnetoo.io:443/announce
 wss://tracker.openwebtorrent.com/announce
 wss://tracker.openwebtorrent.com:443/announce
-wss://tracker.webtorrent.dev:443/announce
 ws://tracker.files.fm:7072/announce
