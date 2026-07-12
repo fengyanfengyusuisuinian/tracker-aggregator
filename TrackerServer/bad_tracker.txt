@@ -1,22 +1,22 @@
 https://down.adysec.com/trackers_best.txt | 500 Server Error: Internal Server Error for url: https://down.adysec.com/trackers_best.txt
-https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/ws.txt | 404 Client Error: Not Found for url: https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/ws.txt
-https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/https.txt | 404 Client Error: Not Found for url: https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/https.txt
-https://raw.githubusercontent.com/Lord1413/BitTorrent-trackers-list/main/trackers_bchttp.txt | 404 Client Error: Not Found for url: https://raw.githubusercontent.com/Lord1413/BitTorrent-trackers-list/main/trackers_bchttp.txt
-https://raw.githubusercontent.com/Lord1413/BitTorrent-trackers-list/main/trackers_bcudp.txt | 404 Client Error: Not Found for url: https://raw.githubusercontent.com/Lord1413/BitTorrent-trackers-list/main/trackers_bcudp.txt
-https://raw.githubusercontent.com/Lord1413/BitTorrent-trackers-list/main/trackers_bchttps.txt | 404 Client Error: Not Found for url: https://raw.githubusercontent.com/Lord1413/BitTorrent-trackers-list/main/trackers_bchttps.txt
 https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/udp.txt | 404 Client Error: Not Found for url: https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/udp.txt
-https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/bchttps.txt | 404 Client Error: Not Found for url: https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/bchttps.txt
+https://raw.githubusercontent.com/Lord1413/BitTorrent-trackers-list/main/trackers_bchttps.txt | 404 Client Error: Not Found for url: https://raw.githubusercontent.com/Lord1413/BitTorrent-trackers-list/main/trackers_bchttps.txt
 https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/bcudp.txt | 404 Client Error: Not Found for url: https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/bcudp.txt
+https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/bchttps.txt | 404 Client Error: Not Found for url: https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/bchttps.txt
+https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/ws.txt | 404 Client Error: Not Found for url: https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/ws.txt
+https://raw.githubusercontent.com/Lord1413/BitTorrent-trackers-list/main/trackers_bcudp.txt | 404 Client Error: Not Found for url: https://raw.githubusercontent.com/Lord1413/BitTorrent-trackers-list/main/trackers_bcudp.txt
+https://raw.githubusercontent.com/Lord1413/BitTorrent-trackers-list/main/trackers_bchttp.txt | 404 Client Error: Not Found for url: https://raw.githubusercontent.com/Lord1413/BitTorrent-trackers-list/main/trackers_bchttp.txt
 https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/bchttp.txt | 404 Client Error: Not Found for url: https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/bchttp.txt
+https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/https.txt | 404 Client Error: Not Found for url: https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/https.txt
 https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection@master/bcudp.txt | 404 Client Error: Not Found for url: https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection@master/bcudp.txt
 https://cdn.jsdelivr.net/gh/Lord1413/BitTorrent-trackers-list@main/trackers_bcudp.txt | 404 Client Error: Not Found for url: https://cdn.jsdelivr.net/gh/Lord1413/BitTorrent-trackers-list@main/trackers_bcudp.txt
-https://www.torrenttrackerlist.com/bchttps.txt | 404 Client Error: Not Found for url: https://www.torrenttrackerlist.com/bchttps.txt
+https://cdn.jsdelivr.net/gh/Lord1413/BitTorrent-trackers-list@main/trackers_bchttp.txt | 404 Client Error: Not Found for url: https://cdn.jsdelivr.net/gh/Lord1413/BitTorrent-trackers-list@main/trackers_bchttp.txt
 https://cdn.jsdelivr.net/gh/Lord1413/BitTorrent-trackers-list@main/trackers_bchttps.txt | 404 Client Error: Not Found for url: https://cdn.jsdelivr.net/gh/Lord1413/BitTorrent-trackers-list@main/trackers_bchttps.txt
-https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection@master/bchttps.txt | 404 Client Error: Not Found for url: https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection@master/bchttps.txt
 https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection@master/bchttp.txt | 404 Client Error: Not Found for url: https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection@master/bchttp.txt
-https://www.torrenttrackerlist.com/bchttp.txt | 404 Client Error: Not Found for url: https://www.torrenttrackerlist.com/bchttp.txt
+https://www.torrenttrackerlist.com/bchttps.txt | 404 Client Error: Not Found for url: https://www.torrenttrackerlist.com/bchttps.txt
 https://www.torrenttrackerlist.com/bcudp.txt | 404 Client Error: Not Found for url: https://www.torrenttrackerlist.com/bcudp.txt
+https://www.torrenttrackerlist.com/bchttp.txt | 404 Client Error: Not Found for url: https://www.torrenttrackerlist.com/bchttp.txt
 https://cdn.staticaly.com/gh/XIU2/TrackersListCollection/master/all.txt | HTTPSConnectionPool(host='cdn.staticaly.com', port=443): Max retries exceeded with url: /gh/XIU2/TrackersListCollection/master/all.txt (Caused by NameResolutionError("HTTPSConnection(host='cdn.staticaly.com', port=443): Failed to resolve 'cdn.staticaly.com' ([Errno -2] Name or service not known)"))
 https://techspree.net/bcudp-list.txt | 404 Client Error: Not Found for url: https://techspree.net/bcudp-list.txt
-https://cdn.jsdelivr.net/gh/Lord1413/BitTorrent-trackers-list@main/trackers_bchttp.txt | 404 Client Error: Not Found for url: https://cdn.jsdelivr.net/gh/Lord1413/BitTorrent-trackers-list@main/trackers_bchttp.txt
 https://techspree.net/bchttp-list.txt | 404 Client Error: Not Found for url: https://techspree.net/bchttp-list.txt
+https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection@master/bchttps.txt | 404 Client Error: Not Found for url: https://cdn.jsdelivr.net/gh/XIU2/TrackersListCollection@master/bchttps.txt
