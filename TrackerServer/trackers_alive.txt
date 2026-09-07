@@ -1,5 +1,4 @@
 http://004430.xyz/announce
-http://004430.xyz:80/announce
 http://107.189.2.131:1337/announce
 http://1337.abcvg.info/announce
 http://1337.abcvg.info/announce+108
@@ -45,7 +44,9 @@ http://alltorrents.net/bt:80/announce.php
 http://alltorrents.net:80/bt/announce.php
 http://alltorrents.net:80/bt:80/announce.php
 http://announce.sktorrent.eu:6969/announce
+http://asiatorrent.giize.com:51413/announce
 http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce
+http://bittorrent.kali.org/announce
 http://bluebird-hd.org/announce.php
 http://bluebird-hd.org:80/announce.php
 http://bt.beatrice-raws.org/announce
@@ -68,7 +69,6 @@ http://bt2.edwardk.info:4040/announce
 http://bt2.edwardk.info:6969/announce
 http://carbon-bonsai-621.appspot.com/announce
 http://carbon-bonsai-621.appspot.com:80/announce
-http://ch3oh.ru:6969/announce
 http://ehtracker.org/1/announce
 http://ehtracker.org/1104308/announce
 http://ehtracker.org/1113709/announce
@@ -101,7 +101,7 @@ http://opentracker.xyz:80/announce
 http://opentrackr.org:1337/announce
 http://proaudiotorrents.org/announce.php
 http://proaudiotorrents.org:80/announce.php
-http://retracker.joxnet.ru:80/announce
+http://retracker.joxnet.ru/announce
 http://retracker.ohys.net/announce
 http://retracker.ohys.net:80/announce
 http://retracker01-msk-virt.corbina.net/announce
@@ -150,6 +150,7 @@ http://tracker.dhitechnical.com:6969/announce
 http://tracker.dler.com:6969/announce
 http://tracker.dler.org:6969/announce
 http://tracker.dm258.cn:7070/announce
+http://tracker.etree.org:6969/announce
 http://tracker.gcvchp.com:2710/announce
 http://tracker.gigatorrents.ws:2710/announce
 http://tracker.k.vu:6969/announce
@@ -162,6 +163,7 @@ http://tracker.nexusstream.eu:6969/announce
 http://tracker.novaopcj.eu.org:6969/announce
 http://tracker.opentrackr.org:1337/announce
 http://tracker.openzim.org/announce
+http://tracker.plx.im:6969/announce
 http://tracker.privateseedbox.xyz:2710/announce
 http://tracker.pussytorrents.org:3000/announce
 http://tracker.qu.ax:6969/announce
@@ -209,7 +211,6 @@ http://www.zone-torrent.net/announce.php
 http://www.zone-torrent.net:80/announce.php
 http://xtremewrestlingtorrents.net/announce.php
 http://xtremewrestlingtorrents.net:80/announce.php
-https://004430.xyz/announce
 https://004430.xyz:443/announce
 https://1.tracker.eu.org/announce
 https://1.tracker.eu.org:443/announce
@@ -265,6 +266,7 @@ https://tracker.gcrenwp.top:443/announce
 https://tracker.iochimari.moe:443/announce
 https://tracker.keepfrds.com/announce
 https://tracker.leechshield.link:443/announce
+https://tracker.lenition.de/announce
 https://tracker.lenition.de:443/announce
 https://tracker.lilithraws.org/announce
 https://tracker.lilithraws.org:443/announce
@@ -275,7 +277,6 @@ https://tracker.monikadesign.uk/announce
 https://tracker.monikadesign.uk/announce/63ea34cb9815cd28d63fc75b2f2c5a56
 https://tracker.monikadesign.uk/announce/a46be21ab845cc0d534d06fea801f95a
 https://tracker.moviesdb.top/announce
-https://tracker.nekomi.cn:443/announce
 https://tracker.onetracker.net/announce
 https://tracker.onetracker.net:443/announce
 https://tracker.pmman.tech:443/announce
@@ -290,6 +291,7 @@ https://voxhost.fr/announce
 https://voxhost.fr:443/announce
 https://w.wwwww.wtf/announce
 https://w.wwwww.wtf:443/announce
+https://wolf.parrot.run/announce
 https://x7x.up.railway.app/announce
 https://xtremex.herokuapp.com/announce
 https://xtremex.herokuapp.com:443/announce
@@ -327,8 +329,8 @@ udp://173.201.36.219:6969/announce
 udp://173.249.201.201:6969/announce
 udp://176.31.250.174:6969/announce
 udp://178.170.48.154:1337/announce
-udp://180.131.145.175:6969/announce
 udp://185.102.219.163:6969/announce
+udp://185.121.168.96:1337/announce
 udp://185.121.168.96:6969/announce
 udp://185.171.202.111:6969/announce
 udp://185.181.60.155:80/announce
@@ -398,7 +400,6 @@ udp://51.81.222.188:6969/announce
 udp://52.211.139.85:27022/announce
 udp://52.58.128.163:6969/announce
 udp://6.pocketnet.app:6969/announce
-udp://60.172.236.18:6969/announce
 udp://60.249.37.20:6969/announce
 udp://60.249.37.20:80/announce
 udp://65.109.28.17:6969/announce
@@ -499,8 +500,6 @@ udp://laestrygonian.ooguy.com:9001/announce
 udp://laze.cc:6969/announce
 udp://leefafa.tk:6969/announce
 udp://leet-tracker.moe:1337/announce
-udp://leet-tracker.moe:23861/announce
-udp://leet-tracker.moe:38151/announce
 udp://ln.mtahost.co:6969/announce
 udp://lotus-eater.mywire.org:9001/announce
 udp://mail.artixlinux.org:6969/announce
