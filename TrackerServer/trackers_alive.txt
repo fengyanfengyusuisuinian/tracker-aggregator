@@ -7,6 +7,7 @@ http://1337.abcvg.info:80/announce
 http://135.125.198.235/announce
 http://135.125.198.235:2710/announce
 http://138.186.10.167:1337/announce
+http://140.235.237.23:6969/announce
 http://152.249.214.196:6969/announce
 http://157.90.169.123/announce
 http://167.235.245.209/announce
@@ -43,6 +44,7 @@ http://bt.beatrice-raws.org/announce
 http://bt.beatrice-raws.org:80/announce
 http://bt.edwardk.info:12891/announce
 http://bt.edwardk.info:2710/announce
+http://bt.edwardk.info:4040/announce
 http://bt.edwardk.info:63124/announce
 http://bt.edwardk.info:676/announce
 http://bt.edwardk.info:6767/announce
@@ -55,9 +57,9 @@ http://bt1.archive.org:6969/announce
 http://bt2.archive.org:6969/announce
 http://bt2.edwardk.info:2710/announce
 http://bt2.edwardk.info:4040/announce
+http://bt2.edwardk.info:6969/announce
 http://carbon-bonsai-621.appspot.com/announce
 http://carbon-bonsai-621.appspot.com:80/announce
-http://ch3oh.ru:6969/announce
 http://ehtracker.org/1/announce
 http://ehtracker.org/1104308/announce
 http://ehtracker.org/1113709/announce
@@ -91,7 +93,6 @@ http://opentracker.xyz:80/announce
 http://opentrackr.org:1337/announce
 http://proaudiotorrents.org/announce.php
 http://proaudiotorrents.org:80/announce.php
-http://retracker.joxnet.ru/announce
 http://retracker.joxnet.ru:80/announce
 http://retracker01-msk-virt.corbina.net/announce
 http://retracker01-msk-virt.corbina.net:80/announce
@@ -133,7 +134,6 @@ http://tracker.dhitechnical.com:6969/announce
 http://tracker.dler.com:6969/announce
 http://tracker.dler.org:6969/announce
 http://tracker.dm258.cn:7070/announce
-http://tracker.etree.org:6969/announce
 http://tracker.gcvchp.com:2710/announce
 http://tracker.gigatorrents.ws:2710/announce
 http://tracker.internetwarriors.net:1337/announce
@@ -161,6 +161,7 @@ http://tracker.waaa.moe:6969/announce
 http://tracker.xfapi.top:6868/announce
 http://tracker.xfapi.top:7070/announce
 http://tracker.xfapi.top:9999/announce
+http://tracker.xn--djrq4gl4hvoi.top/announce
 http://tracker.xn--djrq4gl4hvoi.top:80/announce
 http://tracker.zhuqiy.com/announce
 http://tracker.zhuqiy.dgj055.icu/announce
@@ -221,6 +222,7 @@ https://evening-badlands-6215.herokuapp.com/announce
 https://ht.therarbg.to:443/announce
 https://opentracker.xyz/announce
 https://opentracker.xyz:443/announce
+https://pybittrack.retiolus.net:443/announce
 https://staticfile-bobcat.wasmer.app:443/announce
 https://t.213891.xyz/announce
 https://t.213891.xyz:443/announce
@@ -294,6 +296,7 @@ udp://120.78.150.131:6969/announce
 udp://132.226.6.145:6969/announce
 udp://135.125.106.92:6969/announce
 udp://135.125.198.235:1984/announce
+udp://135.125.236.64:6969/announce
 udp://144.91.88.22:6969/announce
 udp://148.251.53.72:6969/announce
 udp://149.106.106.25:443/announce
@@ -302,6 +305,7 @@ udp://151.242.104.187:80/announce
 udp://152.249.214.196:6969/announce
 udp://156.234.201.18:80/announce
 udp://158.101.161.60:3131/announce
+udp://159.146.99.45:6969/announce
 udp://160.30.240.158:1337/announce
 udp://161.97.67.210:6969/announce
 udp://163.172.29.130:80/announce
@@ -333,6 +337,7 @@ udp://198.100.149.66:6969/announce
 udp://1c.premierzal.ru:6969/announce
 udp://207.241.226.111:6969/announce
 udp://207.241.231.226:6969/announce
+udp://208.83.20.20:6969/announce
 udp://209.126.11.233:6969/announce
 udp://209.141.59.16:6969/announce
 udp://209.141.59.25:6969/announce
@@ -350,6 +355,7 @@ udp://23.137.251.45:6969/announce
 udp://23.154.104.2:23333/announce
 udp://23.157.120.14:6969/announce
 udp://23.175.184.30:23333/announce
+udp://23.94.174.203:1337/announce
 udp://31.38.161.123:6969/announce
 udp://31.59.141.120:6969/announce
 udp://34.66.57.33:1337/announce
@@ -379,6 +385,7 @@ udp://51.81.222.188:6969/announce
 udp://52.211.139.85:27022/announce
 udp://52.58.128.163:6969/announce
 udp://6.pocketnet.app:6969/announce
+udp://60.172.236.18:6969/announce
 udp://65.109.28.17:6969/announce
 udp://65.109.28.33:6969/announce
 udp://6ahddutb1ucc3cp.ru:6969/announce
@@ -601,7 +608,6 @@ udp://tracker.cynma.tv:6969/announce
 udp://tracker.darkness.services:6969/announce
 udp://tracker.ddunlimited.net:6969/announce
 udp://tracker.deadorbit.nl:6969/announce
-udp://tracker.dhitechnical.com:6969/announce
 udp://tracker.dler.com:6969/announce
 udp://tracker.dler.org:6969/announce
 udp://tracker.dorcus.digital:1337/announce
