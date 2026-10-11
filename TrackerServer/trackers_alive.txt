@@ -3,7 +3,6 @@ http://004430.xyz:80/announce
 http://107.189.2.131:1337/announce
 http://1337.abcvg.info/announce
 http://1337.abcvg.info/announce+108
-http://1337.abcvg.info:80/announce
 http://135.125.198.235/announce
 http://135.125.198.235:2710/announce
 http://138.186.10.167:1337/announce
@@ -95,7 +94,6 @@ http://opentracker.xyz:80/announce
 http://opentrackr.org:1337/announce
 http://proaudiotorrents.org/announce.php
 http://proaudiotorrents.org:80/announce.php
-http://retracker.joxnet.ru:80/announce
 http://retracker01-msk-virt.corbina.net/announce
 http://retracker01-msk-virt.corbina.net:80/announce
 http://siambit.com/announce.php
@@ -113,15 +111,12 @@ http://torrent.fedoraproject.org:6969/announce
 http://torrent.mp3quran.net/announce.php
 http://torrent.mp3quran.net:80/announce.php
 http://torrent.ubuntu.com:6969/announce
-http://torrent.unix-ag.uni-kl.de/announce
-http://torrent.unix-ag.uni-kl.de:80/announce
 http://torrentsmd.com:8080/announce
 http://tr.nyacat.pw/announce
 http://tr.nyacat.pw:80/announce
 http://tracker-udp.anirena.com/announce
 http://tracker-zhuqiy.dgj055.icu/announce
 http://tracker.004430.xyz:1337/announce
-http://tracker.23794.top:6969/announce
 http://tracker.acgnx.se/announce
 http://tracker.acgnx.se:80/announce
 http://tracker.ali213.net:8000/announce
@@ -158,13 +153,14 @@ http://tracker.tfile.co:80/announce
 http://tracker.torrentbytes.net/announce.php
 http://tracker.torrentbytes.net:80/announce.php
 http://tracker.torrents.observer/announce
-http://tracker.trancetraffic.com/announce
 http://tracker.trancetraffic.com/announce.php
 http://tracker.trancetraffic.com:80/announce.php
 http://tracker.waaa.moe:6969/announce
 http://tracker.xfapi.top:6868/announce
 http://tracker.xfapi.top:7070/announce
 http://tracker.xfapi.top:9999/announce
+http://tracker.xn--djrq4gl4hvoi.top/announce
+http://tracker.xn--djrq4gl4hvoi.top:80/announce
 http://tracker.zhuqiy.dgj055.icu/announce
 http://tracker.zhuqiy.dgj055.icu:80/announce
 http://tracker1.torrentino.com/announce
@@ -273,7 +269,6 @@ https://tracker.pmman.tech:443/announce
 https://tracker.qingwapt.org/announce
 https://tracker.qingwapt.org:443/announce
 https://tracker.samcze.pl:443/announce
-https://tracker.tvgc.win/announce
 https://tracker.zhuqiy.com:443/announce
 https://trackers.mlsub.net/announce
 https://trackers.mlsub.net:443/announce
@@ -308,6 +303,7 @@ udp://15.235.207.99:8081/announce
 udp://151.242.104.187:80/announce
 udp://156.234.201.18:80/announce
 udp://158.101.161.60:3131/announce
+udp://159.146.99.45:6969/announce
 udp://160.30.240.158:1337/announce
 udp://161.97.67.210:6969/announce
 udp://163.172.29.130:80/announce
@@ -340,7 +336,6 @@ udp://1c.premierzal.ru:6969/announce
 udp://200.161.254.249:6969/announce
 udp://207.241.226.111:6969/announce
 udp://207.241.231.226:6969/announce
-udp://208.83.20.20:6969/announce
 udp://209.126.11.233:6969/announce
 udp://209.141.59.25:6969/announce
 udp://211.75.205.187:6969/announce
@@ -387,10 +382,12 @@ udp://51.81.222.188:6969/announce
 udp://52.211.139.85:27022/announce
 udp://52.58.128.163:6969/announce
 udp://6.pocketnet.app:6969/announce
+udp://60.172.236.18:6969/announce
 udp://65.109.28.17:6969/announce
 udp://65.109.28.33:6969/announce
 udp://6ahddutb1ucc3cp.ru:6969/announce
 udp://74.119.149.136:6969/announce
+udp://74.81.245.60:2010/announce
 udp://82.65.115.10:6969/announce
 udp://83.102.180.21:80/announce
 udp://85.17.55.112:6969/announce
@@ -425,6 +422,7 @@ udp://anna.bt.bontal.net:6969/announce
 udp://app.icon256.com:8000/announce
 udp://archive.torrentonline.cc:42069/announce
 udp://astrr.ru:6969/announce
+udp://atrack.pow7.com:6969/announce
 udp://bananas.space:6969/announce
 udp://bandito.byterunner.io:6969/announce
 udp://banzaitracker.com:2710/announce
@@ -560,6 +558,7 @@ udp://static.54.161.216.95.clients.your-server.de:6969/announce
 udp://su-data.com:6969/announce
 udp://t.overflow.biz:6969/announce
 udp://t.zerg.pw:6969/announce
+udp://t1.pow7.com:6969/announce
 udp://tamas3.ynh.fr:6969/announce
 udp://thagoat.rocks:6969/announce
 udp://theodoric.fr:6969/announce
