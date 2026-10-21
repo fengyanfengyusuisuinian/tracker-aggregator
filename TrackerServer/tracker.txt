@@ -25,7 +25,6 @@ http://31.38.161.123:6969/announce
 http://43.250.54.126:6969/announce
 http://51.68.122.172/announce
 http://51.68.122.172:80/announce
-http://52.70.94.249/announce
 http://60-fps.org/bt/announce.php
 http://60-fps.org/bt:80/announce.php
 http://60-fps.org:80/bt/announce.php
@@ -61,6 +60,7 @@ http://bt2.edwardk.info:4040/announce
 http://bt2.edwardk.info:6969/announce
 http://carbon-bonsai-621.appspot.com/announce
 http://carbon-bonsai-621.appspot.com:80/announce
+http://ch3oh.ru:6969/announce
 http://ehtracker.org/1/announce
 http://ehtracker.org/1104308/announce
 http://ehtracker.org/1113709/announce
@@ -121,6 +121,7 @@ http://tracker.004430.xyz:1337/announce
 http://tracker.acgnx.se/announce
 http://tracker.acgnx.se:80/announce
 http://tracker.ali213.net:8000/announce
+http://tracker.ali213.net:8080/announce
 http://tracker.anirena.com/announce
 http://tracker.anirena.com/b16a15d9a238d1f59178d3614b857290/announce
 http://tracker.anirena.com:80/announce
@@ -132,6 +133,7 @@ http://tracker.ddunlimited.net:6969/announce
 http://tracker.dhitechnical.com:6969/announce
 http://tracker.dler.com:6969/announce
 http://tracker.dler.org:6969/announce
+http://tracker.dm258.cn:7070/announce
 http://tracker.gcvchp.com:2710/announce
 http://tracker.gigatorrents.ws:2710/announce
 http://tracker.internetwarriors.net:1337/announce
@@ -156,9 +158,11 @@ http://tracker.trancetraffic.com/announce
 http://tracker.trancetraffic.com/announce.php
 http://tracker.trancetraffic.com:80/announce.php
 http://tracker.waaa.moe:6969/announce
+http://tracker.xfapi.top:6868/announce
+http://tracker.xfapi.top:7070/announce
+http://tracker.xfapi.top:9999/announce
 http://tracker.xn--djrq4gl4hvoi.top/announce
 http://tracker.xn--djrq4gl4hvoi.top:80/announce
-http://tracker.zhuqiy.com/announce
 http://tracker.zhuqiy.dgj055.icu/announce
 http://tracker.zhuqiy.dgj055.icu:80/announce
 http://tracker1.itzmx.com:8080/announce
@@ -186,14 +190,10 @@ http://www.wareztorrent.com/announce
 http://www.wareztorrent.com:80/announce
 http://www.worldboxingvideoarchive.com/announce.php
 http://www.worldboxingvideoarchive.com:80/announce.php
-http://www.xwt-classics.net/announce.php
-http://www.xwt-classics.net:80/announce.php
 http://www.yqzuji.com/announce
 http://www.yqzuji.com:80/announce
 http://www.zone-torrent.net/announce.php
 http://www.zone-torrent.net:80/announce.php
-http://xtremewrestlingtorrents.net/announce.php
-http://xtremewrestlingtorrents.net:80/announce.php
 https://004430.xyz/announce
 https://004430.xyz:443/announce
 https://1.tracker.eu.org/announce
@@ -217,6 +217,7 @@ https://evening-badlands-6215.herokuapp.com/announce
 https://ht.therarbg.to:443/announce
 https://opentracker.xyz/announce
 https://opentracker.xyz:443/announce
+https://orgtgju.org:443/announce
 https://pybittrack.retiolus.net:443/announce
 https://staticfile-bobcat.wasmer.app:443/announce
 https://t.213891.xyz/announce
@@ -262,10 +263,10 @@ https://tracker.moviesdb.top/announce
 https://tracker.nekomi.cn/announce
 https://tracker.nekomi.cn:443/announce
 https://tracker.pmman.tech:443/announce
+https://tracker.qingwapt.org/announce
 https://tracker.qingwapt.org:443/announce
 https://tracker.samcze.pl:443/announce
 https://tracker.tvgc.win/announce
-https://tracker.zhuqiy.com/announce
 https://tracker.zhuqiy.com:443/announce
 https://trackers.mlsub.net/announce
 https://trackers.mlsub.net:443/announce
@@ -293,6 +294,7 @@ udp://132.226.6.145:6969/announce
 udp://135.125.106.92:6969/announce
 udp://135.125.198.235:1984/announce
 udp://135.125.236.64:6969/announce
+udp://143.20.154.229:42069/announce
 udp://144.91.88.22:6969/announce
 udp://148.251.53.72:6969/announce
 udp://149.106.106.25:443/announce
@@ -357,6 +359,7 @@ udp://37.59.48.81:6969/announce
 udp://38.180.157.12:2715/announce
 udp://43.154.112.29:17272/announce
 udp://43.250.54.126:6969/announce
+udp://45.134.88.121:6969/announce
 udp://45.137.199.107:6969/announce
 udp://45.38.170.167:6969/announce
 udp://45.9.60.30:6969/announce
@@ -416,6 +419,7 @@ udp://anna.bt.bontal.net:6969/announce
 udp://app.icon256.com:8000/announce
 udp://archive.torrentonline.cc:42069/announce
 udp://astrr.ru:6969/announce
+udp://atrack.pow7.com:6969/announce
 udp://bananas.space:6969/announce
 udp://bandito.byterunner.io:6969/announce
 udp://banzaitracker.com:2710/announce
@@ -437,7 +441,6 @@ udp://buddyfly.top:6969/announce
 udp://camera.lei001.com:6969/announce
 udp://carr.codes:6969/announce
 udp://cerf.cs.umd.edu:8000/announce
-udp://ch3oh.ru:6969/announce
 udp://chihaya.toss.li:9696/announce
 udp://chouchou.top:8080/announce
 udp://coeus.torrentonline.cc:42069/announce
@@ -551,6 +554,8 @@ udp://static.54.161.216.95.clients.your-server.de:6969/announce
 udp://su-data.com:6969/announce
 udp://t.overflow.biz:6969/announce
 udp://t.zerg.pw:6969/announce
+udp://t1.pow7.com:6969/announce
+udp://t2.pow7.com:6969/announce
 udp://tamas3.ynh.fr:6969/announce
 udp://thagoat.rocks:6969/announce
 udp://theodoric.fr:6969/announce
@@ -599,6 +604,7 @@ udp://tracker.cynma.tv:6969/announce
 udp://tracker.darkness.services:6969/announce
 udp://tracker.ddunlimited.net:6969/announce
 udp://tracker.deadorbit.nl:6969/announce
+udp://tracker.dhitechnical.com:6969/announce
 udp://tracker.dler.com:6969/announce
 udp://tracker.dler.org:6969/announce
 udp://tracker.dorcus.digital:1337/announce
@@ -659,6 +665,7 @@ udp://tracker.sylphix.com:6969/announce
 udp://tracker.tallpenguin.org:15750/announce
 udp://tracker.tcp.exchange:6969/announce
 udp://tracker.theoks.net:6969/announce
+udp://tracker.therarbg.to:6969/announce
 udp://tracker.tiny-vps.com:6969/announce
 udp://tracker.tnl.one:8000/announce
 udp://tracker.torrent.eu.org:451/announce
