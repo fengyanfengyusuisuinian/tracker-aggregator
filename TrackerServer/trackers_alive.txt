@@ -26,7 +26,6 @@ http://43.250.54.126:6969/announce
 http://51.68.122.172/announce
 http://51.68.122.172:80/announce
 http://93.158.213.92:1337/announce
-http://93.88.129.16/announce
 http://94.23.207.177:6969/announce
 http://alltorrents.net/bt/announce.php
 http://alltorrents.net/bt:80/announce.php
@@ -127,8 +126,6 @@ http://tracker.ddunlimited.net:6969/announce
 http://tracker.dhitechnical.com:6969/announce
 http://tracker.dler.com:6969/announce
 http://tracker.dler.org:6969/announce
-http://tracker.dm258.cn:7070/announce
-http://tracker.etree.org:6969/announce
 http://tracker.gcvchp.com:2710/announce
 http://tracker.gigatorrents.ws:2710/announce
 http://tracker.internetwarriors.net:1337/announce
@@ -152,11 +149,6 @@ http://tracker.trancetraffic.com/announce
 http://tracker.trancetraffic.com/announce.php
 http://tracker.trancetraffic.com:80/announce.php
 http://tracker.waaa.moe:6969/announce
-http://tracker.xfapi.top:6868/announce
-http://tracker.xfapi.top:7070/announce
-http://tracker.xfapi.top:9999/announce
-http://tracker.xn--djrq4gl4hvoi.top/announce
-http://tracker.xn--djrq4gl4hvoi.top:80/announce
 http://tracker.zhuqiy.com/announce
 http://tracker.zhuqiy.dgj055.icu/announce
 http://tracker.zhuqiy.dgj055.icu:80/announce
@@ -211,7 +203,6 @@ https://carapax.net/announce
 https://carbon-bonsai-621.appspot.com/announce
 https://carbon-bonsai-621.appspot.com:443/announce
 https://docker-tracker-production.up.railway.app/announce
-https://edgev.duckdns.org:443/announce
 https://evening-badlands-6215.herokuapp.com/announce
 https://ht.therarbg.to:443/announce
 https://opentracker.xyz/announce
@@ -223,6 +214,7 @@ https://t.213891.xyz/announce
 https://t.213891.xyz:443/announce
 https://t.btcland.xyz/announce
 https://t.btcland.xyz:443/announce
+https://t1.tokhmi.xyz/announce
 https://torrent.ubuntu.com/announce
 https://torrent.ubuntu.com:443/announce
 https://tp.m-team.cc/announce.php
@@ -265,7 +257,6 @@ https://tracker.pmman.tech:443/announce
 https://tracker.qingwapt.org/announce
 https://tracker.qingwapt.org:443/announce
 https://tracker.samcze.pl:443/announce
-https://tracker.tvgc.win/announce
 https://tracker.zhuqiy.com/announce
 https://tracker.zhuqiy.com:443/announce
 https://trackers.mlsub.net/announce
@@ -301,7 +292,6 @@ udp://15.235.207.99:8081/announce
 udp://151.242.104.187:80/announce
 udp://156.234.201.18:80/announce
 udp://158.101.161.60:3131/announce
-udp://159.146.99.45:6969/announce
 udp://160.30.240.158:1337/announce
 udp://161.97.67.210:6969/announce
 udp://163.172.29.130:80/announce
@@ -333,6 +323,7 @@ udp://198.100.149.66:6969/announce
 udp://1c.premierzal.ru:6969/announce
 udp://207.241.226.111:6969/announce
 udp://207.241.231.226:6969/announce
+udp://208.83.20.20:6969/announce
 udp://209.126.11.233:6969/announce
 udp://209.141.59.25:6969/announce
 udp://211.75.205.187:6969/announce
@@ -357,6 +348,7 @@ udp://37.187.95.112:6969/announce
 udp://37.59.48.81:6969/announce
 udp://43.154.112.29:17272/announce
 udp://43.250.54.126:6969/announce
+udp://45.134.88.121:6969/announce
 udp://45.137.199.107:6969/announce
 udp://45.9.60.30:6969/announce
 udp://46.138.242.240:6969/announce
@@ -364,6 +356,7 @@ udp://47.76.201.250:6969/announce
 udp://47.ip-51-68-199.eu:6969/announce
 udp://5.196.67.51:6969/announce
 udp://5.196.89.204:6969/announce
+udp://5.255.124.190:6969/announce
 udp://51.15.26.25:6969/announce
 udp://51.15.3.74:6969/announce
 udp://51.15.41.46:6969/announce
@@ -380,6 +373,7 @@ udp://65.109.28.17:6969/announce
 udp://65.109.28.33:6969/announce
 udp://6ahddutb1ucc3cp.ru:6969/announce
 udp://74.119.149.136:6969/announce
+udp://74.81.245.60:2010/announce
 udp://82.65.115.10:6969/announce
 udp://83.102.180.21:80/announce
 udp://85.17.55.112:6969/announce
@@ -549,7 +543,6 @@ udp://static.54.161.216.95.clients.your-server.de:6969/announce
 udp://su-data.com:6969/announce
 udp://t.overflow.biz:6969/announce
 udp://t.zerg.pw:6969/announce
-udp://t1.pow7.com:6969/announce
 udp://tamas3.ynh.fr:6969/announce
 udp://thagoat.rocks:6969/announce
 udp://theodoric.fr:6969/announce
@@ -658,7 +651,6 @@ udp://tracker.sylphix.com:6969/announce
 udp://tracker.tallpenguin.org:15750/announce
 udp://tracker.tcp.exchange:6969/announce
 udp://tracker.theoks.net:6969/announce
-udp://tracker.therarbg.to:6969/announce
 udp://tracker.tiny-vps.com:6969/announce
 udp://tracker.tnl.one:8000/announce
 udp://tracker.torrent.eu.org:451/announce
