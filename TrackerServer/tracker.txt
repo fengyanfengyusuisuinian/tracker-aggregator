@@ -27,6 +27,7 @@ http://43.250.54.126:6969/announce
 http://51.68.122.172/announce
 http://51.68.122.172:80/announce
 http://93.158.213.92:1337/announce
+http://93.88.129.16/announce
 http://all4nothin.net/announce.php
 http://all4nothin.net:80/announce.php
 http://alltorrents.net/bt/announce.php
@@ -56,6 +57,7 @@ http://bt2.edwardk.info:4040/announce
 http://bt2.edwardk.info:6969/announce
 http://carbon-bonsai-621.appspot.com/announce
 http://carbon-bonsai-621.appspot.com:80/announce
+http://ch3oh.ru:6969/announce
 http://ehtracker.org/1/announce
 http://ehtracker.org/1104308/announce
 http://ehtracker.org/1113709/announce
@@ -83,6 +85,8 @@ http://open.touki.ru/announce
 http://open.touki.ru/announce.php
 http://open.touki.ru:80/announce.php
 http://open.tracker.cl:1337/announce
+http://openbittorrent.com/announce
+http://openbittorrent.com:80/announce
 http://opentracker.xyz/announce
 http://opentracker.xyz:80/announce
 http://opentrackr.org:1337/announce
@@ -100,7 +104,6 @@ http://t.nyaatracker.com:80/announce
 http://t.overflow.biz:6969/announce
 http://thetracker.org/announce
 http://thetracker.org:80/announce
-http://torrent.arjlover.net:2710/announce
 http://torrent.fedoraproject.org:6969/announce
 http://torrent.mp3quran.net/announce.php
 http://torrent.mp3quran.net:80/announce.php
@@ -113,6 +116,7 @@ http://tracker-zhuqiy.dgj055.icu/announce
 http://tracker.004430.xyz:1337/announce
 http://tracker.23794.top:6969/announce
 http://tracker.ali213.net:8000/announce
+http://tracker.ali213.net:8080/announce
 http://tracker.anirena.com/announce
 http://tracker.anirena.com/b16a15d9a238d1f59178d3614b857290/announce
 http://tracker.anirena.com:80/announce
@@ -129,6 +133,8 @@ http://tracker.linkomanija.org:2710/announce
 http://tracker.minglong.org:8080/announce
 http://tracker.mywaifu.best:6969/announce
 http://tracker.novaopcj.eu.org:6969/announce
+http://tracker.openbittorrent.com/announce
+http://tracker.openbittorrent.com:80/announce
 http://tracker.opentrackr.org:1337/announce
 http://tracker.openzim.org/announce
 http://tracker.privateseedbox.xyz:2710/announce
@@ -144,6 +150,7 @@ http://tracker.trancetraffic.com/announce.php
 http://tracker.trancetraffic.com:80/announce.php
 http://tracker.waaa.moe:6969/announce
 http://tracker.xdvdz.com:2710/announce
+http://tracker.xn--djrq4gl4hvoi.top:80/announce
 http://tracker.zhuqiy.com/announce
 http://tracker.zhuqiy.dgj055.icu/announce
 http://tracker.zhuqiy.dgj055.icu:80/announce
@@ -227,6 +234,8 @@ https://tracker.anibt.net:443/announce
 https://tracker.augrains.com/announce
 https://tracker.augrains.com:443/announce
 https://tracker.bug38.com:443/announce
+https://tracker.cangku.moe/announce
+https://tracker.cangku.moe:443/announce
 https://tracker.foreverpirates.co/announce
 https://tracker.foreverpirates.co:443/announce
 https://tracker.hdarea.club/announce
